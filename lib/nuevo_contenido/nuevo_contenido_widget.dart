@@ -751,7 +751,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                           ? choiceChipsValues
                                                                           : [],
                                                                   options: (choiceChipsCategoriasRecord
-                                                                              .listadoDeCategorias
+                                                                              .listado
                                                                               .toList() ??
                                                                           [])
                                                                       .map((label) =>

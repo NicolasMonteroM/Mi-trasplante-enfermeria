@@ -12,22 +12,14 @@ abstract class CategoriasRecord
       _$categoriasRecordSerializer;
 
   @nullable
-  String get nombre;
-
-  @nullable
-  BuiltList<DocumentReference> get contenidos;
-
-  @nullable
-  BuiltList<String> get listadoDeCategorias;
+  BuiltList<String> get listado;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(CategoriasRecordBuilder builder) => builder
-    ..nombre = ''
-    ..contenidos = ListBuilder()
-    ..listadoDeCategorias = ListBuilder();
+  static void _initializeBuilder(CategoriasRecordBuilder builder) =>
+      builder..listado = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('categorias');
@@ -50,12 +42,5 @@ abstract class CategoriasRecord
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
-Map<String, dynamic> createCategoriasRecordData({
-  String nombre,
-}) =>
-    serializers.toFirestore(
-        CategoriasRecord.serializer,
-        CategoriasRecord((c) => c
-          ..nombre = nombre
-          ..contenidos = null
-          ..listadoDeCategorias = null));
+Map<String, dynamic> createCategoriasRecordData() => serializers.toFirestore(
+    CategoriasRecord.serializer, CategoriasRecord((c) => c..listado = null));
