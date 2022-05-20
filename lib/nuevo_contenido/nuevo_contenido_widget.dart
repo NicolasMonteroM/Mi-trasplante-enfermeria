@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../contenidos/contenidos_widget.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -888,144 +889,92 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 16,
+                                                                .fromSTEB(0, 26,
                                                                     0, 0),
                                                         child: Container(
+                                                          width: 320,
+                                                          height: 140,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Colors.white,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        8,
-                                                                        0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                logFirebaseEvent(
-                                                                    'agregarImagen_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'agregarImagen_Upload-Photo-Video');
-                                                                final selectedMedia =
-                                                                    await selectMedia(
-                                                                  mediaSource:
-                                                                      MediaSource
-                                                                          .photoGallery,
-                                                                  multiImage:
-                                                                      false,
-                                                                );
-                                                                if (selectedMedia !=
-                                                                        null &&
-                                                                    selectedMedia.every((m) =>
-                                                                        validateFileFormat(
-                                                                            m.storagePath,
-                                                                            context))) {
-                                                                  showUploadMessage(
-                                                                    context,
-                                                                    'Uploading file...',
-                                                                    showLoading:
-                                                                        true,
-                                                                  );
-                                                                  final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(
-                                                                          m
-                                                                              .storagePath,
-                                                                          m
-                                                                              .bytes))))
-                                                                      .where((u) =>
-                                                                          u !=
-                                                                          null)
-                                                                      .toList();
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .hideCurrentSnackBar();
-                                                                  if (downloadUrls !=
-                                                                          null &&
-                                                                      downloadUrls
-                                                                              .length ==
-                                                                          selectedMedia
-                                                                              .length) {
-                                                                    setState(() =>
-                                                                        uploadedFileUrl =
-                                                                            downloadUrls.first);
-                                                                    showUploadMessage(
-                                                                      context,
-                                                                      'Success!',
-                                                                    );
-                                                                  } else {
-                                                                    showUploadMessage(
-                                                                      context,
-                                                                      'Failed to upload media',
-                                                                    );
-                                                                    return;
-                                                                  }
-                                                                }
-                                                              },
-                                                              text:
-                                                                  'Agregar imagen',
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: 200,
-                                                                height: 42,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText2
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Proxima nova',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiaryColor,
-                                                                      useGoogleFonts:
-                                                                          false,
-                                                                    ),
-                                                                elevation: 0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                                  width: 1,
-                                                                ),
-                                                                borderRadius:
-                                                                    12,
-                                                              ),
-                                                              showLoadingIndicator:
-                                                                  false,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(0, 24,
-                                                                    0, 0),
-                                                        child: Container(
-                                                          width: 100,
-                                                          height: 100,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0xFFEEEEEE),
                                                             image:
                                                                 DecorationImage(
                                                               fit: BoxFit.cover,
                                                               image:
-                                                                  Image.network(
-                                                                uploadedFileUrl,
+                                                                  Image.asset(
+                                                                'assets/images/agregar_foto.png',
                                                               ).image,
+                                                            ),
+                                                          ),
+                                                          child: InkWell(
+                                                            onTap: () async {
+                                                              logFirebaseEvent(
+                                                                  'Image_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Image_Upload-Photo-Video');
+                                                              final selectedMedia =
+                                                                  await selectMedia(
+                                                                imageQuality:
+                                                                    100,
+                                                                mediaSource:
+                                                                    MediaSource
+                                                                        .photoGallery,
+                                                                multiImage:
+                                                                    false,
+                                                              );
+                                                              if (selectedMedia !=
+                                                                      null &&
+                                                                  selectedMedia.every((m) =>
+                                                                      validateFileFormat(
+                                                                          m.storagePath,
+                                                                          context))) {
+                                                                showUploadMessage(
+                                                                  context,
+                                                                  'Uploading file...',
+                                                                  showLoading:
+                                                                      true,
+                                                                );
+                                                                final downloadUrls = (await Future.wait(selectedMedia.map((m) async =>
+                                                                        await uploadData(
+                                                                            m
+                                                                                .storagePath,
+                                                                            m
+                                                                                .bytes))))
+                                                                    .where((u) =>
+                                                                        u !=
+                                                                        null)
+                                                                    .toList();
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .hideCurrentSnackBar();
+                                                                if (downloadUrls !=
+                                                                        null &&
+                                                                    downloadUrls
+                                                                            .length ==
+                                                                        selectedMedia
+                                                                            .length) {
+                                                                  setState(() =>
+                                                                      uploadedFileUrl =
+                                                                          downloadUrls
+                                                                              .first);
+                                                                  showUploadMessage(
+                                                                    context,
+                                                                    'Success!',
+                                                                  );
+                                                                } else {
+                                                                  showUploadMessage(
+                                                                    context,
+                                                                    'Failed to upload media',
+                                                                  );
+                                                                  return;
+                                                                }
+                                                              }
+                                                            },
+                                                            child:
+                                                                Image.network(
+                                                              uploadedFileUrl,
+                                                              width: 100,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                         ),
@@ -1115,9 +1064,10 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      logFirebaseEvent('Button-Login_ON_TAP');
                                       logFirebaseEvent(
-                                          'Button-Login_Backend-Call');
+                                          'guardar-contenido_ON_TAP');
+                                      logFirebaseEvent(
+                                          'guardar-contenido_Backend-Call');
 
                                       final contenidosCreateData =
                                           createContenidosRecordData(
@@ -1127,6 +1077,18 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                       await ContenidosRecord.collection
                                           .doc()
                                           .set(contenidosCreateData);
+                                      logFirebaseEvent(
+                                          'guardar-contenido_Navigate-To');
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                          reverseDuration:
+                                              Duration(milliseconds: 0),
+                                          child: ContenidosWidget(),
+                                        ),
+                                      );
                                     },
                                     text: 'Guardar contenido',
                                     options: FFButtonOptions(
