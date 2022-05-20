@@ -19,15 +19,15 @@ abstract class UsersEnfermeriaRecord
   String get displayName;
 
   @nullable
-  @BuiltValueField(wireName: 'photo_url')
-  String get photoUrl;
-
-  @nullable
   String get uid;
 
   @nullable
   @BuiltValueField(wireName: 'created_time')
   DateTime get createdTime;
+
+  @nullable
+  @BuiltValueField(wireName: 'photo_url')
+  String get photoUrl;
 
   @nullable
   @BuiltValueField(wireName: 'phone_number')
@@ -41,8 +41,8 @@ abstract class UsersEnfermeriaRecord
       builder
         ..email = ''
         ..displayName = ''
-        ..photoUrl = ''
         ..uid = ''
+        ..photoUrl = ''
         ..phoneNumber = '';
 
   static CollectionReference get collection =>
@@ -70,9 +70,9 @@ abstract class UsersEnfermeriaRecord
 Map<String, dynamic> createUsersEnfermeriaRecordData({
   String email,
   String displayName,
-  String photoUrl,
   String uid,
   DateTime createdTime,
+  String photoUrl,
   String phoneNumber,
 }) =>
     serializers.toFirestore(
@@ -80,7 +80,7 @@ Map<String, dynamic> createUsersEnfermeriaRecordData({
         UsersEnfermeriaRecord((u) => u
           ..email = email
           ..displayName = displayName
-          ..photoUrl = photoUrl
           ..uid = uid
           ..createdTime = createdTime
+          ..photoUrl = photoUrl
           ..phoneNumber = phoneNumber));
