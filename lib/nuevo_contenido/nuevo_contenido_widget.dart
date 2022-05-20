@@ -1,8 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/upload_media.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +29,7 @@ class NuevoContenidoWidget extends StatefulWidget {
 class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
   List<String> choiceChipsValues;
   TextEditingController nameController;
+  String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -395,116 +399,102 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 16, 24, 16),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 16, 0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'ContainerBack_ON_TAP');
-                                          logFirebaseEvent(
-                                              'ContainerBack_Navigate-Back');
-                                          Navigator.pop(context);
-                                        },
-                                        child: Container(
-                                          width: 40,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                              )
-                                            ],
-                                            shape: BoxShape.circle,
-                                          ),
-                                          alignment: AlignmentDirectional(
-                                              -0.050000000000000044, 0),
-                                          child: Icon(
-                                            Icons.chevron_left_rounded,
-                                            color: Colors.black,
-                                            size: 32,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(),
-                                      child: Text(
-                                        'Nuevo contenido',
-                                        style:
-                                            FlutterFlowTheme.of(context).title1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
+                      Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24, 24, 24, 24),
-                                      child: Column(
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24, 16, 24, 16),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Información',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .title2
-                                                        .override(
-                                                          fontFamily:
-                                                              'Proxima nova',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 24, 0, 0),
+                                                    0, 0, 16, 0),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'ContainerBack_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'ContainerBack_Navigate-Back');
+                                                Navigator.pop(context);
+                                              },
+                                              child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBtnText,
+                                                    )
+                                                  ],
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                alignment: AlignmentDirectional(
+                                                    -0.050000000000000044, 0),
+                                                child: Icon(
+                                                  Icons.chevron_left_rounded,
+                                                  color: Colors.black,
+                                                  size: 32,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(),
+                                            child: Text(
+                                              'Nuevo contenido',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24, 24, 24, 24),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24, 24, 24, 24),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -513,327 +503,531 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      'Nombre',
+                                                      'Información',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle1,
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Text(
-                                                        'Ingrese el nombre principal del contenido educativo / informativo.',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 16, 0, 0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 50,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          nameController,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Proxima nova',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Proxima nova',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFFC9C9C9),
-                                                            width: 0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(12),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFFC9C9C9),
-                                                            width: 0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(12),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor: Colors.white,
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(24,
-                                                                    24, 20, 24),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
+                                                              .title2
                                                               .override(
                                                                 fontFamily:
                                                                     'Proxima nova',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
                                                                 useGoogleFonts:
                                                                     false,
                                                               ),
-                                                      keyboardType:
-                                                          TextInputType.name,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 24, 0, 0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      'Categoría principal',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle1,
                                                     ),
                                                   ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Text(
-                                                        'Seleccione la categoría principal a la que pertenecerá este contenido.',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Container(
-                                                  decoration: BoxDecoration(),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 16, 0, 0),
-                                                  child: Row(
+                                                      .fromSTEB(0, 24, 0, 0),
+                                                  child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Expanded(
-                                                        child: Wrap(
-                                                          spacing: 8,
-                                                          runSpacing: 0,
-                                                          alignment:
-                                                              WrapAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              WrapCrossAlignment
-                                                                  .start,
-                                                          direction:
-                                                              Axis.horizontal,
-                                                          runAlignment:
-                                                              WrapAlignment
-                                                                  .start,
-                                                          verticalDirection:
-                                                              VerticalDirection
-                                                                  .down,
-                                                          clipBehavior:
-                                                              Clip.none,
-                                                          children: [
-                                                            StreamBuilder<
-                                                                List<
-                                                                    CategoriasRecord>>(
-                                                              stream:
-                                                                  queryCategoriasRecord(
-                                                                singleRecord:
-                                                                    true,
-                                                              ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width: 50,
-                                                                      height:
-                                                                          50,
-                                                                      child:
-                                                                          SpinKitSquareCircle(
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Nombre',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle1,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              'Ingrese el nombre principal del contenido educativo / informativo.',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 16,
+                                                                    0, 0),
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 50,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                          ),
+                                                          child: TextFormField(
+                                                            controller:
+                                                                nameController,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              labelStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Proxima nova',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        size:
-                                                                            50,
+                                                                            .secondaryText,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            false,
                                                                       ),
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Proxima nova',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFFC9C9C9),
+                                                                  width: 0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFFC9C9C9),
+                                                                  width: 0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor:
+                                                                  Colors.white,
+                                                              contentPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24,
+                                                                          24,
+                                                                          20,
+                                                                          24),
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Proxima nova',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .name,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 24, 0, 0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Categoría principal',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle1,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              'Seleccione la categoría principal a la que pertenecerá este contenido.',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 16,
+                                                                    0, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Wrap(
+                                                                spacing: 8,
+                                                                runSpacing: 0,
+                                                                alignment:
+                                                                    WrapAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    WrapCrossAlignment
+                                                                        .start,
+                                                                direction: Axis
+                                                                    .horizontal,
+                                                                runAlignment:
+                                                                    WrapAlignment
+                                                                        .start,
+                                                                verticalDirection:
+                                                                    VerticalDirection
+                                                                        .down,
+                                                                clipBehavior:
+                                                                    Clip.none,
+                                                                children: [
+                                                                  StreamBuilder<
+                                                                      List<
+                                                                          CategoriasRecord>>(
+                                                                    stream:
+                                                                        queryCategoriasRecord(
+                                                                      singleRecord:
+                                                                          true,
                                                                     ),
-                                                                  );
-                                                                }
-                                                                List<CategoriasRecord>
-                                                                    choiceChipsCategoriasRecordList =
-                                                                    snapshot
-                                                                        .data;
-                                                                // Return an empty Container when the document does not exist.
-                                                                if (snapshot
-                                                                    .data
-                                                                    .isEmpty) {
-                                                                  return Container();
-                                                                }
-                                                                final choiceChipsCategoriasRecord =
-                                                                    choiceChipsCategoriasRecordList
-                                                                            .isNotEmpty
-                                                                        ? choiceChipsCategoriasRecordList
-                                                                            .first
-                                                                        : null;
-                                                                return FlutterFlowChoiceChips(
-                                                                  initiallySelected:
-                                                                      choiceChipsValues !=
-                                                                              null
-                                                                          ? choiceChipsValues
-                                                                          : [],
-                                                                  options: (choiceChipsCategoriasRecord
-                                                                              .listado
-                                                                              .toList() ??
-                                                                          [])
-                                                                      .map((label) =>
-                                                                          ChipData(
-                                                                              label))
-                                                                      .toList(),
-                                                                  onChanged: (val) =>
-                                                                      setState(() =>
-                                                                          choiceChipsValues =
-                                                                              val),
-                                                                  selectedChipStyle:
-                                                                      ChipStyle(
-                                                                    backgroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
-                                                                              Colors.white,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                    iconColor:
-                                                                        Colors
-                                                                            .white,
-                                                                    iconSize:
-                                                                        18,
-                                                                    elevation:
-                                                                        0,
-                                                                  ),
-                                                                  unselectedChipStyle:
-                                                                      ChipStyle(
-                                                                    backgroundColor:
-                                                                        Color(
-                                                                            0xFFE6F0FF),
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText2
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                SpinKitSquareCircle(
+                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              size: 50,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<CategoriasRecord>
+                                                                          choiceChipsCategoriasRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final choiceChipsCategoriasRecord = choiceChipsCategoriasRecordList
+                                                                              .isNotEmpty
+                                                                          ? choiceChipsCategoriasRecordList
+                                                                              .first
+                                                                          : null;
+                                                                      return FlutterFlowChoiceChips(
+                                                                        initiallySelected: choiceChipsValues !=
+                                                                                null
+                                                                            ? choiceChipsValues
+                                                                            : [],
+                                                                        options: (choiceChipsCategoriasRecord.listado.toList() ??
+                                                                                [])
+                                                                            .map((label) =>
+                                                                                ChipData(label))
+                                                                            .toList(),
+                                                                        onChanged:
+                                                                            (val) =>
+                                                                                setState(() => choiceChipsValues = val),
+                                                                        selectedChipStyle:
+                                                                            ChipStyle(
+                                                                          backgroundColor:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
-                                                                          useGoogleFonts:
-                                                                              false,
+                                                                          textStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyText1
+                                                                              .override(
+                                                                                fontFamily: 'Proxima nova',
+                                                                                color: Colors.white,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                          iconColor:
+                                                                              Colors.white,
+                                                                          iconSize:
+                                                                              18,
+                                                                          elevation:
+                                                                              0,
                                                                         ),
-                                                                    iconColor:
-                                                                        Color(
-                                                                            0xFF323B45),
-                                                                    iconSize:
-                                                                        18,
-                                                                    elevation:
-                                                                        0,
+                                                                        unselectedChipStyle:
+                                                                            ChipStyle(
+                                                                          backgroundColor:
+                                                                              Color(0xFFE6F0FF),
+                                                                          textStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyText2
+                                                                              .override(
+                                                                                fontFamily: 'Proxima nova',
+                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                          iconColor:
+                                                                              Color(0xFF323B45),
+                                                                          iconSize:
+                                                                              18,
+                                                                          elevation:
+                                                                              0,
+                                                                        ),
+                                                                        chipSpacing:
+                                                                            20,
+                                                                        multiselect:
+                                                                            true,
+                                                                        initialized:
+                                                                            choiceChipsValues !=
+                                                                                null,
+                                                                        alignment:
+                                                                            WrapAlignment.start,
+                                                                      );
+                                                                    },
                                                                   ),
-                                                                  chipSpacing:
-                                                                      20,
-                                                                  multiselect:
-                                                                      true,
-                                                                  initialized:
-                                                                      choiceChipsValues !=
-                                                                          null,
-                                                                  alignment:
-                                                                      WrapAlignment
-                                                                          .start,
-                                                                );
-                                                              },
+                                                                ],
+                                                              ),
                                                             ),
                                                           ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 24, 0, 0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Imagen de previsualización',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle1,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              'Adjunte la imagen de la portada del contenido',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 16,
+                                                                    0, 0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        8,
+                                                                        0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                logFirebaseEvent(
+                                                                    'agregarImagen_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'agregarImagen_Upload-Photo-Video');
+                                                                final selectedMedia =
+                                                                    await selectMedia(
+                                                                  mediaSource:
+                                                                      MediaSource
+                                                                          .photoGallery,
+                                                                  multiImage:
+                                                                      false,
+                                                                );
+                                                                if (selectedMedia !=
+                                                                        null &&
+                                                                    selectedMedia.every((m) =>
+                                                                        validateFileFormat(
+                                                                            m.storagePath,
+                                                                            context))) {
+                                                                  showUploadMessage(
+                                                                    context,
+                                                                    'Uploading file...',
+                                                                    showLoading:
+                                                                        true,
+                                                                  );
+                                                                  final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(
+                                                                          m
+                                                                              .storagePath,
+                                                                          m
+                                                                              .bytes))))
+                                                                      .where((u) =>
+                                                                          u !=
+                                                                          null)
+                                                                      .toList();
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .hideCurrentSnackBar();
+                                                                  if (downloadUrls !=
+                                                                          null &&
+                                                                      downloadUrls
+                                                                              .length ==
+                                                                          selectedMedia
+                                                                              .length) {
+                                                                    setState(() =>
+                                                                        uploadedFileUrl =
+                                                                            downloadUrls.first);
+                                                                    showUploadMessage(
+                                                                      context,
+                                                                      'Success!',
+                                                                    );
+                                                                  } else {
+                                                                    showUploadMessage(
+                                                                      context,
+                                                                      'Failed to upload media',
+                                                                    );
+                                                                    return;
+                                                                  }
+                                                                }
+                                                              },
+                                                              text:
+                                                                  'Agregar imagen',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                width: 200,
+                                                                height: 42,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryColor,
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Proxima nova',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .tertiaryColor,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                                elevation: 0,
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
+                                                                  width: 1,
+                                                                ),
+                                                                borderRadius:
+                                                                    12,
+                                                              ),
+                                                              showLoadingIndicator:
+                                                                  false,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 24,
+                                                                    0, 0),
+                                                        child: Container(
+                                                          width: 100,
+                                                          height: 100,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFEEEEEE),
+                                                            image:
+                                                                DecorationImage(
+                                                              fit: BoxFit.cover,
+                                                              image:
+                                                                  Image.network(
+                                                                uploadedFileUrl,
+                                                              ).image,
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -842,22 +1036,125 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                               ],
                                             ),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.4,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFEEEEEE),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFEEEEEE),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 24,
+                              color: Color(0x1A414141),
+                            )
+                          ],
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(24, 16, 24, 16),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Wrap(
+                                spacing: 24,
+                                runSpacing: 0,
+                                alignment: WrapAlignment.start,
+                                crossAxisAlignment: WrapCrossAlignment.start,
+                                direction: Axis.horizontal,
+                                runAlignment: WrapAlignment.start,
+                                verticalDirection: VerticalDirection.down,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent('cancelar_ON_TAP');
+                                      logFirebaseEvent(
+                                          'cancelar_Navigate-Back');
+                                      Navigator.pop(context);
+                                    },
+                                    text: 'Cancelar',
+                                    options: FFButtonOptions(
+                                      width: 200,
+                                      height: 50,
+                                      color: FlutterFlowTheme.of(context)
+                                          .tertiaryColor,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Proxima nova',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            fontWeight: FontWeight.normal,
+                                            useGoogleFonts: false,
+                                          ),
+                                      elevation: 0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: 12,
+                                    ),
+                                  ),
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent('Button-Login_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Button-Login_Backend-Call');
+
+                                      final contenidosCreateData =
+                                          createContenidosRecordData(
+                                        nombre: nameController.text,
+                                        preview: uploadedFileUrl,
+                                      );
+                                      await ContenidosRecord.collection
+                                          .doc()
+                                          .set(contenidosCreateData);
+                                    },
+                                    text: 'Guardar contenido',
+                                    options: FFButtonOptions(
+                                      width: 200,
+                                      height: 50,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Proxima nova',
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiaryColor,
+                                            fontWeight: FontWeight.normal,
+                                            useGoogleFonts: false,
+                                          ),
+                                      elevation: 0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
