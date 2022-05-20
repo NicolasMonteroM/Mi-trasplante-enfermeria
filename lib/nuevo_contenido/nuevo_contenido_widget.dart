@@ -4,12 +4,20 @@ import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NuevoContenidoWidget extends StatefulWidget {
-  const NuevoContenidoWidget({Key key}) : super(key: key);
+  const NuevoContenidoWidget({
+    Key key,
+    this.listadoCategorias,
+    this.listadoCategorias2,
+  }) : super(key: key);
+
+  final DocumentReference listadoCategorias;
+  final CategoriasRecord listadoCategorias2;
 
   @override
   _NuevoContenidoWidgetState createState() => _NuevoContenidoWidgetState();
@@ -517,12 +525,14 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
-                                                      'Ingrese el nombre principal del contenido educativo / informativo.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1,
+                                                    Expanded(
+                                                      child: Text(
+                                                        'Ingrese el nombre principal del contenido educativo / informativo.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -657,12 +667,14 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
-                                                      'Seleccione la categoría principal a la que pertenecerá este contenido.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1,
+                                                    Expanded(
+                                                      child: Text(
+                                                        'Seleccione la categoría principal a la que pertenecerá este contenido.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
