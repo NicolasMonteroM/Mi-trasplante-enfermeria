@@ -679,66 +679,78 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Expanded(
-                                                        child: StreamBuilder<
-                                                            List<
-                                                                CategoriasRecord>>(
-                                                          stream:
-                                                              queryCategoriasRecord(),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50,
-                                                                  height: 50,
-                                                                  child:
-                                                                      SpinKitSquareCircle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryColor,
-                                                                    size: 50,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            List<CategoriasRecord>
-                                                                wrapCategoriasRecordList =
-                                                                snapshot.data;
-                                                            return Wrap(
-                                                              spacing: 8,
-                                                              runSpacing: 0,
-                                                              alignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              crossAxisAlignment:
-                                                                  WrapCrossAlignment
-                                                                      .start,
-                                                              direction: Axis
-                                                                  .horizontal,
-                                                              runAlignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              verticalDirection:
-                                                                  VerticalDirection
-                                                                      .down,
-                                                              clipBehavior:
-                                                                  Clip.none,
-                                                              children: List.generate(
-                                                                  wrapCategoriasRecordList
-                                                                      .length,
-                                                                  (wrapIndex) {
-                                                                final wrapCategoriasRecord =
-                                                                    wrapCategoriasRecordList[
-                                                                        wrapIndex];
+                                                        child: Wrap(
+                                                          spacing: 8,
+                                                          runSpacing: 0,
+                                                          alignment:
+                                                              WrapAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              WrapCrossAlignment
+                                                                  .start,
+                                                          direction:
+                                                              Axis.horizontal,
+                                                          runAlignment:
+                                                              WrapAlignment
+                                                                  .start,
+                                                          verticalDirection:
+                                                              VerticalDirection
+                                                                  .down,
+                                                          clipBehavior:
+                                                              Clip.none,
+                                                          children: [
+                                                            StreamBuilder<
+                                                                List<
+                                                                    CategoriasRecord>>(
+                                                              stream:
+                                                                  queryCategoriasRecord(
+                                                                singleRecord:
+                                                                    true,
+                                                              ),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width: 50,
+                                                                      height:
+                                                                          50,
+                                                                      child:
+                                                                          SpinKitSquareCircle(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryColor,
+                                                                        size:
+                                                                            50,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                List<CategoriasRecord>
+                                                                    choiceChipsCategoriasRecordList =
+                                                                    snapshot
+                                                                        .data;
+                                                                // Return an empty Container when the document does not exist.
+                                                                if (snapshot
+                                                                    .data
+                                                                    .isEmpty) {
+                                                                  return Container();
+                                                                }
+                                                                final choiceChipsCategoriasRecord =
+                                                                    choiceChipsCategoriasRecordList
+                                                                            .isNotEmpty
+                                                                        ? choiceChipsCategoriasRecordList
+                                                                            .first
+                                                                        : null;
                                                                 return FlutterFlowChoiceChips(
                                                                   initiallySelected:
                                                                       choiceChipsValues !=
                                                                               null
                                                                           ? choiceChipsValues
                                                                           : [],
-                                                                  options: (wrapCategoriasRecord
+                                                                  options: (choiceChipsCategoriasRecord
                                                                               .listadoDeCategorias
                                                                               .toList() ??
                                                                           [])
@@ -809,9 +821,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                       WrapAlignment
                                                                           .start,
                                                                 );
-                                                              }),
-                                                            );
-                                                          },
+                                                              },
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ],
