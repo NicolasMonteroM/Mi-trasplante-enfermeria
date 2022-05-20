@@ -851,84 +851,82 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(0, 26,
                                                                     0, 0),
-                                                        child: Container(
-                                                          width: 320,
-                                                          height: 140,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.asset(
-                                                                'assets/images/agregar_foto.png',
-                                                              ).image,
-                                                            ),
-                                                          ),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'Image_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Image_Upload-Photo-Video');
-                                                              final selectedMedia =
-                                                                  await selectMedia(
-                                                                imageQuality:
-                                                                    100,
-                                                                mediaSource:
-                                                                    MediaSource
-                                                                        .photoGallery,
-                                                                multiImage:
-                                                                    false,
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            logFirebaseEvent(
+                                                                'Container_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'Container_Upload-Photo-Video');
+                                                            final selectedMedia =
+                                                                await selectMedia(
+                                                              imageQuality: 100,
+                                                              mediaSource:
+                                                                  MediaSource
+                                                                      .photoGallery,
+                                                              multiImage: false,
+                                                            );
+                                                            if (selectedMedia !=
+                                                                    null &&
+                                                                selectedMedia.every((m) =>
+                                                                    validateFileFormat(
+                                                                        m.storagePath,
+                                                                        context))) {
+                                                              showUploadMessage(
+                                                                context,
+                                                                'Uploading file...',
+                                                                showLoading:
+                                                                    true,
                                                               );
-                                                              if (selectedMedia !=
+                                                              final downloadUrls = (await Future.wait(selectedMedia.map((m) async =>
+                                                                      await uploadData(
+                                                                          m
+                                                                              .storagePath,
+                                                                          m
+                                                                              .bytes))))
+                                                                  .where((u) =>
+                                                                      u != null)
+                                                                  .toList();
+                                                              ScaffoldMessenger
+                                                                      .of(context)
+                                                                  .hideCurrentSnackBar();
+                                                              if (downloadUrls !=
                                                                       null &&
-                                                                  selectedMedia.every((m) =>
-                                                                      validateFileFormat(
-                                                                          m.storagePath,
-                                                                          context))) {
+                                                                  downloadUrls
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length) {
+                                                                setState(() =>
+                                                                    uploadedFileUrl =
+                                                                        downloadUrls
+                                                                            .first);
                                                                 showUploadMessage(
                                                                   context,
-                                                                  'Uploading file...',
-                                                                  showLoading:
-                                                                      true,
+                                                                  'Success!',
                                                                 );
-                                                                final downloadUrls = (await Future.wait(selectedMedia.map((m) async =>
-                                                                        await uploadData(
-                                                                            m
-                                                                                .storagePath,
-                                                                            m
-                                                                                .bytes))))
-                                                                    .where((u) =>
-                                                                        u !=
-                                                                        null)
-                                                                    .toList();
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .hideCurrentSnackBar();
-                                                                if (downloadUrls !=
-                                                                        null &&
-                                                                    downloadUrls
-                                                                            .length ==
-                                                                        selectedMedia
-                                                                            .length) {
-                                                                  setState(() =>
-                                                                      uploadedFileUrl =
-                                                                          downloadUrls
-                                                                              .first);
-                                                                  showUploadMessage(
-                                                                    context,
-                                                                    'Success!',
-                                                                  );
-                                                                } else {
-                                                                  showUploadMessage(
-                                                                    context,
-                                                                    'Failed to upload media',
-                                                                  );
-                                                                  return;
-                                                                }
+                                                              } else {
+                                                                showUploadMessage(
+                                                                  context,
+                                                                  'Failed to upload media',
+                                                                );
+                                                                return;
                                                               }
-                                                            },
+                                                            }
+                                                          },
+                                                          child: Container(
+                                                            width: 320,
+                                                            height: 140,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              image:
+                                                                  DecorationImage(
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                image:
+                                                                    Image.asset(
+                                                                  'assets/images/agregar_foto.png',
+                                                                ).image,
+                                                              ),
+                                                            ),
                                                             child:
                                                                 Image.network(
                                                               uploadedFileUrl,
