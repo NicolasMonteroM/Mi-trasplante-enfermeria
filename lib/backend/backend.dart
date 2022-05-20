@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/contenidos_record.dart';
 import 'schema/users_record.dart';
 import 'schema/users_enfermeria_record.dart';
+import 'schema/categorias_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -17,6 +18,7 @@ export 'schema/serializers.dart';
 export 'schema/contenidos_record.dart';
 export 'schema/users_record.dart';
 export 'schema/users_enfermeria_record.dart';
+export 'schema/categorias_record.dart';
 
 /// Functions to query ContenidosRecords (as a Stream and as a Future).
 Stream<List<ContenidosRecord>> queryContenidosRecord({
@@ -138,6 +140,48 @@ Future<FFFirestorePage<UsersEnfermeriaRecord>> queryUsersEnfermeriaRecordPage({
     queryCollectionPage(
       UsersEnfermeriaRecord.collection,
       UsersEnfermeriaRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query CategoriasRecords (as a Stream and as a Future).
+Stream<List<CategoriasRecord>> queryCategoriasRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CategoriasRecord.collection,
+      CategoriasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CategoriasRecord>> queryCategoriasRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CategoriasRecord.collection,
+      CategoriasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<CategoriasRecord>> queryCategoriasRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      CategoriasRecord.collection,
+      CategoriasRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

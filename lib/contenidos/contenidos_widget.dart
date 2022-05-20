@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
+import '../nuevo_contenido/nuevo_contenido_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -478,8 +479,16 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button-Login pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent('Button-Login_ON_TAP');
+                                  logFirebaseEvent('Button-Login_Navigate-To');
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          NuevoContenidoWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'Nuevo contenido',
                                 options: FFButtonOptions(
@@ -509,176 +518,211 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                         ),
                       ),
                       Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: ListView(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 12, 12, 12),
-                                    child: Container(
-                                      width: 300,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 24,
-                                            color: Color(0x1A414141),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                    ),
-                                  ),
-                                  StreamBuilder<List<ContenidosRecord>>(
-                                    stream: queryContenidosRecord(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50,
-                                            height: 50,
-                                            child: SpinKitSquareCircle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryColor,
-                                              size: 50,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<ContenidosRecord>
-                                          wrapContenidosRecordList =
-                                          snapshot.data;
-                                      return Wrap(
-                                        spacing: 0,
-                                        runSpacing: 0,
-                                        alignment: WrapAlignment.start,
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.start,
-                                        direction: Axis.horizontal,
-                                        runAlignment: WrapAlignment.start,
-                                        verticalDirection:
-                                            VerticalDirection.down,
-                                        clipBehavior: Clip.none,
-                                        children: List.generate(
-                                            wrapContenidosRecordList.length,
-                                            (wrapIndex) {
-                                          final wrapContenidosRecord =
-                                              wrapContenidosRecordList[
-                                                  wrapIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12, 12, 12, 12),
-                                            child: Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.vertical,
+                                  children: [
+                                    StreamBuilder<List<ContenidosRecord>>(
+                                      stream: queryContenidosRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50,
+                                              height: 50,
+                                              child: SpinKitSquareCircle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 24,
-                                                    color: Color(0x1A414141),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(16),
-                                              ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 300,
-                                                        height: 100,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xFFEEEEEE),
-                                                          image:
-                                                              DecorationImage(
-                                                            fit: BoxFit.cover,
-                                                            image:
-                                                                Image.network(
-                                                              'https://images.unsplash.com/photo-1588421357574-87938a86fa28?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470',
-                                                            ).image,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    0),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    0),
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    12),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    12),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16,
-                                                                        16,
-                                                                        16,
-                                                                        16),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Text(
-                                                                  'Hello World',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                                Text(
-                                                                  'Hello World',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                        .primaryColor,
+                                                size: 50,
                                               ),
                                             ),
                                           );
-                                        }),
-                                      );
-                                    },
-                                  ),
-                                ],
+                                        }
+                                        List<ContenidosRecord>
+                                            wrapContenidosRecordList =
+                                            snapshot.data;
+                                        return Wrap(
+                                          spacing: 0,
+                                          runSpacing: 0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: List.generate(
+                                              wrapContenidosRecordList.length,
+                                              (wrapIndex) {
+                                            final wrapContenidosRecord =
+                                                wrapContenidosRecordList[
+                                                    wrapIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 12, 12, 12),
+                                              child: Container(
+                                                width: 300,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiaryColor,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 24,
+                                                      color: Color(0x1A414141),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width: 300,
+                                                          height: 100,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFEEEEEE),
+                                                            image:
+                                                                DecorationImage(
+                                                              fit: BoxFit.cover,
+                                                              image:
+                                                                  Image.network(
+                                                                wrapContenidosRecord
+                                                                    .preview,
+                                                              ).image,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(12),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 300,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16,
+                                                                            16,
+                                                                            16,
+                                                                            16),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      wrapContenidosRecord
+                                                                          .categoriaPrincipal,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText2
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Proxima nova',
+                                                                            fontSize:
+                                                                                14,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Text(
+                                                                          wrapContenidosRecord
+                                                                              .nombre,
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyText1,
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16,
+                                                                            16,
+                                                                            16,
+                                                                            16),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child: Icon(
+                                                                    FFIcons
+                                                                        .kasset26,
+                                                                    color: Color(
+                                                                        0xFFC6CADB),
+                                                                    size: 16,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
