@@ -533,46 +533,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         ],
                                         borderRadius: BorderRadius.circular(16),
                                       ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 300,
-                                                height: 150,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xFFEEEEEE),
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: Image.network(
-                                                      'https://images.unsplash.com/photo-1588421357574-87938a86fa28?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470',
-                                                    ).image,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(0),
-                                                    bottomRight:
-                                                        Radius.circular(0),
-                                                    topLeft:
-                                                        Radius.circular(12),
-                                                    topRight:
-                                                        Radius.circular(12),
-                                                  ),
-                                                ),
-                                              ),
-                                              Text(
-                                                'Hello World',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
                                     ),
                                   ),
                                   StreamBuilder<List<ContenidosRecord>>(
@@ -602,7 +562,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         alignment: WrapAlignment.start,
                                         crossAxisAlignment:
                                             WrapCrossAlignment.start,
-                                        direction: Axis.vertical,
+                                        direction: Axis.horizontal,
                                         runAlignment: WrapAlignment.start,
                                         verticalDirection:
                                             VerticalDirection.down,
