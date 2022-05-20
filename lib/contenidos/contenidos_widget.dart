@@ -484,9 +484,12 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                   logFirebaseEvent('Button-Login_Navigate-To');
                                   await Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          NuevoContenidoWidget(),
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                      reverseDuration:
+                                          Duration(milliseconds: 0),
+                                      child: NuevoContenidoWidget(),
                                     ),
                                   );
                                 },
