@@ -15,10 +15,10 @@ class IniciarSesionWidget extends StatefulWidget {
 }
 
 class _IniciarSesionWidgetState extends State<IniciarSesionWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController mailController;
   TextEditingController passwordController;
   bool passwordVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -243,8 +243,8 @@ class _IniciarSesionWidgetState extends State<IniciarSesionWidget> {
                               EdgeInsetsDirectional.fromSTEB(20, 20, 20, 16),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent('Button-Login-ON_TAP');
-                              logFirebaseEvent('Button-Login-Auth');
+                              logFirebaseEvent('Button-Login_ON_TAP');
+                              logFirebaseEvent('Button-Login_Auth');
 
                               final user = await signInWithEmail(
                                 context,
