@@ -593,8 +593,8 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                                   0xFFEEEEEE),
                                                               image:
                                                                   DecorationImage(
-                                                                fit: BoxFit
-                                                                    .contain,
+                                                                fit:
+                                                                    BoxFit.fill,
                                                                 image: Image
                                                                     .network(
                                                                   wrapContenidosRecord
