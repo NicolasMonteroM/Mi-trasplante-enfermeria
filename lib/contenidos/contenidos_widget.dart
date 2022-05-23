@@ -659,51 +659,46 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16,
-                                                                            16,
-                                                                            16,
-                                                                            16),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      wrapContenidosRecord
-                                                                          .categoriaPrincipal,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText2
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            fontSize:
-                                                                                14,
-                                                                            useGoogleFonts:
-                                                                                false,
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16,
+                                                                          16,
+                                                                          16,
+                                                                          16),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        wrapContenidosRecord
+                                                                            .categoriaPrincipal,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText2
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              fontSize: 14,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                      ),
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            wrapContenidosRecord.nombre,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyText1,
                                                                           ),
-                                                                    ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Text(
-                                                                          wrapContenidosRecord
-                                                                              .nombre,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyText1,
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
+                                                                        ],
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                               Padding(
