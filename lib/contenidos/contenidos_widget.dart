@@ -235,37 +235,19 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                           ),
                                           Container(
                                             decoration: BoxDecoration(),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                logFirebaseEvent('Text_ON_TAP');
-                                                logFirebaseEvent('Text_Auth');
-                                                await signOut();
-                                                await Navigator
-                                                    .pushAndRemoveUntil(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        IniciarSesionWidget(),
+                                            child: Text(
+                                              'Pacientes',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Proxima nova',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
                                                   ),
-                                                  (r) => false,
-                                                );
-                                              },
-                                              child: Text(
-                                                'Pacientes',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily:
-                                                              'Proxima nova',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
                                             ),
                                           ),
                                         ],
@@ -312,35 +294,18 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         ),
                                         Container(
                                           decoration: BoxDecoration(),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
-                                              logFirebaseEvent('Text_Auth');
-                                              await signOut();
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      IniciarSesionWidget(),
+                                          child: Text(
+                                            'Medicamentos',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Proxima nova',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontWeight: FontWeight.w600,
+                                                  useGoogleFonts: false,
                                                 ),
-                                                (r) => false,
-                                              );
-                                            },
-                                            child: Text(
-                                              'Medicamentos',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Proxima nova',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontWeight: FontWeight.w600,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
                                           ),
                                         ),
                                       ],
