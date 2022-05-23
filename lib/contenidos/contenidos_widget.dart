@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
 import '../nuevo_contenido/nuevo_contenido_widget.dart';
+import '../pacientes/pacientes_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -194,63 +195,81 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 12, 0, 12),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 4,
-                                          height: 46,
-                                          decoration: BoxDecoration(),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16, 0, 8, 0),
-                                          child: Container(
+                                    child: InkWell(
+                                      onTap: () async {
+                                        logFirebaseEvent('Row_ON_TAP');
+                                        logFirebaseEvent('Row_Navigate-To');
+                                        await Navigator.push(
+                                          context,
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                            reverseDuration:
+                                                Duration(milliseconds: 0),
+                                            child: PacientesWidget(),
+                                          ),
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 4,
+                                            height: 46,
                                             decoration: BoxDecoration(),
-                                            child: Icon(
-                                              FFIcons.kperfil,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24,
-                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
-                                              logFirebaseEvent('Text_Auth');
-                                              await signOut();
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      IniciarSesionWidget(),
-                                                ),
-                                                (r) => false,
-                                              );
-                                            },
-                                            child: Text(
-                                              'Pacientes',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Proxima nova',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16, 0, 8, 0),
+                                            child: Container(
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.kperfil,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
                                                         .secondaryText,
-                                                    fontWeight: FontWeight.w600,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                                size: 24,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Container(
+                                            decoration: BoxDecoration(),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                logFirebaseEvent('Text_ON_TAP');
+                                                logFirebaseEvent('Text_Auth');
+                                                await signOut();
+                                                await Navigator
+                                                    .pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        IniciarSesionWidget(),
+                                                  ),
+                                                  (r) => false,
+                                                );
+                                              },
+                                              child: Text(
+                                                'Pacientes',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Proxima nova',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Divider(
