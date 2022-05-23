@@ -538,7 +538,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                             wrapContenidosRecordList =
                                             snapshot.data;
                                         return Wrap(
-                                          spacing: 0,
+                                          spacing: 16,
                                           runSpacing: 0,
                                           alignment: WrapAlignment.start,
                                           crossAxisAlignment:
@@ -556,7 +556,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                     wrapIndex];
                                             return Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(12, 12, 12, 12),
+                                                  .fromSTEB(0, 0, 0, 12),
                                               child: Container(
                                                 width: 300,
                                                 decoration: BoxDecoration(
@@ -574,123 +574,136 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                 ),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.min,
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
                                                   children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Container(
-                                                          width: 300,
-                                                          height: 100,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0xFFEEEEEE),
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
+                                                    Expanded(
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 120,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0xFFEEEEEE),
                                                               image:
-                                                                  Image.network(
-                                                                wrapContenidosRecord
-                                                                    .preview,
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          0),
-                                                              topLeft: Radius
-                                                                  .circular(12),
-                                                              topRight: Radius
-                                                                  .circular(12),
+                                                                  DecorationImage(
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                                image: Image
+                                                                    .network(
+                                                                  wrapContenidosRecord
+                                                                      .preview,
+                                                                ).image,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        12),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        12),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Container(
-                                                          width: 300,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Padding(
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16,
+                                                                            16,
+                                                                            16,
+                                                                            16),
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          wrapContenidosRecord
+                                                                              .categoriaPrincipal,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyText2
+                                                                              .override(
+                                                                                fontFamily: 'Proxima nova',
+                                                                                fontSize: 14,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Expanded(
+                                                                              child: Text(
+                                                                                wrapContenidosRecord.nombre,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16,
                                                                           16,
                                                                           16,
                                                                           16),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        wrapContenidosRecord
-                                                                            .categoriaPrincipal,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText2
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              fontSize: 14,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                      ),
-                                                                      Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Text(
-                                                                            wrapContenidosRecord.nombre,
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyText1,
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ],
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child: Icon(
+                                                                      FFIcons
+                                                                          .kasset26,
+                                                                      color: Color(
+                                                                          0xFFC6CADB),
+                                                                      size: 16,
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16,
-                                                                            16,
-                                                                            16,
-                                                                            16),
-                                                                child:
-                                                                    Container(
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child: Icon(
-                                                                    FFIcons
-                                                                        .kasset26,
-                                                                    color: Color(
-                                                                        0xFFC6CADB),
-                                                                    size: 16,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
