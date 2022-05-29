@@ -15,7 +15,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NuevoContenidoWidget extends StatefulWidget {
-  const NuevoContenidoWidget({Key key}) : super(key: key);
+  const NuevoContenidoWidget({
+    Key key,
+    this.listadoDeCategorias,
+  }) : super(key: key);
+
+  final String listadoDeCategorias;
 
   @override
   _NuevoContenidoWidgetState createState() => _NuevoContenidoWidgetState();
@@ -229,7 +234,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                           decoration: BoxDecoration(),
                                           child: InkWell(
                                             onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'NUEVO_CONTENIDO_PAGE_Text_o4go8ezs_ON_TAP');
                                               logFirebaseEvent('Text_Auth');
                                               await signOut();
                                               await Navigator
@@ -303,7 +309,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                           decoration: BoxDecoration(),
                                           child: InkWell(
                                             onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'NUEVO_CONTENIDO_PAGE_Text_ohy7cpww_ON_TAP');
                                               logFirebaseEvent('Text_Auth');
                                               await signOut();
                                               await Navigator
@@ -353,7 +360,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent('Text_ON_TAP');
+                                  logFirebaseEvent(
+                                      'NUEVO_CONTENIDO_PAGE_Text_t07sc8vq_ON_TAP');
                                   logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
@@ -421,7 +429,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                             child: InkWell(
                                               onTap: () async {
                                                 logFirebaseEvent(
-                                                    'ContainerBack_ON_TAP');
+                                                    'NUEVO_CONTENIDO_PAGE_ContainerBack_ON_TAP');
                                                 logFirebaseEvent(
                                                     'ContainerBack_Navigate-Back');
                                                 Navigator.pop(context);
@@ -855,7 +863,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                         child: InkWell(
                                                           onTap: () async {
                                                             logFirebaseEvent(
-                                                                'Container_ON_TAP');
+                                                                'NUEVO_CONTENIDO_PAGE_Container_dg5ds1jx_ON_TAP');
                                                             logFirebaseEvent(
                                                                 'Container_Upload-Photo-Video');
                                                             final selectedMedia =
@@ -993,7 +1001,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                 children: [
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      logFirebaseEvent('cancelar_ON_TAP');
+                                      logFirebaseEvent(
+                                          'NUEVO_CONTENIDO_PAGE_cancelar_ON_TAP');
                                       logFirebaseEvent(
                                           'cancelar_Navigate-Back');
                                       Navigator.pop(context);
@@ -1025,7 +1034,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   FFButtonWidget(
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'guardar-contenido_ON_TAP');
+                                          'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
                                       logFirebaseEvent(
                                           'guardar-contenido_Backend-Call');
 

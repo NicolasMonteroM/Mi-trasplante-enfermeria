@@ -135,7 +135,8 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent('Row_ON_TAP');
+                                        logFirebaseEvent(
+                                            'PACIENTES_PAGE_Row_jt28l7v0_ON_TAP');
                                         logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
@@ -237,7 +238,8 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                           decoration: BoxDecoration(),
                                           child: InkWell(
                                             onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'PACIENTES_PAGE_Text_tklw74ex_ON_TAP');
                                               logFirebaseEvent('Text_Auth');
                                               await signOut();
                                               await Navigator
@@ -311,7 +313,8 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                           decoration: BoxDecoration(),
                                           child: InkWell(
                                             onTap: () async {
-                                              logFirebaseEvent('Text_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'PACIENTES_PAGE_Text_mk9gwjj5_ON_TAP');
                                               logFirebaseEvent('Text_Auth');
                                               await signOut();
                                               await Navigator
@@ -361,7 +364,8 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent('Text_ON_TAP');
+                                  logFirebaseEvent(
+                                      'PACIENTES_PAGE_Text_vc8wr4aa_ON_TAP');
                                   logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(

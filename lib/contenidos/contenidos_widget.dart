@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -18,6 +19,7 @@ class ContenidosWidget extends StatefulWidget {
 }
 
 class _ContenidosWidgetState extends State<ContenidosWidget> {
+  String categoriasContenidosValue;
   TextEditingController mailController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -197,7 +199,8 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent('Row_ON_TAP');
+                                        logFirebaseEvent(
+                                            'CONTENIDOS_PAGE_Row_30towkvb_ON_TAP');
                                         logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
@@ -329,7 +332,8 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent('Text_ON_TAP');
+                                  logFirebaseEvent(
+                                      'CONTENIDOS_PAGE_Text_omlz1ehh_ON_TAP');
                                   logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
@@ -464,7 +468,8 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  logFirebaseEvent('Button-Login_ON_TAP');
+                                  logFirebaseEvent(
+                                      'CONTENIDOS_PAGE_Button-Login_ON_TAP');
                                   logFirebaseEvent('Button-Login_Navigate-To');
                                   await Navigator.push(
                                     context,
@@ -473,7 +478,10 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                       duration: Duration(milliseconds: 0),
                                       reverseDuration:
                                           Duration(milliseconds: 0),
-                                      child: NuevoContenidoWidget(),
+                                      child: NuevoContenidoWidget(
+                                        listadoDeCategorias:
+                                            categoriasContenidosValue,
+                                      ),
                                     ),
                                   );
                                 },
@@ -516,6 +524,91 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                   padding: EdgeInsets.zero,
                                   scrollDirection: Axis.vertical,
                                   children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 24),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          StreamBuilder<List<CategoriasRecord>>(
+                                            stream: queryCategoriasRecord(
+                                              singleRecord: true,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: SpinKitSquareCircle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryColor,
+                                                      size: 50,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<CategoriasRecord>
+                                                  containerCategoriasRecordList =
+                                                  snapshot.data;
+                                              // Return an empty Container when the document does not exist.
+                                              if (snapshot.data.isEmpty) {
+                                                return Container();
+                                              }
+                                              final containerCategoriasRecord =
+                                                  containerCategoriasRecordList
+                                                          .isNotEmpty
+                                                      ? containerCategoriasRecordList
+                                                          .first
+                                                      : null;
+                                              return Container(
+                                                width: 250,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: FlutterFlowDropDown(
+                                                  options:
+                                                      containerCategoriasRecord
+                                                          .listado
+                                                          .toList()
+                                                          .toList(),
+                                                  onChanged: (val) => setState(() =>
+                                                      categoriasContenidosValue =
+                                                          val),
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  height: 50,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily:
+                                                            'Proxima nova',
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                  hintText: 'Categoria',
+                                                  fillColor: Colors.white,
+                                                  elevation: 2,
+                                                  borderColor:
+                                                      Color(0xFFC9C9C9),
+                                                  borderWidth: 0,
+                                                  borderRadius: 12,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(12, 4, 12, 4),
+                                                  hidesUnderline: true,
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     StreamBuilder<List<ContenidosRecord>>(
                                       stream: queryContenidosRecord(),
                                       builder: (context, snapshot) {

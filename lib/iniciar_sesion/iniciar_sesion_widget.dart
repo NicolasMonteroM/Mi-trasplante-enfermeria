@@ -219,6 +219,7 @@ class _IniciarSesionWidgetState extends State<IniciarSesionWidget> {
                                     () => passwordVisibility =
                                         !passwordVisibility,
                                   ),
+                                  focusNode: FocusNode(skipTraversal: true),
                                   child: Icon(
                                     passwordVisibility
                                         ? Icons.visibility_outlined
@@ -243,7 +244,8 @@ class _IniciarSesionWidgetState extends State<IniciarSesionWidget> {
                               EdgeInsetsDirectional.fromSTEB(20, 20, 20, 16),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent('Button-Login_ON_TAP');
+                              logFirebaseEvent(
+                                  'INICIAR_SESION_PAGE_Button-Login_ON_TAP');
                               logFirebaseEvent('Button-Login_Auth');
 
                               final user = await signInWithEmail(

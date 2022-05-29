@@ -8,6 +8,7 @@ import 'schema/contenidos_record.dart';
 import 'schema/users_record.dart';
 import 'schema/users_enfermeria_record.dart';
 import 'schema/categorias_record.dart';
+import 'schema/medicamentos_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -19,6 +20,7 @@ export 'schema/contenidos_record.dart';
 export 'schema/users_record.dart';
 export 'schema/users_enfermeria_record.dart';
 export 'schema/categorias_record.dart';
+export 'schema/medicamentos_record.dart';
 
 /// Functions to query ContenidosRecords (as a Stream and as a Future).
 Stream<List<ContenidosRecord>> queryContenidosRecord({
@@ -182,6 +184,48 @@ Future<FFFirestorePage<CategoriasRecord>> queryCategoriasRecordPage({
     queryCollectionPage(
       CategoriasRecord.collection,
       CategoriasRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query MedicamentosRecords (as a Stream and as a Future).
+Stream<List<MedicamentosRecord>> queryMedicamentosRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MedicamentosRecord>> queryMedicamentosRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<MedicamentosRecord>> queryMedicamentosRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
