@@ -8,6 +8,7 @@ import 'schema/contenidos_record.dart';
 import 'schema/users_record.dart';
 import 'schema/users_enfermeria_record.dart';
 import 'schema/categorias_record.dart';
+import 'schema/etapas_trasplante_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -19,6 +20,7 @@ export 'schema/contenidos_record.dart';
 export 'schema/users_record.dart';
 export 'schema/users_enfermeria_record.dart';
 export 'schema/categorias_record.dart';
+export 'schema/etapas_trasplante_record.dart';
 
 /// Functions to query ContenidosRecords (as a Stream and as a Future).
 Stream<List<ContenidosRecord>> queryContenidosRecord({
@@ -187,6 +189,49 @@ Future<FFFirestorePage<CategoriasRecord>> queryCategoriasRecordPage({
       pageSize: pageSize,
       isStream: isStream,
     );
+
+/// Functions to query EtapasTrasplanteRecords (as a Stream and as a Future).
+Stream<List<EtapasTrasplanteRecord>> queryEtapasTrasplanteRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      EtapasTrasplanteRecord.collection,
+      EtapasTrasplanteRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<EtapasTrasplanteRecord>> queryEtapasTrasplanteRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      EtapasTrasplanteRecord.collection,
+      EtapasTrasplanteRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<EtapasTrasplanteRecord>>
+    queryEtapasTrasplanteRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+        queryCollectionPage(
+          EtapasTrasplanteRecord.collection,
+          EtapasTrasplanteRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
 
 Stream<List<T>> queryCollection<T>(Query collection, Serializer<T> serializer,
     {Query Function(Query) queryBuilder,

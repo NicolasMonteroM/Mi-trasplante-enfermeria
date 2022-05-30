@@ -4,6 +4,7 @@ import 'contenidos_record.dart';
 import 'users_record.dart';
 import 'users_enfermeria_record.dart';
 import 'categorias_record.dart';
+import 'etapas_trasplante_record.dart';
 
 import 'index.dart';
 
@@ -18,6 +19,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   UsersEnfermeriaRecord,
   CategoriasRecord,
+  EtapasTrasplanteRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

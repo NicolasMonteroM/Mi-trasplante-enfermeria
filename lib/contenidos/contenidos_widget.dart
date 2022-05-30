@@ -611,8 +611,9 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     16, 0, 0, 0),
                                             child: StreamBuilder<
-                                                List<CategoriasRecord>>(
-                                              stream: queryCategoriasRecord(
+                                                List<EtapasTrasplanteRecord>>(
+                                              stream:
+                                                  queryEtapasTrasplanteRecord(
                                                 singleRecord: true,
                                               ),
                                               builder: (context, snapshot) {
@@ -633,17 +634,17 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                     ),
                                                   );
                                                 }
-                                                List<CategoriasRecord>
-                                                    containerCategoriasRecordList =
+                                                List<EtapasTrasplanteRecord>
+                                                    containerEtapasTrasplanteRecordList =
                                                     snapshot.data;
                                                 // Return an empty Container when the document does not exist.
                                                 if (snapshot.data.isEmpty) {
                                                   return Container();
                                                 }
-                                                final containerCategoriasRecord =
-                                                    containerCategoriasRecordList
+                                                final containerEtapasTrasplanteRecord =
+                                                    containerEtapasTrasplanteRecordList
                                                             .isNotEmpty
-                                                        ? containerCategoriasRecordList
+                                                        ? containerEtapasTrasplanteRecordList
                                                             .first
                                                         : null;
                                                 return Container(
@@ -651,15 +652,11 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                   height: 50,
                                                   decoration: BoxDecoration(),
                                                   child: FlutterFlowDropDown(
-                                                    options: [
-                                                      'Me interesa ser donante',
-                                                      'Estoy considerando realizarme un trasplante',
-                                                      'Estoy en protocolo (toma de exámenes) para un trasplante renal',
-                                                      'Estoy en lista de espera por un donante',
-                                                      'Estoy próximo a tener mi trasplante de un donante vivo',
-                                                      'Ya he sido trasplantado',
-                                                      'He sido trasplantado y he perdido uno o varios injertos'
-                                                    ].toList(),
+                                                    options:
+                                                        containerEtapasTrasplanteRecord
+                                                            .listado
+                                                            .toList()
+                                                            .toList(),
                                                     onChanged: (val) =>
                                                         setState(() =>
                                                             categoriasContenidosValue2 =
