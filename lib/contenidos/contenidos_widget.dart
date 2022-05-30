@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../contenidos_copy/contenidos_copy_widget.dart';
+import '../contenidos_copy2/contenidos_copy2_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -479,7 +479,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                       duration: Duration(milliseconds: 0),
                                       reverseDuration:
                                           Duration(milliseconds: 0),
-                                      child: ContenidosCopyWidget(),
+                                      child: ContenidosCopy2Widget(),
                                     ),
                                   );
                                 },
