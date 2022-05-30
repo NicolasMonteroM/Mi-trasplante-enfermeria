@@ -9,6 +9,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NuevoContenidoWidget extends StatefulWidget {
-  const NuevoContenidoWidget({
-    Key key,
-    this.listadoDeCategorias,
-    this.listadoEtapas,
-  }) : super(key: key);
-
-  final String listadoDeCategorias;
-  final String listadoEtapas;
+  const NuevoContenidoWidget({Key key}) : super(key: key);
 
   @override
   _NuevoContenidoWidgetState createState() => _NuevoContenidoWidgetState();
@@ -773,17 +767,24 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                   ),
                                                                 ),
                                                                 child:
-                                                                    CachedNetworkImage(
-                                                                  imageUrl:
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                    uploadedFileUrl,
-                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                    Visibility(
+                                                                  visible: functions
+                                                                          .previewSubida(
+                                                                              uploadedFileUrl) ??
+                                                                      true,
+                                                                  child:
+                                                                      CachedNetworkImage(
+                                                                    imageUrl:
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                      uploadedFileUrl,
+                                                                      'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                    ),
+                                                                    width: 100,
+                                                                    height: 100,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                                  width: 100,
-                                                                  height: 100,
-                                                                  fit: BoxFit
-                                                                      .cover,
                                                                 ),
                                                               ),
                                                             ),

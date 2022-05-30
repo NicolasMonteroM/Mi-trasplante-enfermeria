@@ -19,3 +19,12 @@ List<String> getListadoCategorias(List<String> listado) {
   }
   return data;
 }
+
+bool previewSubida(String imagen) {
+  // if image path is empty return false
+  if (imagen.isEmpty) {
+    return false;
+  } else {
+    return true;
+  }
+}
