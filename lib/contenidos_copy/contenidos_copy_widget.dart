@@ -8,21 +8,21 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
-import '../nuevo_contenido2/nuevo_contenido2_widget.dart';
+import '../pacientes/pacientes_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NuevoContenidoWidget extends StatefulWidget {
-  const NuevoContenidoWidget({Key key}) : super(key: key);
+class ContenidosCopyWidget extends StatefulWidget {
+  const ContenidosCopyWidget({Key key}) : super(key: key);
 
   @override
-  _NuevoContenidoWidgetState createState() => _NuevoContenidoWidgetState();
+  _ContenidosCopyWidgetState createState() => _ContenidosCopyWidgetState();
 }
 
-class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
+class _ContenidosCopyWidgetState extends State<ContenidosCopyWidget> {
   List<String> choiceChipsValues1;
   String uploadedFileUrl = '';
   TextEditingController nameController;
@@ -34,7 +34,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
   void initState() {
     super.initState();
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'NuevoContenido'});
+        parameters: {'screen_name': 'ContenidosCopy'});
     nameController = TextEditingController();
   }
 
@@ -205,46 +205,64 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 12, 0, 12),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 4,
-                                          height: 46,
-                                          decoration: BoxDecoration(),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16, 0, 8, 0),
-                                          child: Container(
+                                    child: InkWell(
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'CONTENIDOS_COPY_PAGE_Row_xvpmm11x_ON_TAP');
+                                        logFirebaseEvent('Row_Navigate-To');
+                                        await Navigator.push(
+                                          context,
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                            reverseDuration:
+                                                Duration(milliseconds: 0),
+                                            child: PacientesWidget(),
+                                          ),
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 4,
+                                            height: 46,
                                             decoration: BoxDecoration(),
-                                            child: Icon(
-                                              FFIcons.kperfil,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16, 0, 8, 0),
+                                            child: Container(
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.kperfil,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(),
-                                          child: Text(
-                                            'Pacientes',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Proxima nova',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
-                                                ),
+                                          Container(
+                                            decoration: BoxDecoration(),
+                                            child: Text(
+                                              'Pacientes',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Proxima nova',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Divider(
@@ -323,7 +341,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                               child: InkWell(
                                 onTap: () async {
                                   logFirebaseEvent(
-                                      'NUEVO_CONTENIDO_PAGE_Text_t07sc8vq_ON_TAP');
+                                      'CONTENIDOS_COPY_PAGE_Text_qkgs7fiz_ON_TAP');
                                   logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
@@ -391,7 +409,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                             child: InkWell(
                                               onTap: () async {
                                                 logFirebaseEvent(
-                                                    'NUEVO_CONTENIDO_PAGE_ContainerBack_ON_TAP');
+                                                    'CONTENIDOS_COPY_PAGE_ContainerBack_ON_TAP');
                                                 logFirebaseEvent(
                                                     'ContainerBack_Navigate-Back');
                                                 Navigator.pop(context);
@@ -697,7 +715,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                     onTap:
                                                                         () async {
                                                                       logFirebaseEvent(
-                                                                          'NUEVO_CONTENIDO_PAGE_Container_sfkj5zzr_ON_TAP');
+                                                                          'CONTENIDOS_COPY_PAGE_Container_yknkrs0o_ON_TAP');
                                                                       logFirebaseEvent(
                                                                           'Container_Upload-Photo-Video');
                                                                       final selectedMedia =
@@ -1259,7 +1277,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   FFButtonWidget(
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'NUEVO_CONTENIDO_PAGE_cancelar_ON_TAP');
+                                          'CONTENIDOS_COPY_PAGE_cancelar_ON_TAP');
                                       logFirebaseEvent(
                                           'cancelar_Navigate-Back');
                                       Navigator.pop(context);
@@ -1289,18 +1307,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                     ),
                                   ),
                                   FFButtonWidget(
-                                    onPressed: () async {
-                                      logFirebaseEvent(
-                                          'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
-                                      logFirebaseEvent(
-                                          'guardar-contenido_Navigate-To');
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              NuevoContenido2Widget(),
-                                        ),
-                                      );
+                                    onPressed: () {
+                                      print('guardar-contenido pressed ...');
                                     },
                                     text: 'Guardar contenido',
                                     options: FFButtonOptions(
