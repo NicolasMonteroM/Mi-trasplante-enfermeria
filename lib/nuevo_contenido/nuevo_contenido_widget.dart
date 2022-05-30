@@ -3,12 +3,12 @@ import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
-import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
+import '../nuevo_contenido2/nuevo_contenido2_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -28,19 +28,14 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
   TextEditingController nameController;
   String categoriasContenidosValue;
   List<String> choiceChipsValues2;
-  String tipoDeImagenValue;
-  TextEditingController inputController1;
-  TextEditingController inputController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    inputController1 = TextEditingController();
-    inputController2 = TextEditingController();
-    nameController = TextEditingController();
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'NuevoContenido'});
+    nameController = TextEditingController();
   }
 
   @override
@@ -446,12 +441,13 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     24, 24, 24, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Row(
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -1223,623 +1219,10 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                               ),
                                             ),
                                           ),
-                                          Expanded(
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 0, 0, 16),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiaryColor,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(24,
-                                                                    24, 24, 24),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          0,
-                                                                          0,
-                                                                          8),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Micro-contenidos',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .title2
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Expanded(
-                                                                        child:
-                                                                            Text(
-                                                                          'Ingrese la información de los micro-contenidos que se mostrarán en formato historia.',
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyText1,
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child:
-                                                                          Text(
-                                                                        'Nota: recuerda que el tipo de formato en historia requiere información corta y concisa. La información debe ser mostrada lo más fácil posible para que cualquier paciente pueda entenderla.',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiaryColor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(24, 24,
-                                                                  24, 24),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        16),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Primer micro-contenido',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .subtitle1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        16),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Imagen',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          12,
-                                                                          0,
-                                                                          0),
-                                                                  child:
-                                                                      Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8),
-                                                                    ),
-                                                                    child:
-                                                                        FlutterFlowRadioButton(
-                                                                      options: [
-                                                                        'Iconografía',
-                                                                        'Fotografía'
-                                                                      ].toList(),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        setState(() =>
-                                                                            tipoDeImagenValue =
-                                                                                value);
-                                                                      },
-                                                                      optionHeight:
-                                                                          32,
-                                                                      textStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                Colors.black,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      textPadding:
-                                                                          EdgeInsetsDirectional.fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              16,
-                                                                              0),
-                                                                      buttonPosition:
-                                                                          RadioButtonPosition
-                                                                              .left,
-                                                                      direction:
-                                                                          Axis.horizontal,
-                                                                      radioButtonColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondaryColor,
-                                                                      inactiveRadioButtonColor:
-                                                                          Color(
-                                                                              0x8A000000),
-                                                                      toggleable:
-                                                                          false,
-                                                                      horizontalAlignment:
-                                                                          WrapAlignment
-                                                                              .start,
-                                                                      verticalAlignment:
-                                                                          WrapCrossAlignment
-                                                                              .start,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    if ((tipoDeImagenValue) ==
-                                                                        'Iconografía')
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            8,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              140,
-                                                                          height:
-                                                                              140,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              fit: BoxFit.cover,
-                                                                              image: Image.asset(
-                                                                                'assets/images/Agregar_Iconografia.png',
-                                                                              ).image,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    if ((tipoDeImagenValue) ==
-                                                                        'Fotografía')
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            8,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              325,
-                                                                          height:
-                                                                              233.33,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              fit: BoxFit.cover,
-                                                                              image: Image.asset(
-                                                                                'assets/images/Agregar_fotografia.png',
-                                                                              ).image,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                  ],
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        16),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Frase clave',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          8,
-                                                                          0,
-                                                                          0),
-                                                                  child:
-                                                                      Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    height: 50,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8),
-                                                                    ),
-                                                                    child:
-                                                                        TextFormField(
-                                                                      controller:
-                                                                          inputController1,
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        labelStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        hintStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        enabledBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0xFFC9C9C9),
-                                                                            width:
-                                                                                0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12),
-                                                                        ),
-                                                                        focusedBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0xFFC9C9C9),
-                                                                            width:
-                                                                                0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12),
-                                                                        ),
-                                                                        filled:
-                                                                            true,
-                                                                        fillColor:
-                                                                            Colors.white,
-                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            24,
-                                                                            24,
-                                                                            20,
-                                                                            24),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .name,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        16),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Información adicional',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          8,
-                                                                          0,
-                                                                          0),
-                                                                  child:
-                                                                      Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8),
-                                                                    ),
-                                                                    child:
-                                                                        TextFormField(
-                                                                      controller:
-                                                                          inputController2,
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        labelStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        hintStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        enabledBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0xFFC9C9C9),
-                                                                            width:
-                                                                                0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12),
-                                                                        ),
-                                                                        focusedBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0xFFC9C9C9),
-                                                                            width:
-                                                                                0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12),
-                                                                        ),
-                                                                        filled:
-                                                                            true,
-                                                                        fillColor:
-                                                                            Colors.white,
-                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            24,
-                                                                            24,
-                                                                            20,
-                                                                            24),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      maxLines:
-                                                                          2,
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .name,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
                                         ],
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -1906,8 +1289,18 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                     ),
                                   ),
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('guardar-contenido pressed ...');
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
+                                      logFirebaseEvent(
+                                          'guardar-contenido_Navigate-To');
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              NuevoContenido2Widget(),
+                                        ),
+                                      );
                                     },
                                     text: 'Guardar contenido',
                                     options: FFButtonOptions(
