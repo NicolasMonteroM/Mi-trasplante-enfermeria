@@ -237,36 +237,18 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                         ),
                                         Container(
                                           decoration: BoxDecoration(),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'NUEVO_CONTENIDO_PAGE_Text_o4go8ezs_ON_TAP');
-                                              logFirebaseEvent('Text_Auth');
-                                              await signOut();
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      IniciarSesionWidget(),
+                                          child: Text(
+                                            'Pacientes',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Proxima nova',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontWeight: FontWeight.w600,
+                                                  useGoogleFonts: false,
                                                 ),
-                                                (r) => false,
-                                              );
-                                            },
-                                            child: Text(
-                                              'Pacientes',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Proxima nova',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontWeight: FontWeight.w600,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
                                           ),
                                         ),
                                       ],
@@ -312,36 +294,18 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                         ),
                                         Container(
                                           decoration: BoxDecoration(),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'NUEVO_CONTENIDO_PAGE_Text_ohy7cpww_ON_TAP');
-                                              logFirebaseEvent('Text_Auth');
-                                              await signOut();
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      IniciarSesionWidget(),
+                                          child: Text(
+                                            'Medicamentos',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Proxima nova',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontWeight: FontWeight.w600,
+                                                  useGoogleFonts: false,
                                                 ),
-                                                (r) => false,
-                                              );
-                                            },
-                                            child: Text(
-                                              'Medicamentos',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Proxima nova',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    fontWeight: FontWeight.w600,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
                                           ),
                                         ),
                                       ],
@@ -811,7 +775,11 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                 child:
                                                                     CachedNetworkImage(
                                                                   imageUrl:
-                                                                      uploadedFileUrl,
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                    uploadedFileUrl,
+                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                  ),
                                                                   width: 100,
                                                                   height: 100,
                                                                   fit: BoxFit
