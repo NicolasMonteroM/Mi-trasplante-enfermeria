@@ -1263,62 +1263,36 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             clipBehavior:
                                                                                 Clip.none,
                                                                             children: [
-                                                                              StreamBuilder<List<CategoriasRecord>>(
-                                                                                stream: queryCategoriasRecord(
-                                                                                  singleRecord: true,
-                                                                                ),
-                                                                                builder: (context, snapshot) {
-                                                                                  // Customize what your widget looks like when it's loading.
-                                                                                  if (!snapshot.hasData) {
-                                                                                    return Center(
-                                                                                      child: SizedBox(
-                                                                                        width: 50,
-                                                                                        height: 50,
-                                                                                        child: SpinKitSquareCircle(
-                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                          size: 50,
-                                                                                        ),
+                                                                              FlutterFlowChoiceChips(
+                                                                                initiallySelected: choiceChipsValues2 != null ? choiceChipsValues2 : [],
+                                                                                options: (nuevoContenidoCategoriasRecord.etapasTrasplante.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                                onChanged: (val) => setState(() => choiceChipsValues2 = val),
+                                                                                selectedChipStyle: ChipStyle(
+                                                                                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Proxima nova',
+                                                                                        color: Colors.white,
+                                                                                        useGoogleFonts: false,
                                                                                       ),
-                                                                                    );
-                                                                                  }
-                                                                                  List<CategoriasRecord> choiceChipsCategoriasRecordList = snapshot.data;
-                                                                                  // Return an empty Container when the document does not exist.
-                                                                                  if (snapshot.data.isEmpty) {
-                                                                                    return Container();
-                                                                                  }
-                                                                                  final choiceChipsCategoriasRecord = choiceChipsCategoriasRecordList.isNotEmpty ? choiceChipsCategoriasRecordList.first : null;
-                                                                                  return FlutterFlowChoiceChips(
-                                                                                    initiallySelected: choiceChipsValues2 != null ? choiceChipsValues2 : [],
-                                                                                    options: (wrapCategoriasRecord.etapasTrasplante.toList() ?? []).map((label) => ChipData(label)).toList(),
-                                                                                    onChanged: (val) => setState(() => choiceChipsValues2 = val),
-                                                                                    selectedChipStyle: ChipStyle(
-                                                                                      backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Proxima nova',
-                                                                                            color: Colors.white,
-                                                                                            useGoogleFonts: false,
-                                                                                          ),
-                                                                                      iconColor: Colors.white,
-                                                                                      iconSize: 18,
-                                                                                      elevation: 0,
-                                                                                    ),
-                                                                                    unselectedChipStyle: ChipStyle(
-                                                                                      backgroundColor: Color(0xFFE6F0FF),
-                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                            fontFamily: 'Proxima nova',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                            useGoogleFonts: false,
-                                                                                          ),
-                                                                                      iconColor: Color(0xFF323B45),
-                                                                                      iconSize: 18,
-                                                                                      elevation: 0,
-                                                                                    ),
-                                                                                    chipSpacing: 8,
-                                                                                    multiselect: true,
-                                                                                    initialized: choiceChipsValues2 != null,
-                                                                                    alignment: WrapAlignment.start,
-                                                                                  );
-                                                                                },
+                                                                                  iconColor: Colors.white,
+                                                                                  iconSize: 18,
+                                                                                  elevation: 0,
+                                                                                ),
+                                                                                unselectedChipStyle: ChipStyle(
+                                                                                  backgroundColor: Color(0xFFE6F0FF),
+                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                        fontFamily: 'Proxima nova',
+                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                        useGoogleFonts: false,
+                                                                                      ),
+                                                                                  iconColor: Color(0xFF323B45),
+                                                                                  iconSize: 18,
+                                                                                  elevation: 0,
+                                                                                ),
+                                                                                chipSpacing: 8,
+                                                                                multiselect: true,
+                                                                                initialized: choiceChipsValues2 != null,
+                                                                                alignment: WrapAlignment.start,
                                                                               ),
                                                                             ],
                                                                           );
