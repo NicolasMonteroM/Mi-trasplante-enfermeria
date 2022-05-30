@@ -15,7 +15,6 @@ abstract class CategoriasRecord
   BuiltList<String> get listado;
 
   @nullable
-  @BuiltValueField(wireName: 'etapas_trasplante')
   BuiltList<String> get etapasTrasplante;
 
   @nullable
