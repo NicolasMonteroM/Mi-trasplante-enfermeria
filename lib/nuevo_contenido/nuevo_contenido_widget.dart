@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../contenidos/contenidos_widget.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -27,9 +28,11 @@ class NuevoContenidoWidget extends StatefulWidget {
 }
 
 class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
-  List<String> choiceChipsValues;
-  TextEditingController nameController;
+  List<String> choiceChipsValues1;
   String uploadedFileUrl = '';
+  TextEditingController nameController;
+  String categoriasContenidosValue;
+  List<String> choiceChipsValues2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -733,178 +736,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                     .max,
                                                             children: [
                                                               Text(
-                                                                'Categoría principal',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .subtitle1,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Text(
-                                                                  'Seleccione la categoría principal a la que pertenecerá este contenido.',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        16,
-                                                                        0,
-                                                                        0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: StreamBuilder<
-                                                                      List<
-                                                                          CategoriasRecord>>(
-                                                                    stream:
-                                                                        queryCategoriasRecord(
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ),
-                                                                    builder:
-                                                                        (context,
-                                                                            snapshot) {
-                                                                      // Customize what your widget looks like when it's loading.
-                                                                      if (!snapshot
-                                                                          .hasData) {
-                                                                        return Center(
-                                                                          child:
-                                                                              SizedBox(
-                                                                            width:
-                                                                                50,
-                                                                            height:
-                                                                                50,
-                                                                            child:
-                                                                                SpinKitSquareCircle(
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
-                                                                              size: 50,
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      }
-                                                                      List<CategoriasRecord>
-                                                                          wrapCategoriasRecordList =
-                                                                          snapshot
-                                                                              .data;
-                                                                      // Return an empty Container when the document does not exist.
-                                                                      if (snapshot
-                                                                          .data
-                                                                          .isEmpty) {
-                                                                        return Container();
-                                                                      }
-                                                                      final wrapCategoriasRecord = wrapCategoriasRecordList
-                                                                              .isNotEmpty
-                                                                          ? wrapCategoriasRecordList
-                                                                              .first
-                                                                          : null;
-                                                                      return Wrap(
-                                                                        spacing:
-                                                                            8,
-                                                                        runSpacing:
-                                                                            0,
-                                                                        alignment:
-                                                                            WrapAlignment.start,
-                                                                        crossAxisAlignment:
-                                                                            WrapCrossAlignment.start,
-                                                                        direction:
-                                                                            Axis.horizontal,
-                                                                        runAlignment:
-                                                                            WrapAlignment.start,
-                                                                        verticalDirection:
-                                                                            VerticalDirection.down,
-                                                                        clipBehavior:
-                                                                            Clip.none,
-                                                                        children: [
-                                                                          FlutterFlowChoiceChips(
-                                                                            initiallySelected: choiceChipsValues != null
-                                                                                ? choiceChipsValues
-                                                                                : [],
-                                                                            options:
-                                                                                (nuevoContenidoCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
-                                                                            onChanged: (val) =>
-                                                                                setState(() => choiceChipsValues = val),
-                                                                            selectedChipStyle:
-                                                                                ChipStyle(
-                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Proxima nova',
-                                                                                    color: Colors.white,
-                                                                                    useGoogleFonts: false,
-                                                                                  ),
-                                                                              iconColor: Colors.white,
-                                                                              iconSize: 18,
-                                                                              elevation: 0,
-                                                                            ),
-                                                                            unselectedChipStyle:
-                                                                                ChipStyle(
-                                                                              backgroundColor: Color(0xFFE6F0FF),
-                                                                              textStyle: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                    fontFamily: 'Proxima nova',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    useGoogleFonts: false,
-                                                                                  ),
-                                                                              iconColor: Color(0xFF323B45),
-                                                                              iconSize: 18,
-                                                                              elevation: 0,
-                                                                            ),
-                                                                            chipSpacing:
-                                                                                20,
-                                                                            multiselect:
-                                                                                true,
-                                                                            initialized:
-                                                                                choiceChipsValues != null,
-                                                                            alignment:
-                                                                                WrapAlignment.start,
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 24, 0, 0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
                                                                 'Imagen de previsualización',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1022,6 +853,487 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                       .cover,
                                                                 ),
                                                               ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 24, 0, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                'Categoría principal',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  'Seleccione la categoría principal a la que pertenecerá este contenido.',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        16,
+                                                                        0,
+                                                                        0),
+                                                            child: StreamBuilder<
+                                                                List<
+                                                                    CategoriasRecord>>(
+                                                              stream:
+                                                                  queryCategoriasRecord(
+                                                                singleRecord:
+                                                                    true,
+                                                              ),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width: 50,
+                                                                      height:
+                                                                          50,
+                                                                      child:
+                                                                          SpinKitSquareCircle(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryColor,
+                                                                        size:
+                                                                            50,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                List<CategoriasRecord>
+                                                                    containerCategoriasRecordList =
+                                                                    snapshot
+                                                                        .data;
+                                                                // Return an empty Container when the document does not exist.
+                                                                if (snapshot
+                                                                    .data
+                                                                    .isEmpty) {
+                                                                  return Container();
+                                                                }
+                                                                final containerCategoriasRecord =
+                                                                    containerCategoriasRecordList
+                                                                            .isNotEmpty
+                                                                        ? containerCategoriasRecordList
+                                                                            .first
+                                                                        : null;
+                                                                return Container(
+                                                                  width: 250,
+                                                                  height: 50,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      FlutterFlowDropDown(
+                                                                    options: containerCategoriasRecord
+                                                                        .listado
+                                                                        .toList()
+                                                                        .toList(),
+                                                                    onChanged: (val) =>
+                                                                        setState(() =>
+                                                                            categoriasContenidosValue =
+                                                                                val),
+                                                                    width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width,
+                                                                    height: 50,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Proxima nova',
+                                                                          color:
+                                                                              Colors.black,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              false,
+                                                                        ),
+                                                                    hintText:
+                                                                        'Categoria',
+                                                                    fillColor:
+                                                                        Colors
+                                                                            .white,
+                                                                    elevation:
+                                                                        2,
+                                                                    borderColor:
+                                                                        Color(
+                                                                            0xFFC9C9C9),
+                                                                    borderWidth:
+                                                                        0,
+                                                                    borderRadius:
+                                                                        12,
+                                                                    margin: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            12,
+                                                                            4,
+                                                                            12,
+                                                                            4),
+                                                                    hidesUnderline:
+                                                                        true,
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 24, 0, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                'Categorías secundarias',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        16,
+                                                                        0,
+                                                                        0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: StreamBuilder<
+                                                                      List<
+                                                                          CategoriasRecord>>(
+                                                                    stream:
+                                                                        queryCategoriasRecord(
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                SpinKitSquareCircle(
+                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              size: 50,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<CategoriasRecord>
+                                                                          wrapCategoriasRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final wrapCategoriasRecord = wrapCategoriasRecordList
+                                                                              .isNotEmpty
+                                                                          ? wrapCategoriasRecordList
+                                                                              .first
+                                                                          : null;
+                                                                      return Wrap(
+                                                                        spacing:
+                                                                            8,
+                                                                        runSpacing:
+                                                                            0,
+                                                                        alignment:
+                                                                            WrapAlignment.start,
+                                                                        crossAxisAlignment:
+                                                                            WrapCrossAlignment.start,
+                                                                        direction:
+                                                                            Axis.horizontal,
+                                                                        runAlignment:
+                                                                            WrapAlignment.start,
+                                                                        verticalDirection:
+                                                                            VerticalDirection.down,
+                                                                        clipBehavior:
+                                                                            Clip.none,
+                                                                        children: [
+                                                                          FlutterFlowChoiceChips(
+                                                                            initiallySelected: choiceChipsValues1 != null
+                                                                                ? choiceChipsValues1
+                                                                                : [],
+                                                                            options:
+                                                                                (nuevoContenidoCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                            onChanged: (val) =>
+                                                                                setState(() => choiceChipsValues1 = val),
+                                                                            selectedChipStyle:
+                                                                                ChipStyle(
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Proxima nova',
+                                                                                    color: Colors.white,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
+                                                                              iconColor: Colors.white,
+                                                                              iconSize: 18,
+                                                                              elevation: 0,
+                                                                            ),
+                                                                            unselectedChipStyle:
+                                                                                ChipStyle(
+                                                                              backgroundColor: Color(0xFFE6F0FF),
+                                                                              textStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                    fontFamily: 'Proxima nova',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
+                                                                              iconColor: Color(0xFF323B45),
+                                                                              iconSize: 18,
+                                                                              elevation: 0,
+                                                                            ),
+                                                                            chipSpacing:
+                                                                                8,
+                                                                            multiselect:
+                                                                                true,
+                                                                            initialized:
+                                                                                choiceChipsValues1 != null,
+                                                                            alignment:
+                                                                                WrapAlignment.start,
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 24, 0, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                'Etapa del trasplante',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  'Seleccione las etapas del trasplante en las que esste contenido es relevante',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        16,
+                                                                        0,
+                                                                        0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: StreamBuilder<
+                                                                      List<
+                                                                          CategoriasRecord>>(
+                                                                    stream:
+                                                                        queryCategoriasRecord(
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                SpinKitSquareCircle(
+                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              size: 50,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<CategoriasRecord>
+                                                                          wrapCategoriasRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final wrapCategoriasRecord = wrapCategoriasRecordList
+                                                                              .isNotEmpty
+                                                                          ? wrapCategoriasRecordList
+                                                                              .first
+                                                                          : null;
+                                                                      return Wrap(
+                                                                        spacing:
+                                                                            8,
+                                                                        runSpacing:
+                                                                            0,
+                                                                        alignment:
+                                                                            WrapAlignment.start,
+                                                                        crossAxisAlignment:
+                                                                            WrapCrossAlignment.start,
+                                                                        direction:
+                                                                            Axis.horizontal,
+                                                                        runAlignment:
+                                                                            WrapAlignment.start,
+                                                                        verticalDirection:
+                                                                            VerticalDirection.down,
+                                                                        clipBehavior:
+                                                                            Clip.none,
+                                                                        children: [
+                                                                          FlutterFlowChoiceChips(
+                                                                            initiallySelected: choiceChipsValues2 != null
+                                                                                ? choiceChipsValues2
+                                                                                : [],
+                                                                            options:
+                                                                                (nuevoContenidoCategoriasRecord.etapasTrasplante.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                            onChanged: (val) =>
+                                                                                setState(() => choiceChipsValues2 = val),
+                                                                            selectedChipStyle:
+                                                                                ChipStyle(
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Proxima nova',
+                                                                                    color: Colors.white,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
+                                                                              iconColor: Colors.white,
+                                                                              iconSize: 18,
+                                                                              elevation: 0,
+                                                                            ),
+                                                                            unselectedChipStyle:
+                                                                                ChipStyle(
+                                                                              backgroundColor: Color(0xFFE6F0FF),
+                                                                              textStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                    fontFamily: 'Proxima nova',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
+                                                                              iconColor: Color(0xFF323B45),
+                                                                              iconSize: 18,
+                                                                              elevation: 0,
+                                                                            ),
+                                                                            chipSpacing:
+                                                                                8,
+                                                                            multiselect:
+                                                                                true,
+                                                                            initialized:
+                                                                                choiceChipsValues2 != null,
+                                                                            alignment:
+                                                                                WrapAlignment.start,
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
                                                         ],
