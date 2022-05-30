@@ -43,3 +43,13 @@ String seleccionImagenMicro(
   }
   return result;
 }
+
+bool getCambiosCategorias(
+  List<String> newCategorias,
+  List<String> userCategorias,
+) {
+  // if the 2 lists are diferent return true
+  userCategorias.sort();
+  newCategorias.sort();
+  return userCategorias.join() != newCategorias.join();
+}

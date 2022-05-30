@@ -651,7 +651,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -766,14 +766,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl1) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl1,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl1,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -1470,14 +1473,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl2) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl2,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl2,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -1537,14 +1543,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl3) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl3,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl3,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -1588,8 +1597,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             Container(
                                                                           width:
                                                                               double.infinity,
-                                                                          height:
-                                                                              50,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
@@ -1633,7 +1640,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -1641,6 +1648,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: false,
                                                                                 ),
+                                                                            maxLines:
+                                                                                2,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -1728,7 +1737,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -1737,7 +1746,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   useGoogleFonts: false,
                                                                                 ),
                                                                             maxLines:
-                                                                                2,
+                                                                                5,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -1957,14 +1966,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl4) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl4,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl4,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2024,14 +2036,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl5) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl5,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl5,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2075,8 +2090,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             Container(
                                                                           width:
                                                                               double.infinity,
-                                                                          height:
-                                                                              50,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
@@ -2120,7 +2133,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -2128,6 +2141,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: false,
                                                                                 ),
+                                                                            maxLines:
+                                                                                2,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -2215,7 +2230,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -2224,7 +2239,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   useGoogleFonts: false,
                                                                                 ),
                                                                             maxLines:
-                                                                                2,
+                                                                                5,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -2444,14 +2459,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl6) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl6,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl6,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2511,14 +2529,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl7) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl7,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl7,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2562,8 +2583,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             Container(
                                                                           width:
                                                                               double.infinity,
-                                                                          height:
-                                                                              50,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
@@ -2607,7 +2626,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -2615,6 +2634,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: false,
                                                                                 ),
+                                                                            maxLines:
+                                                                                2,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -2702,7 +2723,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -2711,7 +2732,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   useGoogleFonts: false,
                                                                                 ),
                                                                             maxLines:
-                                                                                2,
+                                                                                5,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -2931,14 +2952,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl8) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl8,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl8,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -2998,14 +3022,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl9) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl9,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl9,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -3049,8 +3076,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             Container(
                                                                           width:
                                                                               double.infinity,
-                                                                          height:
-                                                                              50,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
@@ -3094,7 +3119,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -3102,6 +3127,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: false,
                                                                                 ),
+                                                                            maxLines:
+                                                                                2,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -3189,7 +3216,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -3198,7 +3225,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   useGoogleFonts: false,
                                                                                 ),
                                                                             maxLines:
-                                                                                2,
+                                                                                5,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -3418,14 +3445,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl10) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl10,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl10,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -3485,14 +3515,17 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             child:
                                                                                 Visibility(
                                                                               visible: functions.previewSubida(uploadedFileUrl11) ?? true,
-                                                                              child: CachedNetworkImage(
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  uploadedFileUrl11,
-                                                                                  'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(16),
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: valueOrDefault<String>(
+                                                                                    uploadedFileUrl11,
+                                                                                    'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                  ),
+                                                                                  width: 100,
+                                                                                  height: 100,
+                                                                                  fit: BoxFit.cover,
                                                                                 ),
-                                                                                width: 100,
-                                                                                height: 100,
-                                                                                fit: BoxFit.cover,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -3536,8 +3569,6 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             Container(
                                                                           width:
                                                                               double.infinity,
-                                                                          height:
-                                                                              50,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
@@ -3581,7 +3612,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -3589,6 +3620,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   fontWeight: FontWeight.normal,
                                                                                   useGoogleFonts: false,
                                                                                 ),
+                                                                            maxLines:
+                                                                                2,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),
@@ -3676,7 +3709,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ),
                                                                               filled: true,
                                                                               fillColor: Colors.white,
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Proxima nova',
@@ -3685,7 +3718,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                   useGoogleFonts: false,
                                                                                 ),
                                                                             maxLines:
-                                                                                2,
+                                                                                5,
                                                                             keyboardType:
                                                                                 TextInputType.name,
                                                                           ),

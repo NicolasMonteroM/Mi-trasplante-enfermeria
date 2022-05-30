@@ -66,10 +66,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   int get age;
 
   @nullable
-  bool get enfermeria;
-
-  @nullable
-  bool get paciente;
+  @BuiltValueField(wireName: 'categorias_recomendadas')
+  BuiltList<String> get categoriasRecomendadas;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -90,8 +88,7 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..gender = ''
     ..stage = ''
     ..age = 0
-    ..enfermeria = false
-    ..paciente = false;
+    ..categoriasRecomendadas = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -131,8 +128,6 @@ Map<String, dynamic> createUsersRecordData({
   String gender,
   String stage,
   int age,
-  bool enfermeria,
-  bool paciente,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -153,5 +148,4 @@ Map<String, dynamic> createUsersRecordData({
           ..gender = gender
           ..stage = stage
           ..age = age
-          ..enfermeria = enfermeria
-          ..paciente = paciente));
+          ..categoriasRecomendadas = null));
