@@ -15,11 +15,16 @@ abstract class CategoriasRecord
   BuiltList<String> get listado;
 
   @nullable
+  @BuiltValueField(wireName: 'etapas_trasplante')
+  BuiltList<String> get etapasTrasplante;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(CategoriasRecordBuilder builder) =>
-      builder..listado = ListBuilder();
+  static void _initializeBuilder(CategoriasRecordBuilder builder) => builder
+    ..listado = ListBuilder()
+    ..etapasTrasplante = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('categorias');
@@ -43,4 +48,7 @@ abstract class CategoriasRecord
 }
 
 Map<String, dynamic> createCategoriasRecordData() => serializers.toFirestore(
-    CategoriasRecord.serializer, CategoriasRecord((c) => c..listado = null));
+    CategoriasRecord.serializer,
+    CategoriasRecord((c) => c
+      ..listado = null
+      ..etapasTrasplante = null));
