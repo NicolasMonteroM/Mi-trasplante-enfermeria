@@ -9,7 +9,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
 import '../pacientes/pacientes_widget.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -684,11 +683,11 @@ class _ContenidosCopy2WidgetState extends State<ContenidosCopy2Widget> {
                                                       onTap: () async {
                                                         logFirebaseEvent(
                                                             'CONTENIDOS_COPY2_PAGE_Container_y8idcsf3_ON_TAP');
+                                                        // Action
                                                         logFirebaseEvent(
-                                                            'Container_Upload-Photo-Video');
+                                                            'Container_Action');
                                                         final selectedMedia =
                                                             await selectMedia(
-                                                          imageQuality: 100,
                                                           mediaSource:
                                                               MediaSource
                                                                   .photoGallery,
@@ -755,19 +754,12 @@ class _ContenidosCopy2WidgetState extends State<ContenidosCopy2Widget> {
                                                             ).image,
                                                           ),
                                                         ),
-                                                        child: Visibility(
-                                                          visible: functions
-                                                                  .previewSubida(
-                                                                      uploadedFileUrl) ??
-                                                              true,
-                                                          child:
-                                                              CachedNetworkImage(
-                                                            imageUrl:
-                                                                uploadedFileUrl,
-                                                            width: 100,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl: '',
+                                                          width: 100,
+                                                          height: 100,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
@@ -863,11 +855,15 @@ class _ContenidosCopy2WidgetState extends State<ContenidosCopy2Widget> {
                                                               BoxDecoration(),
                                                           child:
                                                               FlutterFlowDropDown(
-                                                            options:
-                                                                containerCategoriasRecord
-                                                                    .listado
-                                                                    .toList()
-                                                                    .toList(),
+                                                            options: [
+                                                              'Me interesa ser donante',
+                                                              'Estoy considerando realizarme un trasplante',
+                                                              'Estoy en protocolo (toma de exámenes) para un trasplante renal',
+                                                              'Estoy en lista de espera por un donante',
+                                                              'Estoy próximo a tener mi trasplante de un donante vivo',
+                                                              'Ya he sido trasplantado',
+                                                              'He sido trasplantado y he perdido uno o varios injertos'
+                                                            ].toList(),
                                                             onChanged: (val) =>
                                                                 setState(() =>
                                                                     categoriasContenidosValue =
