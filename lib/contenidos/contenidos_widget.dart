@@ -707,7 +707,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                       child:
                                                           FlutterFlowDropDown(
                                                         options:
-                                                            containerCategoriasRecord
+                                                            contenidosCategoriasRecord
                                                                 .etapasTrasplante
                                                                 .toList()
                                                                 .toList(),
