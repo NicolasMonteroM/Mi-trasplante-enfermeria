@@ -1113,7 +1113,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             children: [
                                                                               FlutterFlowChoiceChips(
                                                                                 initiallySelected: choiceChipsValues1 != null ? choiceChipsValues1 : [],
-                                                                                options: (nuevoContenidoCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                                options: (wrapCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
                                                                                 onChanged: (val) => setState(() => choiceChipsValues1 = val),
                                                                                 selectedChipStyle: ChipStyle(
                                                                                   backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
@@ -1265,7 +1265,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                             children: [
                                                                               FlutterFlowChoiceChips(
                                                                                 initiallySelected: choiceChipsValues2 != null ? choiceChipsValues2 : [],
-                                                                                options: (nuevoContenidoCategoriasRecord.etapasTrasplante.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                                options: [
+                                                                                  ChipData('Option 1')
+                                                                                ],
                                                                                 onChanged: (val) => setState(() => choiceChipsValues2 = val),
                                                                                 selectedChipStyle: ChipStyle(
                                                                                   backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
