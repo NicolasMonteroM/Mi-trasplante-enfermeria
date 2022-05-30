@@ -24,7 +24,7 @@ class _IniciarSesionWidgetState extends State<IniciarSesionWidget> {
   void initState() {
     super.initState();
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'iniciarSesion'});
+        parameters: {'screen_name': 'Iniciar_sesion'});
     mailController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;

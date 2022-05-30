@@ -1,11 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../contenidos_copy2/contenidos_copy2_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
+import '../nuevo_contenido/nuevo_contenido_widget.dart';
 import '../pacientes/pacientes_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -479,7 +479,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                       duration: Duration(milliseconds: 0),
                                       reverseDuration:
                                           Duration(milliseconds: 0),
-                                      child: ContenidosCopy2Widget(),
+                                      child: NuevoContenidoWidget(),
                                     ),
                                   );
                                 },
