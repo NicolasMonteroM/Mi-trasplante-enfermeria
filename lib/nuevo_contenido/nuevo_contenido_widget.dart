@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../contenidos/contenidos_widget.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
@@ -25,12 +24,10 @@ class NuevoContenidoWidget extends StatefulWidget {
 
 class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
   List<String> choiceChipsValues1;
-  String uploadedFileUrl1 = '';
+  String uploadedFileUrl = '';
   TextEditingController nameController;
   String categoriasContenidosValue;
   List<String> choiceChipsValues2;
-  String uploadedFileUrl2 = '';
-  String uploadedFileUrl3 = '';
   String tipoDeImagenValue;
   TextEditingController inputController1;
   TextEditingController inputController2;
@@ -453,816 +450,889 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 16, 0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiaryColor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                24, 24, 24, 24),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              'Información',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .title2
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Proxima nova',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    useGoogleFonts:
-                                                                        false,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      24, 0, 0),
-                                                          child: Column(
+                                    Expanded(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 16, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiaryColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(24, 24,
+                                                                  24, 24),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Nombre',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      'Ingrese el nombre principal del contenido educativo / informativo.',
-                                                                      style: FlutterFlowTheme.of(
+                                                              Text(
+                                                                'Información',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Proxima nova',
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1,
+                                                                          .primaryText,
+                                                                      useGoogleFonts:
+                                                                          false,
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            16,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  height: 50,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
-                                                                  ),
-                                                                  child:
-                                                                      TextFormField(
-                                                                    controller:
-                                                                        nameController,
-                                                                    obscureText:
-                                                                        false,
-                                                                    decoration:
-                                                                        InputDecoration(
-                                                                      labelStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      hintStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      enabledBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      focusedBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      filled:
-                                                                          true,
-                                                                      fillColor:
-                                                                          Colors
-                                                                              .white,
-                                                                      contentPadding:
-                                                                          EdgeInsetsDirectional.fromSTEB(
-                                                                              24,
-                                                                              24,
-                                                                              20,
-                                                                              24),
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                    keyboardType:
-                                                                        TextInputType
-                                                                            .name,
-                                                                  ),
-                                                                ),
                                                               ),
                                                             ],
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      24, 0, 0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Imagen de previsualización',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      'Adjunte la imagen de la portada del contenido',
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        24,
+                                                                        0,
+                                                                        0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Nombre',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1,
+                                                                          .subtitle1,
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            26,
-                                                                            0,
-                                                                            0),
-                                                                child: InkWell(
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'NUEVO_CONTENIDO_PAGE_Container_sfkj5zzr_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Container_Upload-Photo-Video');
-                                                                    final selectedMedia =
-                                                                        await selectMedia(
-                                                                      imageQuality:
-                                                                          100,
-                                                                      mediaSource:
-                                                                          MediaSource
-                                                                              .photoGallery,
-                                                                      multiImage:
-                                                                          false,
-                                                                    );
-                                                                    if (selectedMedia !=
-                                                                            null &&
-                                                                        selectedMedia.every((m) => validateFileFormat(
-                                                                            m.storagePath,
-                                                                            context))) {
-                                                                      showUploadMessage(
-                                                                        context,
-                                                                        'Uploading file...',
-                                                                        showLoading:
-                                                                            true,
-                                                                      );
-                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes))))
-                                                                          .where((u) =>
-                                                                              u !=
-                                                                              null)
-                                                                          .toList();
-                                                                      ScaffoldMessenger.of(
-                                                                              context)
-                                                                          .hideCurrentSnackBar();
-                                                                      if (downloadUrls !=
-                                                                              null &&
-                                                                          downloadUrls.length ==
-                                                                              selectedMedia.length) {
-                                                                        setState(() =>
-                                                                            uploadedFileUrl1 =
-                                                                                downloadUrls.first);
-                                                                        showUploadMessage(
-                                                                          context,
-                                                                          'Success!',
-                                                                        );
-                                                                      } else {
-                                                                        showUploadMessage(
-                                                                          context,
-                                                                          'Failed to upload media',
-                                                                        );
-                                                                        return;
-                                                                      }
-                                                                    }
-                                                                  },
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        'Ingrese el nombre principal del contenido educativo / informativo.',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          16,
+                                                                          0,
+                                                                          0),
                                                                   child:
                                                                       Container(
-                                                                    width: 320,
-                                                                    height: 140,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 50,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      image:
-                                                                          DecorationImage(
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        image: Image
-                                                                            .asset(
-                                                                          'assets/images/agregar_foto.png',
-                                                                        ).image,
-                                                                      ),
+                                                                      color: Colors
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
                                                                     ),
                                                                     child:
-                                                                        Visibility(
-                                                                      visible:
-                                                                          functions.previewSubida(uploadedFileUrl1) ??
-                                                                              true,
-                                                                      child:
-                                                                          CachedNetworkImage(
-                                                                        imageUrl:
-                                                                            valueOrDefault<String>(
-                                                                          uploadedFileUrl1,
-                                                                          'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
-                                                                        ),
-                                                                        width:
-                                                                            100,
-                                                                        height:
-                                                                            100,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      24, 0, 0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Categoría principal',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      'Seleccione la categoría principal a la que pertenecerá este contenido.',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1,
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Container(
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            16,
-                                                                            0,
-                                                                            0),
-                                                                child: StreamBuilder<
-                                                                    List<
-                                                                        CategoriasRecord>>(
-                                                                  stream:
-                                                                      queryCategoriasRecord(
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ),
-                                                                  builder: (context,
-                                                                      snapshot) {
-                                                                    // Customize what your widget looks like when it's loading.
-                                                                    if (!snapshot
-                                                                        .hasData) {
-                                                                      return Center(
-                                                                        child:
-                                                                            SizedBox(
-                                                                          width:
-                                                                              50,
-                                                                          height:
-                                                                              50,
-                                                                          child:
-                                                                              SpinKitSquareCircle(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
-                                                                            size:
-                                                                                50,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                    List<CategoriasRecord>
-                                                                        containerCategoriasRecordList =
-                                                                        snapshot
-                                                                            .data;
-                                                                    // Return an empty Container when the document does not exist.
-                                                                    if (snapshot
-                                                                        .data
-                                                                        .isEmpty) {
-                                                                      return Container();
-                                                                    }
-                                                                    final containerCategoriasRecord = containerCategoriasRecordList
-                                                                            .isNotEmpty
-                                                                        ? containerCategoriasRecordList
-                                                                            .first
-                                                                        : null;
-                                                                    return Container(
-                                                                      width:
-                                                                          250,
-                                                                      height:
-                                                                          50,
+                                                                        TextFormField(
+                                                                      controller:
+                                                                          nameController,
+                                                                      obscureText:
+                                                                          false,
                                                                       decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          FlutterFlowDropDown(
-                                                                        options: containerCategoriasRecord
-                                                                            .listado
-                                                                            .toList()
-                                                                            .toList(),
-                                                                        onChanged:
-                                                                            (val) =>
-                                                                                setState(() => categoriasContenidosValue = val),
-                                                                        width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width,
-                                                                        height:
-                                                                            50,
-                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                          InputDecoration(
+                                                                        labelStyle: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Proxima nova',
-                                                                              color: Colors.black,
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
                                                                               fontWeight: FontWeight.normal,
                                                                               useGoogleFonts: false,
                                                                             ),
-                                                                        hintText:
-                                                                            'Categoria',
+                                                                        hintStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
+                                                                        ),
+                                                                        focusedBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
+                                                                        ),
+                                                                        filled:
+                                                                            true,
                                                                         fillColor:
                                                                             Colors.white,
-                                                                        elevation:
-                                                                            2,
-                                                                        borderColor:
-                                                                            Color(0xFFC9C9C9),
-                                                                        borderWidth:
-                                                                            0,
-                                                                        borderRadius:
-                                                                            12,
-                                                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                                                            12,
-                                                                            4,
-                                                                            12,
-                                                                            4),
-                                                                        hidesUnderline:
-                                                                            true,
+                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24,
+                                                                            24,
+                                                                            20,
+                                                                            24),
                                                                       ),
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      24, 0, 0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Categorías secundarias',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            12,
-                                                                            0,
-                                                                            0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              CategoriasRecord>>(
-                                                                        stream:
-                                                                            queryCategoriasRecord(
-                                                                          singleRecord:
-                                                                              true,
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: SpinKitSquareCircle(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                  size: 50,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<CategoriasRecord>
-                                                                              wrapCategoriasRecordList =
-                                                                              snapshot.data;
-                                                                          // Return an empty Container when the document does not exist.
-                                                                          if (snapshot
-                                                                              .data
-                                                                              .isEmpty) {
-                                                                            return Container();
-                                                                          }
-                                                                          final wrapCategoriasRecord = wrapCategoriasRecordList.isNotEmpty
-                                                                              ? wrapCategoriasRecordList.first
-                                                                              : null;
-                                                                          return Wrap(
-                                                                            spacing:
-                                                                                8,
-                                                                            runSpacing:
-                                                                                0,
-                                                                            alignment:
-                                                                                WrapAlignment.start,
-                                                                            crossAxisAlignment:
-                                                                                WrapCrossAlignment.start,
-                                                                            direction:
-                                                                                Axis.horizontal,
-                                                                            runAlignment:
-                                                                                WrapAlignment.start,
-                                                                            verticalDirection:
-                                                                                VerticalDirection.down,
-                                                                            clipBehavior:
-                                                                                Clip.none,
-                                                                            children: [
-                                                                              FlutterFlowChoiceChips(
-                                                                                initiallySelected: choiceChipsValues1 != null ? choiceChipsValues1 : [],
-                                                                                options: (wrapCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
-                                                                                onChanged: (val) => setState(() => choiceChipsValues1 = val),
-                                                                                selectedChipStyle: ChipStyle(
-                                                                                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Proxima nova',
-                                                                                        color: Colors.white,
-                                                                                        useGoogleFonts: false,
-                                                                                      ),
-                                                                                  iconColor: Colors.white,
-                                                                                  iconSize: 18,
-                                                                                  elevation: 0,
-                                                                                ),
-                                                                                unselectedChipStyle: ChipStyle(
-                                                                                  backgroundColor: Color(0xFFE6F0FF),
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                        fontFamily: 'Proxima nova',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        useGoogleFonts: false,
-                                                                                      ),
-                                                                                  iconColor: Color(0xFF323B45),
-                                                                                  iconSize: 18,
-                                                                                  elevation: 0,
-                                                                                ),
-                                                                                chipSpacing: 8,
-                                                                                multiselect: true,
-                                                                                initialized: choiceChipsValues1 != null,
-                                                                                alignment: WrapAlignment.start,
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      24, 0, 0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Etapa del trasplante',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      'Seleccione las etapas del trasplante en las que este contenido es relevante',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1,
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Proxima nova',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .name,
                                                                     ),
                                                                   ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            16,
-                                                                            0,
-                                                                            0),
-                                                                child: Row(
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        24,
+                                                                        0,
+                                                                        0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Imagen de previsualización',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .subtitle1,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
                                                                     Expanded(
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              EtapasTrasplanteRecord>>(
-                                                                        stream:
-                                                                            queryEtapasTrasplanteRecord(
-                                                                          singleRecord:
-                                                                              true,
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: SpinKitSquareCircle(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                  size: 50,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<EtapasTrasplanteRecord>
-                                                                              wrapEtapasTrasplanteRecordList =
-                                                                              snapshot.data;
-                                                                          // Return an empty Container when the document does not exist.
-                                                                          if (snapshot
-                                                                              .data
-                                                                              .isEmpty) {
-                                                                            return Container();
-                                                                          }
-                                                                          final wrapEtapasTrasplanteRecord = wrapEtapasTrasplanteRecordList.isNotEmpty
-                                                                              ? wrapEtapasTrasplanteRecordList.first
-                                                                              : null;
-                                                                          return Wrap(
-                                                                            spacing:
-                                                                                8,
-                                                                            runSpacing:
-                                                                                0,
-                                                                            alignment:
-                                                                                WrapAlignment.start,
-                                                                            crossAxisAlignment:
-                                                                                WrapCrossAlignment.start,
-                                                                            direction:
-                                                                                Axis.horizontal,
-                                                                            runAlignment:
-                                                                                WrapAlignment.start,
-                                                                            verticalDirection:
-                                                                                VerticalDirection.down,
-                                                                            clipBehavior:
-                                                                                Clip.none,
-                                                                            children: [
-                                                                              FlutterFlowChoiceChips(
-                                                                                initiallySelected: choiceChipsValues2 != null ? choiceChipsValues2 : [],
-                                                                                options: (wrapEtapasTrasplanteRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
-                                                                                onChanged: (val) => setState(() => choiceChipsValues2 = val),
-                                                                                selectedChipStyle: ChipStyle(
-                                                                                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Proxima nova',
-                                                                                        color: Colors.white,
-                                                                                        useGoogleFonts: false,
-                                                                                      ),
-                                                                                  iconColor: Colors.white,
-                                                                                  iconSize: 18,
-                                                                                  elevation: 0,
-                                                                                ),
-                                                                                unselectedChipStyle: ChipStyle(
-                                                                                  backgroundColor: Color(0xFFE6F0FF),
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                        fontFamily: 'Proxima nova',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        useGoogleFonts: false,
-                                                                                      ),
-                                                                                  iconColor: Color(0xFF323B45),
-                                                                                  iconSize: 18,
-                                                                                  elevation: 0,
-                                                                                ),
-                                                                                chipSpacing: 8,
-                                                                                multiselect: true,
-                                                                                initialized: choiceChipsValues2 != null,
-                                                                                alignment: WrapAlignment.start,
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
+                                                                      child:
+                                                                          Text(
+                                                                        'Adjunte la imagen de la portada del contenido',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
-                                                              ),
-                                                            ],
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          26,
+                                                                          0,
+                                                                          0),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'NUEVO_CONTENIDO_PAGE_Container_sfkj5zzr_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Container_Upload-Photo-Video');
+                                                                      final selectedMedia =
+                                                                          await selectMedia(
+                                                                        imageQuality:
+                                                                            100,
+                                                                        mediaSource:
+                                                                            MediaSource.photoGallery,
+                                                                        multiImage:
+                                                                            false,
+                                                                      );
+                                                                      if (selectedMedia !=
+                                                                              null &&
+                                                                          selectedMedia.every((m) => validateFileFormat(
+                                                                              m.storagePath,
+                                                                              context))) {
+                                                                        showUploadMessage(
+                                                                          context,
+                                                                          'Uploading file...',
+                                                                          showLoading:
+                                                                              true,
+                                                                        );
+                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes))))
+                                                                            .where((u) =>
+                                                                                u !=
+                                                                                null)
+                                                                            .toList();
+                                                                        ScaffoldMessenger.of(context)
+                                                                            .hideCurrentSnackBar();
+                                                                        if (downloadUrls !=
+                                                                                null &&
+                                                                            downloadUrls.length ==
+                                                                                selectedMedia.length) {
+                                                                          setState(() =>
+                                                                              uploadedFileUrl = downloadUrls.first);
+                                                                          showUploadMessage(
+                                                                            context,
+                                                                            'Success!',
+                                                                          );
+                                                                        } else {
+                                                                          showUploadMessage(
+                                                                            context,
+                                                                            'Failed to upload media',
+                                                                          );
+                                                                          return;
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          320,
+                                                                      height:
+                                                                          140,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          image:
+                                                                              Image.asset(
+                                                                            'assets/images/agregar_foto.png',
+                                                                          ).image,
+                                                                        ),
+                                                                      ),
+                                                                      child:
+                                                                          Visibility(
+                                                                        visible:
+                                                                            functions.previewSubida(uploadedFileUrl) ??
+                                                                                true,
+                                                                        child:
+                                                                            CachedNetworkImage(
+                                                                          imageUrl:
+                                                                              valueOrDefault<String>(
+                                                                            uploadedFileUrl,
+                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                          ),
+                                                                          width:
+                                                                              100,
+                                                                          height:
+                                                                              100,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        24,
+                                                                        0,
+                                                                        0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Categoría principal',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .subtitle1,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        'Seleccione la categoría principal a la que pertenecerá este contenido.',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Container(
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          16,
+                                                                          0,
+                                                                          0),
+                                                                  child: StreamBuilder<
+                                                                      List<
+                                                                          CategoriasRecord>>(
+                                                                    stream:
+                                                                        queryCategoriasRecord(
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                SpinKitSquareCircle(
+                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              size: 50,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<CategoriasRecord>
+                                                                          containerCategoriasRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final containerCategoriasRecord = containerCategoriasRecordList
+                                                                              .isNotEmpty
+                                                                          ? containerCategoriasRecordList
+                                                                              .first
+                                                                          : null;
+                                                                      return Container(
+                                                                        width:
+                                                                            250,
+                                                                        height:
+                                                                            50,
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            FlutterFlowDropDown(
+                                                                          options: containerCategoriasRecord
+                                                                              .listado
+                                                                              .toList()
+                                                                              .toList(),
+                                                                          onChanged: (val) =>
+                                                                              setState(() => categoriasContenidosValue = val),
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              50,
+                                                                          textStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyText1
+                                                                              .override(
+                                                                                fontFamily: 'Proxima nova',
+                                                                                color: Colors.black,
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                          hintText:
+                                                                              'Categoria',
+                                                                          fillColor:
+                                                                              Colors.white,
+                                                                          elevation:
+                                                                              2,
+                                                                          borderColor:
+                                                                              Color(0xFFC9C9C9),
+                                                                          borderWidth:
+                                                                              0,
+                                                                          borderRadius:
+                                                                              12,
+                                                                          margin: EdgeInsetsDirectional.fromSTEB(
+                                                                              12,
+                                                                              4,
+                                                                              12,
+                                                                              4),
+                                                                          hidesUnderline:
+                                                                              true,
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        24,
+                                                                        0,
+                                                                        0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Categorías secundarias',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .subtitle1,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          12,
+                                                                          0,
+                                                                          0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child: StreamBuilder<
+                                                                            List<CategoriasRecord>>(
+                                                                          stream:
+                                                                              queryCategoriasRecord(
+                                                                            singleRecord:
+                                                                                true,
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: SpinKitSquareCircle(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    size: 50,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<CategoriasRecord>
+                                                                                wrapCategoriasRecordList =
+                                                                                snapshot.data;
+                                                                            // Return an empty Container when the document does not exist.
+                                                                            if (snapshot.data.isEmpty) {
+                                                                              return Container();
+                                                                            }
+                                                                            final wrapCategoriasRecord = wrapCategoriasRecordList.isNotEmpty
+                                                                                ? wrapCategoriasRecordList.first
+                                                                                : null;
+                                                                            return Wrap(
+                                                                              spacing: 8,
+                                                                              runSpacing: 0,
+                                                                              alignment: WrapAlignment.start,
+                                                                              crossAxisAlignment: WrapCrossAlignment.start,
+                                                                              direction: Axis.horizontal,
+                                                                              runAlignment: WrapAlignment.start,
+                                                                              verticalDirection: VerticalDirection.down,
+                                                                              clipBehavior: Clip.none,
+                                                                              children: [
+                                                                                FlutterFlowChoiceChips(
+                                                                                  initiallySelected: choiceChipsValues1 != null ? choiceChipsValues1 : [],
+                                                                                  options: (wrapCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                                  onChanged: (val) => setState(() => choiceChipsValues1 = val),
+                                                                                  selectedChipStyle: ChipStyle(
+                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          fontFamily: 'Proxima nova',
+                                                                                          color: Colors.white,
+                                                                                          useGoogleFonts: false,
+                                                                                        ),
+                                                                                    iconColor: Colors.white,
+                                                                                    iconSize: 18,
+                                                                                    elevation: 0,
+                                                                                  ),
+                                                                                  unselectedChipStyle: ChipStyle(
+                                                                                    backgroundColor: Color(0xFFE6F0FF),
+                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                          fontFamily: 'Proxima nova',
+                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          useGoogleFonts: false,
+                                                                                        ),
+                                                                                    iconColor: Color(0xFF323B45),
+                                                                                    iconSize: 18,
+                                                                                    elevation: 0,
+                                                                                  ),
+                                                                                  chipSpacing: 8,
+                                                                                  multiselect: true,
+                                                                                  initialized: choiceChipsValues1 != null,
+                                                                                  alignment: WrapAlignment.start,
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        24,
+                                                                        0,
+                                                                        0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Etapa del trasplante',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .subtitle1,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        'Seleccione las etapas del trasplante en las que este contenido es relevante',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          16,
+                                                                          0,
+                                                                          0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child: StreamBuilder<
+                                                                            List<EtapasTrasplanteRecord>>(
+                                                                          stream:
+                                                                              queryEtapasTrasplanteRecord(
+                                                                            singleRecord:
+                                                                                true,
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: SpinKitSquareCircle(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    size: 50,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<EtapasTrasplanteRecord>
+                                                                                wrapEtapasTrasplanteRecordList =
+                                                                                snapshot.data;
+                                                                            // Return an empty Container when the document does not exist.
+                                                                            if (snapshot.data.isEmpty) {
+                                                                              return Container();
+                                                                            }
+                                                                            final wrapEtapasTrasplanteRecord = wrapEtapasTrasplanteRecordList.isNotEmpty
+                                                                                ? wrapEtapasTrasplanteRecordList.first
+                                                                                : null;
+                                                                            return Wrap(
+                                                                              spacing: 8,
+                                                                              runSpacing: 0,
+                                                                              alignment: WrapAlignment.start,
+                                                                              crossAxisAlignment: WrapCrossAlignment.start,
+                                                                              direction: Axis.horizontal,
+                                                                              runAlignment: WrapAlignment.start,
+                                                                              verticalDirection: VerticalDirection.down,
+                                                                              clipBehavior: Clip.none,
+                                                                              children: [
+                                                                                FlutterFlowChoiceChips(
+                                                                                  initiallySelected: choiceChipsValues2 != null ? choiceChipsValues2 : [],
+                                                                                  options: (wrapEtapasTrasplanteRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
+                                                                                  onChanged: (val) => setState(() => choiceChipsValues2 = val),
+                                                                                  selectedChipStyle: ChipStyle(
+                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          fontFamily: 'Proxima nova',
+                                                                                          color: Colors.white,
+                                                                                          useGoogleFonts: false,
+                                                                                        ),
+                                                                                    iconColor: Colors.white,
+                                                                                    iconSize: 18,
+                                                                                    elevation: 0,
+                                                                                  ),
+                                                                                  unselectedChipStyle: ChipStyle(
+                                                                                    backgroundColor: Color(0xFFE6F0FF),
+                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                          fontFamily: 'Proxima nova',
+                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          useGoogleFonts: false,
+                                                                                        ),
+                                                                                    iconColor: Color(0xFF323B45),
+                                                                                    iconSize: 18,
+                                                                                    elevation: 0,
+                                                                                  ),
+                                                                                  chipSpacing: 8,
+                                                                                  multiselect: true,
+                                                                                  initialized: choiceChipsValues2 != null,
+                                                                                  alignment: WrapAlignment.start,
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: SingleChildScrollView(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 16),
-                                                  child: Container(
+                                          Expanded(
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 16),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(24,
+                                                                    24, 24, 24),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          0,
+                                                                          0,
+                                                                          8),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Text(
+                                                                        'Micro-contenidos',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .title2
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Text(
+                                                                          'Ingrese la información de los micro-contenidos que se mostrarán en formato historia.',
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyText1,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        'Nota: recuerda que el tipo de formato en historia requiere información corta y concisa. La información debe ser mostrada lo más fácil posible para que cualquier paciente pueda entenderla.',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
                                                     decoration: BoxDecoration(
                                                       color:
                                                           FlutterFlowTheme.of(
@@ -1288,7 +1358,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                         0,
                                                                         0,
                                                                         0,
-                                                                        8),
+                                                                        16),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -1300,290 +1370,146 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Text(
-                                                                      'Micro-contenidos',
+                                                                      'Primer micro-contenido',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .title2
+                                                                          .subtitle1
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
                                                                             useGoogleFonts:
                                                                                 false,
                                                                           ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child:
-                                                                          Text(
-                                                                        'Ingrese la información de los micro-contenidos que se mostrarán en formato historia.',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1,
-                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                               ],
                                                             ),
                                                           ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      'Nota: recuerda que el tipo de formato en historia requiere información corta y concisa. La información debe ser mostrada lo más fácil posible para que cualquier paciente pueda entenderla.',
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        16),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Imagen',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
                                                                             useGoogleFonts:
                                                                                 false,
                                                                           ),
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiaryColor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                24, 24, 24, 24),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 0, 16),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Primer micro-contenido',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 0, 16),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Imagen',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            12,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
-                                                                  ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          12,
+                                                                          0,
+                                                                          0),
                                                                   child:
-                                                                      FlutterFlowRadioButton(
-                                                                    options: [
-                                                                      'Iconografía',
-                                                                      'Fotografía'
-                                                                    ].toList(),
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      setState(() =>
-                                                                          tipoDeImagenValue =
-                                                                              value);
-                                                                    },
-                                                                    optionHeight:
-                                                                        32,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
-                                                                              Colors.black,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                    textPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            16,
-                                                                            0),
-                                                                    buttonPosition:
-                                                                        RadioButtonPosition
-                                                                            .left,
-                                                                    direction: Axis
-                                                                        .horizontal,
-                                                                    radioButtonColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                    inactiveRadioButtonColor:
-                                                                        Color(
-                                                                            0x8A000000),
-                                                                    toggleable:
-                                                                        false,
-                                                                    horizontalAlignment:
-                                                                        WrapAlignment
-                                                                            .start,
-                                                                    verticalAlignment:
-                                                                        WrapCrossAlignment
-                                                                            .start,
+                                                                      Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
+                                                                    ),
+                                                                    child:
+                                                                        FlutterFlowRadioButton(
+                                                                      options: [
+                                                                        'Iconografía',
+                                                                        'Fotografía'
+                                                                      ].toList(),
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        setState(() =>
+                                                                            tipoDeImagenValue =
+                                                                                value);
+                                                                      },
+                                                                      optionHeight:
+                                                                          32,
+                                                                      textStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Proxima nova',
+                                                                            color:
+                                                                                Colors.black,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                      textPadding:
+                                                                          EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              16,
+                                                                              0),
+                                                                      buttonPosition:
+                                                                          RadioButtonPosition
+                                                                              .left,
+                                                                      direction:
+                                                                          Axis.horizontal,
+                                                                      radioButtonColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondaryColor,
+                                                                      inactiveRadioButtonColor:
+                                                                          Color(
+                                                                              0x8A000000),
+                                                                      toggleable:
+                                                                          false,
+                                                                      horizontalAlignment:
+                                                                          WrapAlignment
+                                                                              .start,
+                                                                      verticalAlignment:
+                                                                          WrapCrossAlignment
+                                                                              .start,
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  if ((tipoDeImagenValue) ==
-                                                                      'Iconografía')
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              8,
-                                                                              0,
-                                                                              0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'NUEVO_CONTENIDO_PAGE_Container_p6mabqbb_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Container_Upload-Photo-Video');
-                                                                          final selectedMedia =
-                                                                              await selectMedia(
-                                                                            imageQuality:
-                                                                                100,
-                                                                            mediaSource:
-                                                                                MediaSource.photoGallery,
-                                                                            multiImage:
-                                                                                false,
-                                                                          );
-                                                                          if (selectedMedia != null &&
-                                                                              selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                            showUploadMessage(
-                                                                              context,
-                                                                              'Uploading file...',
-                                                                              showLoading: true,
-                                                                            );
-                                                                            final downloadUrls =
-                                                                                (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                            if (downloadUrls != null &&
-                                                                                downloadUrls.length == selectedMedia.length) {
-                                                                              setState(() => uploadedFileUrl2 = downloadUrls.first);
-                                                                              showUploadMessage(
-                                                                                context,
-                                                                                'Success!',
-                                                                              );
-                                                                            } else {
-                                                                              showUploadMessage(
-                                                                                context,
-                                                                                'Failed to upload media',
-                                                                              );
-                                                                              return;
-                                                                            }
-                                                                          }
-                                                                        },
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    if ((tipoDeImagenValue) ==
+                                                                        'Iconografía')
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0,
+                                                                            8,
+                                                                            0,
+                                                                            0),
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -1600,76 +1526,16 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ).image,
                                                                             ),
                                                                           ),
-                                                                          child:
-                                                                              Visibility(
-                                                                            visible:
-                                                                                functions.previewSubida(uploadedFileUrl2) ?? true,
-                                                                            child:
-                                                                                CachedNetworkImage(
-                                                                              imageUrl: valueOrDefault<String>(
-                                                                                uploadedFileUrl2,
-                                                                                'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                              ),
-                                                                              width: 100,
-                                                                              height: 100,
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                          ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  if ((tipoDeImagenValue) ==
-                                                                      'Fotografía')
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              8,
-                                                                              0,
-                                                                              0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () async {
-                                                                          logFirebaseEvent(
-                                                                              'NUEVO_CONTENIDO_PAGE_Container_a6a18nct_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Container_Upload-Photo-Video');
-                                                                          final selectedMedia =
-                                                                              await selectMedia(
-                                                                            imageQuality:
-                                                                                100,
-                                                                            mediaSource:
-                                                                                MediaSource.photoGallery,
-                                                                            multiImage:
-                                                                                false,
-                                                                          );
-                                                                          if (selectedMedia != null &&
-                                                                              selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                            showUploadMessage(
-                                                                              context,
-                                                                              'Uploading file...',
-                                                                              showLoading: true,
-                                                                            );
-                                                                            final downloadUrls =
-                                                                                (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                            if (downloadUrls != null &&
-                                                                                downloadUrls.length == selectedMedia.length) {
-                                                                              setState(() => uploadedFileUrl3 = downloadUrls.first);
-                                                                              showUploadMessage(
-                                                                                context,
-                                                                                'Success!',
-                                                                              );
-                                                                            } else {
-                                                                              showUploadMessage(
-                                                                                context,
-                                                                                'Failed to upload media',
-                                                                              );
-                                                                              return;
-                                                                            }
-                                                                          }
-                                                                        },
+                                                                    if ((tipoDeImagenValue) ==
+                                                                        'Fotografía')
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0,
+                                                                            8,
+                                                                            0,
+                                                                            0),
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -1686,326 +1552,292 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               ).image,
                                                                             ),
                                                                           ),
-                                                                          child:
-                                                                              Visibility(
-                                                                            visible:
-                                                                                functions.previewSubida(uploadedFileUrl3) ?? true,
-                                                                            child:
-                                                                                CachedNetworkImage(
-                                                                              imageUrl: valueOrDefault<String>(
-                                                                                uploadedFileUrl3,
-                                                                                'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                              ),
-                                                                              width: 100,
-                                                                              height: 100,
-                                                                              fit: BoxFit.cover,
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        16),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Frase clave',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Proxima nova',
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          8,
+                                                                          0,
+                                                                          0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 50,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
+                                                                    ),
+                                                                    child:
+                                                                        TextFormField(
+                                                                      controller:
+                                                                          inputController1,
+                                                                      obscureText:
+                                                                          false,
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        labelStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
                                                                             ),
+                                                                        hintStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
                                                                           ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
                                                                         ),
+                                                                        focusedBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
+                                                                        ),
+                                                                        filled:
+                                                                            true,
+                                                                        fillColor:
+                                                                            Colors.white,
+                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24,
+                                                                            24,
+                                                                            20,
+                                                                            24),
                                                                       ),
-                                                                    ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 0, 16),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Frase clave',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            8,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  height: 50,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
-                                                                  ),
-                                                                  child:
-                                                                      TextFormField(
-                                                                    controller:
-                                                                        inputController1,
-                                                                    obscureText:
-                                                                        false,
-                                                                    decoration:
-                                                                        InputDecoration(
-                                                                      labelStyle: FlutterFlowTheme.of(
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Proxima nova',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
                                                                             useGoogleFonts:
                                                                                 false,
                                                                           ),
-                                                                      hintStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      enabledBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      focusedBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      filled:
-                                                                          true,
-                                                                      fillColor:
-                                                                          Colors
-                                                                              .white,
-                                                                      contentPadding:
-                                                                          EdgeInsetsDirectional.fromSTEB(
-                                                                              24,
-                                                                              24,
-                                                                              20,
-                                                                              24),
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .name,
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                    keyboardType:
-                                                                        TextInputType
-                                                                            .name,
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 0, 16),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    'Información adicional',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            8,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
-                                                                  ),
-                                                                  child:
-                                                                      TextFormField(
-                                                                    controller:
-                                                                        inputController2,
-                                                                    obscureText:
-                                                                        false,
-                                                                    decoration:
-                                                                        InputDecoration(
-                                                                      labelStyle: FlutterFlowTheme.of(
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        16),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Información adicional',
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
                                                                             fontWeight:
-                                                                                FontWeight.normal,
+                                                                                FontWeight.w600,
                                                                             useGoogleFonts:
                                                                                 false,
                                                                           ),
-                                                                      hintStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Proxima nova',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                      enabledBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      focusedBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              Color(0xFFC9C9C9),
-                                                                          width:
-                                                                              0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
-                                                                      filled:
-                                                                          true,
-                                                                      fillColor:
-                                                                          Colors
-                                                                              .white,
-                                                                      contentPadding:
-                                                                          EdgeInsetsDirectional.fromSTEB(
-                                                                              24,
-                                                                              24,
-                                                                              20,
-                                                                              24),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Proxima nova',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          8,
+                                                                          0,
+                                                                          0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
+                                                                    ),
+                                                                    child:
+                                                                        TextFormField(
+                                                                      controller:
+                                                                          inputController2,
+                                                                      obscureText:
+                                                                          false,
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        labelStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                        hintStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Proxima nova',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
                                                                         ),
-                                                                    maxLines: 2,
-                                                                    keyboardType:
-                                                                        TextInputType
-                                                                            .name,
+                                                                        focusedBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0xFFC9C9C9),
+                                                                            width:
+                                                                                0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
+                                                                        ),
+                                                                        filled:
+                                                                            true,
+                                                                        fillColor:
+                                                                            Colors.white,
+                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24,
+                                                                            24,
+                                                                            20,
+                                                                            24),
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Proxima nova',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                      maxLines:
+                                                                          2,
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .name,
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -2074,21 +1906,8 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                     ),
                                   ),
                                   FFButtonWidget(
-                                    onPressed: () async {
-                                      logFirebaseEvent(
-                                          'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
-                                      logFirebaseEvent(
-                                          'guardar-contenido_Navigate-To');
-                                      await Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          type: PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                          reverseDuration:
-                                              Duration(milliseconds: 0),
-                                          child: ContenidosWidget(),
-                                        ),
-                                      );
+                                    onPressed: () {
+                                      print('guardar-contenido pressed ...');
                                     },
                                     text: 'Guardar contenido',
                                     options: FFButtonOptions(
