@@ -780,7 +780,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                                 image: Image
                                                                     .network(
                                                                   wrapContenidosRecord
-                                                                      .preview,
+                                                                      .previewImage,
                                                                 ).image,
                                                               ),
                                                               borderRadius:

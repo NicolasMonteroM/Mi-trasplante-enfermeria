@@ -28,3 +28,18 @@ bool previewSubida(String imagen) {
     return true;
   }
 }
+
+String seleccionImagenMicro(
+  String image1,
+  String image2,
+) {
+  // find which image path is not empty and return it
+  String result;
+  if (image1 != null && image1.length != 0) {
+    result = image1;
+  }
+  if (image2 != null && image2.length != 0) {
+    result = image2;
+  }
+  return result;
+}
