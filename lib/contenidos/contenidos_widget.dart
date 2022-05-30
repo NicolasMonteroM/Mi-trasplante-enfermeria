@@ -706,11 +706,15 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                           BoxDecoration(),
                                                       child:
                                                           FlutterFlowDropDown(
-                                                        options:
-                                                            containerCategoriasRecord
-                                                                .etapasTrasplante
-                                                                .toList()
-                                                                .toList(),
+                                                        options: [
+                                                          'Me interesa ser donante',
+                                                          'Estoy considerando realizarme un trasplante',
+                                                          'Estoy en protocolo (toma de exámenes) para un trasplante renal',
+                                                          'Estoy en lista de espera por un donante',
+                                                          'Estoy próximo a tener mi trasplante de un donante vivo',
+                                                          'Ya he sido trasplantado',
+                                                          'He sido trasplantado y he perdido uno o varios injertos'
+                                                        ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
                                                                 categoriasContenidosValue2 =
