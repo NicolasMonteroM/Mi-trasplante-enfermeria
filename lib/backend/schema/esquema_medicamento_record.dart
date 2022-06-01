@@ -28,10 +28,6 @@ abstract class EsquemaMedicamentoRecord
   DateTime get fechaFinalizacion;
 
   @nullable
-  @BuiltValueField(wireName: 'hora_de_toma')
-  BuiltList<DateTime> get horaDeToma;
-
-  @nullable
   @BuiltValueField(wireName: 'imagen_medicamento')
   String get imagenMedicamento;
 
@@ -51,18 +47,22 @@ abstract class EsquemaMedicamentoRecord
   BuiltList<DocumentReference> get listadoRecordatorios;
 
   @nullable
+  @BuiltValueField(wireName: 'horas_de_toma')
+  BuiltList<DateTime> get horasDeToma;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(EsquemaMedicamentoRecordBuilder builder) =>
       builder
         ..indicacionesDeConsumo = ''
-        ..horaDeToma = ListBuilder()
         ..imagenMedicamento = ''
         ..dosis = ''
         ..vecesAlDia = ''
         ..usuarioAsignado = ListBuilder()
-        ..listadoRecordatorios = ListBuilder();
+        ..listadoRecordatorios = ListBuilder()
+        ..horasDeToma = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('esquema_medicamento');
@@ -103,9 +103,9 @@ Map<String, dynamic> createEsquemaMedicamentoRecordData({
           ..indicacionesDeConsumo = indicacionesDeConsumo
           ..fechaInicio = fechaInicio
           ..fechaFinalizacion = fechaFinalizacion
-          ..horaDeToma = null
           ..imagenMedicamento = imagenMedicamento
           ..dosis = dosis
           ..vecesAlDia = vecesAlDia
           ..usuarioAsignado = null
-          ..listadoRecordatorios = null));
+          ..listadoRecordatorios = null
+          ..horasDeToma = null));

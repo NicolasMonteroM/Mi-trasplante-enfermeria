@@ -1395,7 +1395,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                                             Expanded(
                                                                                               child: Builder(
                                                                                                 builder: (context) {
-                                                                                                  final horasDeToma = columnEsquemaMedicamentoRecord.horaDeToma.toList()?.toList() ?? [];
+                                                                                                  final horasDeToma = columnEsquemaMedicamentoRecord.horasDeToma.toList()?.toList() ?? [];
                                                                                                   return Wrap(
                                                                                                     spacing: 16,
                                                                                                     runSpacing: 8,
