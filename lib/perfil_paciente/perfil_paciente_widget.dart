@@ -1279,43 +1279,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           BorderRadius.circular(
                                                                               8),
                                                                     ),
-                                                                    child:
-                                                                        FFButtonWidget(
-                                                                      onPressed:
-                                                                          () {
-                                                                        print(
-                                                                            'nuevo_medicamento pressed ...');
-                                                                      },
-                                                                      text:
-                                                                          'Nuevo medicamento',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        width:
-                                                                            200,
-                                                                        height:
-                                                                            40,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText2
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        elevation:
-                                                                            0,
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
-                                                                          width:
-                                                                              1,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            12,
-                                                                      ),
-                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -1340,7 +1303,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           'usuario_asignado',
                                                                           arrayContains:
                                                                               perfilPacienteUsersRecord.reference),
-                                                                      limit: 1,
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -1467,11 +1429,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                                                 },
                                                                                               ),
                                                                                             ),
-                                                                                            Icon(
-                                                                                              FFIcons.kasset27,
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                              size: 20,
-                                                                                            ),
                                                                                           ],
                                                                                         ),
                                                                                         Padding(
@@ -1546,8 +1503,12 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         children: [
                                                                                                           Text(
-                                                                                                            'Fecha de inicio',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
+                                                                                                            dateTimeFormat('d/M/y', columnEsquemaMedicamentoRecord.fechaInicio),
+                                                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                                  fontFamily: 'Proxima nova',
+                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                  useGoogleFonts: false,
+                                                                                                                ),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -1555,12 +1516,8 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         children: [
                                                                                                           Text(
-                                                                                                            dateTimeFormat('d/M/y', columnEsquemaMedicamentoRecord.fechaInicio),
-                                                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                                  fontFamily: 'Proxima nova',
-                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                                  useGoogleFonts: false,
-                                                                                                                ),
+                                                                                                            'Fecha de inicio',
+                                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -1672,43 +1629,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           BorderRadius.circular(
                                                                               8),
                                                                     ),
-                                                                    child:
-                                                                        FFButtonWidget(
-                                                                      onPressed:
-                                                                          () {
-                                                                        print(
-                                                                            'nuevo_medicamento pressed ...');
-                                                                      },
-                                                                      text:
-                                                                          'Nuevo medicamento',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        width:
-                                                                            200,
-                                                                        height:
-                                                                            40,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText2
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        elevation:
-                                                                            0,
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
-                                                                          width:
-                                                                              1,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            12,
-                                                                      ),
-                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -1733,7 +1653,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           'usuario_asignado',
                                                                           arrayContains:
                                                                               perfilPacienteUsersRecord.reference),
-                                                                      limit: 1,
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -1761,9 +1680,14 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                               .data;
                                                                       if (columnCitasAsignadasRecordList
                                                                           .isEmpty) {
-                                                                        return ListaVaciaWidget(
-                                                                          massage:
-                                                                              'El usuario no tiene esquemas asignados',
+                                                                        return Container(
+                                                                          height:
+                                                                              150,
+                                                                          child:
+                                                                              ListaVaciaWidget(
+                                                                            massage:
+                                                                                'El usuario no tiene esquemas asignados',
+                                                                          ),
                                                                         );
                                                                       }
                                                                       return Column(
@@ -1853,11 +1777,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
-                                                                                            ),
-                                                                                            Icon(
-                                                                                              FFIcons.kasset27,
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                              size: 20,
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -2015,43 +1934,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           BorderRadius.circular(
                                                                               8),
                                                                     ),
-                                                                    child:
-                                                                        FFButtonWidget(
-                                                                      onPressed:
-                                                                          () {
-                                                                        print(
-                                                                            'nuevo_medicamento pressed ...');
-                                                                      },
-                                                                      text:
-                                                                          'Nuevo medicamento',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        width:
-                                                                            200,
-                                                                        height:
-                                                                            40,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText2
-                                                                            .override(
-                                                                              fontFamily: 'Proxima nova',
-                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                                                                              useGoogleFonts: false,
-                                                                            ),
-                                                                        elevation:
-                                                                            0,
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
-                                                                          width:
-                                                                              1,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            12,
-                                                                      ),
-                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -2067,109 +1949,230 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                     Container(
                                                                   decoration:
                                                                       BoxDecoration(),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            16),
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).tertiaryColor,
-                                                                            boxShadow: [
-                                                                              BoxShadow(
-                                                                                blurRadius: 24,
-                                                                                color: Color(0x1A414141),
-                                                                              )
-                                                                            ],
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(12),
-                                                                          ),
+                                                                  child: StreamBuilder<
+                                                                      List<
+                                                                          EsquemaIndicadoresRecord>>(
+                                                                    stream:
+                                                                        queryEsquemaIndicadoresRecord(
+                                                                      queryBuilder: (esquemaIndicadoresRecord) => esquemaIndicadoresRecord.where(
+                                                                          'usuario_asignado',
+                                                                          arrayContains:
+                                                                              perfilPacienteUsersRecord.reference),
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                16,
-                                                                                16,
-                                                                                16,
-                                                                                16),
+                                                                              SizedBox(
+                                                                            width:
+                                                                                20,
+                                                                            height:
+                                                                                20,
                                                                             child:
-                                                                                Column(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: [
-                                                                                Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                  children: [
-                                                                                    Container(
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: Color(0xFFEEEEEE),
-                                                                                        borderRadius: BorderRadius.circular(8),
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
-                                                                                        child: Container(
-                                                                                          decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          ),
-                                                                                          child: Text(
-                                                                                            'Hello World',
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Proxima nova',
-                                                                                                  fontWeight: FontWeight.w600,
-                                                                                                  useGoogleFonts: false,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Icon(
-                                                                                      FFIcons.kasset27,
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                      size: 20,
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                                                                                  child: Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                    children: [
-                                                                                      Container(
-                                                                                        decoration: BoxDecoration(),
-                                                                                        child: Text(
-                                                                                          'Hello World',
-                                                                                          style: FlutterFlowTheme.of(context).subtitle1,
-                                                                                        ),
-                                                                                      ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                                                                                        child: Container(
-                                                                                          decoration: BoxDecoration(),
-                                                                                          child: Text(
-                                                                                            'Hello World',
-                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ],
+                                                                                CircularProgressIndicator(
+                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                                        );
+                                                                      }
+                                                                      List<EsquemaIndicadoresRecord>
+                                                                          columnEsquemaIndicadoresRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      if (columnEsquemaIndicadoresRecordList
+                                                                          .isEmpty) {
+                                                                        return ListaVaciaWidget(
+                                                                          massage:
+                                                                              'El usuario no tiene esquemas asignados',
+                                                                        );
+                                                                      }
+                                                                      return Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: List.generate(
+                                                                            columnEsquemaIndicadoresRecordList.length,
+                                                                            (columnIndex) {
+                                                                          final columnEsquemaIndicadoresRecord =
+                                                                              columnEsquemaIndicadoresRecordList[columnIndex];
+                                                                          return Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                0,
+                                                                                0,
+                                                                                16),
+                                                                            child:
+                                                                                StreamBuilder<EsquemaIndicadoresRecord>(
+                                                                              stream: EsquemaIndicadoresRecord.getDocument(columnEsquemaIndicadoresRecord.reference),
+                                                                              builder: (context, snapshot) {
+                                                                                // Customize what your widget looks like when it's loading.
+                                                                                if (!snapshot.hasData) {
+                                                                                  return Center(
+                                                                                    child: SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 20,
+                                                                                      child: CircularProgressIndicator(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
+                                                                                }
+                                                                                final containerEsquemaIndicadoresRecord = snapshot.data;
+                                                                                return Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    boxShadow: [
+                                                                                      BoxShadow(
+                                                                                        blurRadius: 24,
+                                                                                        color: Color(0x1A414141),
+                                                                                      )
+                                                                                    ],
+                                                                                    borderRadius: BorderRadius.circular(12),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 8),
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                            children: [
+                                                                                              Container(
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: Text(
+                                                                                                  containerEsquemaIndicadoresRecord.tipo,
+                                                                                                  style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                                ),
+                                                                                              ),
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                                                                                child: Container(
+                                                                                                  decoration: BoxDecoration(),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                                                                          child: Container(
+                                                                                            width: double.infinity,
+                                                                                            decoration: BoxDecoration(),
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                                              children: [
+                                                                                                Expanded(
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            'Veces al día',
+                                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            '${containerEsquemaIndicadoresRecord.vecesAlDia}',
+                                                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                                  fontFamily: 'Proxima nova',
+                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                  useGoogleFonts: false,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Expanded(
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            'Fecha de inicio',
+                                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            dateTimeFormat('d/M/y', containerEsquemaIndicadoresRecord.fechaInicio),
+                                                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                                  fontFamily: 'Proxima nova',
+                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                  useGoogleFonts: false,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Expanded(
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            'Fecha de finalización',
+                                                                                                            style: FlutterFlowTheme.of(context).bodyText2,
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            valueOrDefault<String>(
+                                                                                                              containerEsquemaIndicadoresRecord.fechaFinalizacion.toString(),
+                                                                                                              'No definida',
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                                  fontFamily: 'Proxima nova',
+                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                  useGoogleFonts: false,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          );
+                                                                        }),
+                                                                      );
+                                                                    },
                                                                   ),
                                                                 ),
                                                               ),

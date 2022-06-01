@@ -10,6 +10,7 @@ import 'medicamento_formas_record.dart';
 import 'esquema_medicamento_record.dart';
 import 'recordatorios_record.dart';
 import 'citas_asignadas_record.dart';
+import 'esquema_indicadores_record.dart';
 
 import 'index.dart';
 
@@ -31,6 +32,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   EsquemaMedicamentoRecord,
   RecordatoriosRecord,
   CitasAsignadasRecord,
+  EsquemaIndicadoresRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
