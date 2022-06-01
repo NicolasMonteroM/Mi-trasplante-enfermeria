@@ -733,8 +733,8 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                             height: 100,
                                             decoration: BoxDecoration(),
                                             child: Visibility(
-                                              visible: FFAppState()
-                                                      .searchMedicamentos ??
+                                              visible: !(FFAppState()
+                                                      .searchMedicamentos) ??
                                                   true,
                                               child: StreamBuilder<
                                                   List<MedicamentosRecord>>(
