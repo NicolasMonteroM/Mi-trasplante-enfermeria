@@ -1,7 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../components/contenido_creado_widget.dart';
+import '../components/contenido_guardado_widget.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
@@ -17,19 +17,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NuevoContenidoWidget extends StatefulWidget {
-  const NuevoContenidoWidget({Key key}) : super(key: key);
+class EditarContenidoWidget extends StatefulWidget {
+  const EditarContenidoWidget({
+    Key key,
+    this.contenidoRef,
+  }) : super(key: key);
+
+  final DocumentReference contenidoRef;
 
   @override
-  _NuevoContenidoWidgetState createState() => _NuevoContenidoWidgetState();
+  _EditarContenidoWidgetState createState() => _EditarContenidoWidgetState();
 }
 
-class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
+class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
   List<String> categoriasSecundariasValues;
   String uploadedFileUrl1 = '';
   TextEditingController nameController;
   String categoriasContenidosValue;
-  TextEditingController nuevaCategoriaContenidosController;
   List<String> etapasValues;
   String uploadedFileUrl10 = '';
   String uploadedFileUrl11 = '';
@@ -61,28 +65,14 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
   @override
   void initState() {
     super.initState();
-    claveMicro1Controller = TextEditingController();
-    infoMicro1Controller = TextEditingController();
-    claveMicro2Controller = TextEditingController();
-    infoMicro2Controller = TextEditingController();
-    claveMicro3Controller = TextEditingController();
-    infoMicro3Controller = TextEditingController();
-    claveMicro4Controller = TextEditingController();
-    infoMicro4Controller = TextEditingController();
-    claveMicro5Controller = TextEditingController();
-    infoMicro5Controller = TextEditingController();
-    nameController = TextEditingController();
-    nuevaCategoriaContenidosController = TextEditingController();
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Nuevo_contenido'});
+        parameters: {'screen_name': 'Editar_contenido'});
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<CategoriasRecord>>(
-      stream: queryCategoriasRecord(
-        singleRecord: true,
-      ),
+    return StreamBuilder<ContenidosRecord>(
+      stream: ContenidosRecord.getDocument(widget.contenidoRef),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -96,16 +86,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
             ),
           );
         }
-        List<CategoriasRecord> nuevoContenidoCategoriasRecordList =
-            snapshot.data;
-        // Return an empty Container when the document does not exist.
-        if (snapshot.data.isEmpty) {
-          return Container();
-        }
-        final nuevoContenidoCategoriasRecord =
-            nuevoContenidoCategoriasRecordList.isNotEmpty
-                ? nuevoContenidoCategoriasRecordList.first
-                : null;
+        final editarContenidoContenidosRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -279,7 +260,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                         child: InkWell(
                                           onTap: () async {
                                             logFirebaseEvent(
-                                                'NUEVO_CONTENIDO_PAGE_Row_abp33bga_ON_TAP');
+                                                'EDITAR_CONTENIDO_PAGE_Row_47m7fb47_ON_TAP');
                                             logFirebaseEvent('Row_Navigate-To');
                                             await Navigator.push(
                                               context,
@@ -418,7 +399,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'NUEVO_CONTENIDO_PAGE_Text_wz4dh2s2_ON_TAP');
+                                          'EDITAR_CONTENIDO_PAGE_Text_8idv5cq5_ON_TAP');
                                       logFirebaseEvent('Text_Auth');
                                       await signOut();
                                       await Navigator.pushAndRemoveUntil(
@@ -452,9 +433,10 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                     ),
                   ),
                   Expanded(
-                    child: StreamBuilder<CategoriasRecord>(
-                      stream: CategoriasRecord.getDocument(
-                          nuevoContenidoCategoriasRecord.reference),
+                    child: StreamBuilder<List<CategoriasRecord>>(
+                      stream: queryCategoriasRecord(
+                        singleRecord: true,
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -469,7 +451,16 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                             ),
                           );
                         }
-                        final containerCategoriasRecord = snapshot.data;
+                        List<CategoriasRecord> containerCategoriasRecordList =
+                            snapshot.data;
+                        // Return an empty Container when the document does not exist.
+                        if (snapshot.data.isEmpty) {
+                          return Container();
+                        }
+                        final containerCategoriasRecord =
+                            containerCategoriasRecordList.isNotEmpty
+                                ? containerCategoriasRecordList.first
+                                : null;
                         return Container(
                           height: MediaQuery.of(context).size.height * 1,
                           decoration: BoxDecoration(),
@@ -500,7 +491,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                   child: InkWell(
                                                     onTap: () async {
                                                       logFirebaseEvent(
-                                                          'NUEVO_CONTENIDO_PAGE_ContainerBack_ON_TAP');
+                                                          'EDITAR_CONTENIDO_PAGE_ContainerBack_ON_TAP');
                                                       logFirebaseEvent(
                                                           'ContainerBack_Navigate-Back');
                                                       Navigator.pop(context);
@@ -665,7 +656,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: nameController,
+                                                                                    controller: nameController ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombre,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -748,7 +741,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_chcmwh4h_ON_TAP');
+                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_zwjuns68_ON_TAP');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -789,20 +782,32 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                         ).image,
                                                                                       ),
                                                                                     ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl1) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl1,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                                    child: Stack(
+                                                                                      children: [
+                                                                                        if (functions.previewSubida(uploadedFileUrl1) ?? true)
+                                                                                          ClipRRect(
+                                                                                            borderRadius: BorderRadius.circular(16),
+                                                                                            child: CachedNetworkImage(
+                                                                                              imageUrl: valueOrDefault<String>(
+                                                                                                uploadedFileUrl1,
+                                                                                                'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/agregar foto.png',
+                                                                                              ),
+                                                                                              width: double.infinity,
+                                                                                              height: double.infinity,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
+                                                                                        if (!(functions.previewSubida(uploadedFileUrl1)) ?? true)
+                                                                                          ClipRRect(
+                                                                                            borderRadius: BorderRadius.circular(16),
+                                                                                            child: CachedNetworkImage(
+                                                                                              imageUrl: editarContenidoContenidosRecord.previewImage,
+                                                                                              width: double.infinity,
+                                                                                              height: double.infinity,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                          ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -846,185 +851,73 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               Container(
                                                                                 decoration: BoxDecoration(),
                                                                               ),
-                                                                              if (!(FFAppState().otraCategoriaContenidos) ?? true)
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                                                                                  child: InkWell(
-                                                                                    onTap: () async {
-                                                                                      logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Row_cvyls1ve_ON_TAP');
-                                                                                      logFirebaseEvent('Row_Update-Local-State');
-                                                                                      setState(() => FFAppState().otraFormaFarmaceutica = true);
-                                                                                    },
-                                                                                    child: Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                                                      children: [
-                                                                                        StreamBuilder<List<CategoriasRecord>>(
-                                                                                          stream: queryCategoriasRecord(
-                                                                                            singleRecord: true,
-                                                                                          ),
-                                                                                          builder: (context, snapshot) {
-                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                            if (!snapshot.hasData) {
-                                                                                              return Center(
-                                                                                                child: SizedBox(
-                                                                                                  width: 20,
-                                                                                                  height: 20,
-                                                                                                  child: CircularProgressIndicator(
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              );
-                                                                                            }
-                                                                                            List<CategoriasRecord> containerCategoriasRecordList = snapshot.data;
-                                                                                            // Return an empty Container when the document does not exist.
-                                                                                            if (snapshot.data.isEmpty) {
-                                                                                              return Container();
-                                                                                            }
-                                                                                            final containerCategoriasRecord = containerCategoriasRecordList.isNotEmpty ? containerCategoriasRecordList.first : null;
-                                                                                            return Container(
-                                                                                              width: 250,
-                                                                                              height: 50,
-                                                                                              decoration: BoxDecoration(),
-                                                                                              child: FlutterFlowDropDown(
-                                                                                                options: nuevoContenidoCategoriasRecord.listado.toList().toList(),
-                                                                                                onChanged: (val) => setState(() => categoriasContenidosValue = val),
-                                                                                                width: MediaQuery.of(context).size.width,
-                                                                                                height: 50,
-                                                                                                textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                      fontFamily: 'Proxima nova',
-                                                                                                      color: Colors.black,
-                                                                                                      fontWeight: FontWeight.normal,
-                                                                                                      useGoogleFonts: false,
-                                                                                                    ),
-                                                                                                hintText: 'Categoria',
-                                                                                                fillColor: Colors.white,
-                                                                                                elevation: 2,
-                                                                                                borderColor: Color(0xFFC9C9C9),
-                                                                                                borderWidth: 0,
-                                                                                                borderRadius: 12,
-                                                                                                margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                                                                                                hidesUnderline: true,
-                                                                                              ),
-                                                                                            );
-                                                                                          },
-                                                                                        ),
-                                                                                        Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
-                                                                                          child: InkWell(
-                                                                                            onTap: () async {
-                                                                                              logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Row_7sslws7j_ON_TAP');
-                                                                                              logFirebaseEvent('Row_Update-Local-State');
-                                                                                              setState(() => FFAppState().otraCategoriaContenidos = true);
-                                                                                            },
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                                                                                                  child: Text(
-                                                                                                    'Nueva categoría',
-                                                                                                    style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                          fontFamily: 'Proxima nova',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                          useGoogleFonts: false,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Icon(
-                                                                                                  FFIcons.kasset18,
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                  size: 16,
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              if (FFAppState().otraCategoriaContenidos ?? true)
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                child: InkWell(
+                                                                                  onTap: () async {
+                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_g9svnuvi_ON_TAP');
+                                                                                    logFirebaseEvent('Row_Update-Local-State');
+                                                                                    setState(() => FFAppState().otraFormaFarmaceutica = true);
+                                                                                  },
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
                                                                                     children: [
-                                                                                      Container(
-                                                                                        decoration: BoxDecoration(),
-                                                                                        child: InkWell(
-                                                                                          onTap: () async {
-                                                                                            logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Icon_7tkzjn72_ON_TAP');
-                                                                                            logFirebaseEvent('Icon_Update-Local-State');
-                                                                                            setState(() => FFAppState().otraCategoriaContenidos = false);
-                                                                                            logFirebaseEvent('Icon_Clear-Text-Fields');
-                                                                                            setState(() {
-                                                                                              nuevaCategoriaContenidosController?.clear();
-                                                                                            });
-                                                                                          },
-                                                                                          child: Icon(
-                                                                                            FFIcons.kasset20,
-                                                                                            color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                            size: 20,
-                                                                                          ),
+                                                                                      StreamBuilder<List<CategoriasRecord>>(
+                                                                                        stream: queryCategoriasRecord(
+                                                                                          singleRecord: true,
                                                                                         ),
-                                                                                      ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                                                                                        child: Container(
-                                                                                          width: 250,
-                                                                                          height: 50,
-                                                                                          decoration: BoxDecoration(
-                                                                                            color: Colors.white,
-                                                                                            borderRadius: BorderRadius.circular(8),
-                                                                                          ),
-                                                                                          child: TextFormField(
-                                                                                            controller: nuevaCategoriaContenidosController,
-                                                                                            obscureText: false,
-                                                                                            decoration: InputDecoration(
-                                                                                              labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        builder: (context, snapshot) {
+                                                                                          // Customize what your widget looks like when it's loading.
+                                                                                          if (!snapshot.hasData) {
+                                                                                            return Center(
+                                                                                              child: SizedBox(
+                                                                                                width: 20,
+                                                                                                height: 20,
+                                                                                                child: CircularProgressIndicator(
+                                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                ),
+                                                                                              ),
+                                                                                            );
+                                                                                          }
+                                                                                          List<CategoriasRecord> containerCategoriasRecordList = snapshot.data;
+                                                                                          // Return an empty Container when the document does not exist.
+                                                                                          if (snapshot.data.isEmpty) {
+                                                                                            return Container();
+                                                                                          }
+                                                                                          final containerCategoriasRecord = containerCategoriasRecordList.isNotEmpty ? containerCategoriasRecordList.first : null;
+                                                                                          return Container(
+                                                                                            width: 250,
+                                                                                            height: 50,
+                                                                                            decoration: BoxDecoration(),
+                                                                                            child: FlutterFlowDropDown(
+                                                                                              initialOption: categoriasContenidosValue ??= editarContenidoContenidosRecord.categoriaPrincipal,
+                                                                                              options: containerCategoriasRecord.listado.toList().toList(),
+                                                                                              onChanged: (val) => setState(() => categoriasContenidosValue = val),
+                                                                                              width: MediaQuery.of(context).size.width,
+                                                                                              height: 50,
+                                                                                              textStyle: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                     fontFamily: 'Proxima nova',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                    color: Colors.black,
                                                                                                     fontWeight: FontWeight.normal,
                                                                                                     useGoogleFonts: false,
                                                                                                   ),
-                                                                                              hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Proxima nova',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                    fontWeight: FontWeight.normal,
-                                                                                                    useGoogleFonts: false,
-                                                                                                  ),
-                                                                                              enabledBorder: OutlineInputBorder(
-                                                                                                borderSide: BorderSide(
-                                                                                                  color: Color(0xFFC9C9C9),
-                                                                                                  width: 0,
-                                                                                                ),
-                                                                                                borderRadius: BorderRadius.circular(12),
-                                                                                              ),
-                                                                                              focusedBorder: OutlineInputBorder(
-                                                                                                borderSide: BorderSide(
-                                                                                                  color: Color(0xFFC9C9C9),
-                                                                                                  width: 0,
-                                                                                                ),
-                                                                                                borderRadius: BorderRadius.circular(12),
-                                                                                              ),
-                                                                                              filled: true,
+                                                                                              hintText: 'Categoria',
                                                                                               fillColor: Colors.white,
-                                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                              elevation: 2,
+                                                                                              borderColor: Color(0xFFC9C9C9),
+                                                                                              borderWidth: 0,
+                                                                                              borderRadius: 12,
+                                                                                              margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                                                                                              hidesUnderline: true,
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Proxima nova',
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                  fontWeight: FontWeight.normal,
-                                                                                                  useGoogleFonts: false,
-                                                                                                ),
-                                                                                            keyboardType: TextInputType.name,
-                                                                                          ),
-                                                                                        ),
+                                                                                          );
+                                                                                        },
                                                                                       ),
                                                                                     ],
                                                                                   ),
                                                                                 ),
+                                                                              ),
                                                                             ],
                                                                           ),
                                                                         ),
@@ -1090,7 +983,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                             clipBehavior: Clip.none,
                                                                                             children: [
                                                                                               FlutterFlowChoiceChips(
-                                                                                                initiallySelected: categoriasSecundariasValues != null ? categoriasSecundariasValues : [],
+                                                                                                initiallySelected: categoriasSecundariasValues != null ? categoriasSecundariasValues : editarContenidoContenidosRecord.categoriasSecundarias.toList(),
                                                                                                 options: (wrapCategoriasRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
                                                                                                 onChanged: (val) => setState(() => categoriasSecundariasValues = val),
                                                                                                 selectedChipStyle: ChipStyle(
@@ -1204,7 +1097,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                             clipBehavior: Clip.none,
                                                                                             children: [
                                                                                               FlutterFlowChoiceChips(
-                                                                                                initiallySelected: etapasValues != null ? etapasValues : [],
+                                                                                                initiallySelected: etapasValues != null ? etapasValues : editarContenidoContenidosRecord.etapasRelevantes.toList(),
                                                                                                 options: (wrapEtapasTrasplanteRecord.listado.toList() ?? []).map((label) => ChipData(label)).toList(),
                                                                                                 onChanged: (val) => setState(() => etapasValues = val),
                                                                                                 selectedChipStyle: ChipStyle(
@@ -1442,172 +1335,277 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     color: Colors.white,
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
-                                                                                  child: FlutterFlowRadioButton(
-                                                                                    options: [
-                                                                                      'Iconografía',
-                                                                                      'Fotografía'
-                                                                                    ].toList(),
-                                                                                    onChanged: (value) {
-                                                                                      setState(() => imagenTipoValue1 = value);
-                                                                                    },
-                                                                                    optionHeight: 32,
-                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Proxima nova',
-                                                                                          color: Colors.black,
-                                                                                          useGoogleFonts: false,
-                                                                                        ),
-                                                                                    textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                                                                    buttonPosition: RadioButtonPosition.left,
-                                                                                    direction: Axis.horizontal,
-                                                                                    radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    inactiveRadioButtonColor: Color(0x8A000000),
-                                                                                    toggleable: false,
-                                                                                    horizontalAlignment: WrapAlignment.start,
-                                                                                    verticalAlignment: WrapCrossAlignment.start,
+                                                                                  child: Visibility(
+                                                                                    visible: FFAppState().mostrarMicroImg1 ?? true,
+                                                                                    child: FlutterFlowRadioButton(
+                                                                                      options: [
+                                                                                        'Iconografía',
+                                                                                        'Fotografía'
+                                                                                      ].toList(),
+                                                                                      onChanged: (value) {
+                                                                                        setState(() => imagenTipoValue1 = value);
+                                                                                      },
+                                                                                      optionHeight: 32,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Proxima nova',
+                                                                                            color: Colors.black,
+                                                                                            useGoogleFonts: false,
+                                                                                          ),
+                                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                                      buttonPosition: RadioButtonPosition.left,
+                                                                                      direction: Axis.horizontal,
+                                                                                      radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      inactiveRadioButtonColor: Color(0x8A000000),
+                                                                                      toggleable: false,
+                                                                                      horizontalAlignment: WrapAlignment.start,
+                                                                                      verticalAlignment: WrapCrossAlignment.start,
+                                                                                    ),
                                                                                   ),
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    if (!(FFAppState().mostrarMicroImg1) ?? true)
+                                                                                      Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: Color(0xFFEEEEEE),
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            children: [
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                children: [
+                                                                                                  if ((editarContenidoContenidosRecord.tipoImgMicro1) == 'Iconografía')
+                                                                                                    Container(
+                                                                                                      width: 140,
+                                                                                                      height: 140,
+                                                                                                      decoration: BoxDecoration(),
+                                                                                                      child: Visibility(
+                                                                                                        visible: (editarContenidoContenidosRecord.tipoImgMicro1) == 'Iconografía',
+                                                                                                        child: ClipRRect(
+                                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                                          child: CachedNetworkImage(
+                                                                                                            imageUrl: editarContenidoContenidosRecord.imgMicro1,
+                                                                                                            width: 100,
+                                                                                                            height: 100,
+                                                                                                            fit: BoxFit.cover,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  if ((editarContenidoContenidosRecord.tipoImgMicro1) == 'Fotografía')
+                                                                                                    Container(
+                                                                                                      width: 325,
+                                                                                                      height: 233.33,
+                                                                                                      decoration: BoxDecoration(),
+                                                                                                      child: Visibility(
+                                                                                                        visible: (editarContenidoContenidosRecord.tipoImgMicro1) == 'Fotografía',
+                                                                                                        child: ClipRRect(
+                                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                                          child: CachedNetworkImage(
+                                                                                                            imageUrl: editarContenidoContenidosRecord.imgMicro1,
+                                                                                                            width: 100,
+                                                                                                            height: 100,
+                                                                                                            fit: BoxFit.cover,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                ],
+                                                                                              ),
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                                child: InkWell(
+                                                                                                  onTap: () async {
+                                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_l2lyjx3w_ON_TAP');
+                                                                                                    logFirebaseEvent('Row_Update-Local-State');
+                                                                                                    setState(() => FFAppState().mostrarMicroImg1 = true);
+                                                                                                  },
+                                                                                                  child: Row(
+                                                                                                    mainAxisSize: MainAxisSize.min,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                                                                                        child: Icon(
+                                                                                                          FFIcons.kasset23,
+                                                                                                          color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                          size: 24,
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            'Borrar foto',
+                                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                                  fontFamily: 'Proxima nova',
+                                                                                                                  color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                                  fontWeight: FontWeight.w600,
+                                                                                                                  useGoogleFonts: false,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                  ],
                                                                                 ),
                                                                               ),
                                                                             ],
                                                                           ),
                                                                         ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0,
-                                                                              8,
-                                                                              0,
-                                                                              0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
-                                                                            children: [
-                                                                              if ((imagenTipoValue1) == 'Iconografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_6wdfkmee_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
+                                                                        if (FFAppState().mostrarMicroImg1 ??
+                                                                            true)
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                8,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((imagenTipoValue1) == 'Iconografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_orytqoel_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
                                                                                       );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl2 = downloadUrls.first);
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
                                                                                         showUploadMessage(
                                                                                           context,
-                                                                                          'Success!',
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
                                                                                         );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl2 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
                                                                                       }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 140,
-                                                                                    height: 140,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_Iconografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl2) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl2,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 140,
+                                                                                      height: 140,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
                                                                                           fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_Iconografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl2) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl2,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              if ((imagenTipoValue1) == 'Fotografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_h1ktsr5q_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
+                                                                                if ((imagenTipoValue1) == 'Fotografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_yg6ai6ww_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
                                                                                       );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl3 = downloadUrls.first);
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
                                                                                         showUploadMessage(
                                                                                           context,
-                                                                                          'Success!',
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
                                                                                         );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl3 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
                                                                                       }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 325,
-                                                                                    height: 233.33,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_fotografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl3) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl3,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 325,
+                                                                                      height: 233.33,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
                                                                                           fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_fotografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl3) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl3,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                            ],
+                                                                              ],
+                                                                            ),
                                                                           ),
-                                                                        ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
@@ -1641,7 +1639,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: claveMicro1Controller,
+                                                                                    controller: claveMicro1Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombreMicro1,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -1721,7 +1721,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: infoMicro1Controller,
+                                                                                    controller: infoMicro1Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.infoMicro1,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -1850,28 +1852,31 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     color: Colors.white,
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
-                                                                                  child: FlutterFlowRadioButton(
-                                                                                    options: [
-                                                                                      'Iconografía',
-                                                                                      'Fotografía'
-                                                                                    ].toList(),
-                                                                                    onChanged: (value) {
-                                                                                      setState(() => imagenTipoValue2 = value);
-                                                                                    },
-                                                                                    optionHeight: 32,
-                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Proxima nova',
-                                                                                          color: Colors.black,
-                                                                                          useGoogleFonts: false,
-                                                                                        ),
-                                                                                    textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                                                                    buttonPosition: RadioButtonPosition.left,
-                                                                                    direction: Axis.horizontal,
-                                                                                    radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    inactiveRadioButtonColor: Color(0x8A000000),
-                                                                                    toggleable: false,
-                                                                                    horizontalAlignment: WrapAlignment.start,
-                                                                                    verticalAlignment: WrapCrossAlignment.start,
+                                                                                  child: Visibility(
+                                                                                    visible: FFAppState().mostrarMicroImg2 ?? true,
+                                                                                    child: FlutterFlowRadioButton(
+                                                                                      options: [
+                                                                                        'Iconografía',
+                                                                                        'Fotografía'
+                                                                                      ].toList(),
+                                                                                      onChanged: (value) {
+                                                                                        setState(() => imagenTipoValue2 = value);
+                                                                                      },
+                                                                                      optionHeight: 32,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Proxima nova',
+                                                                                            color: Colors.black,
+                                                                                            useGoogleFonts: false,
+                                                                                          ),
+                                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                                      buttonPosition: RadioButtonPosition.left,
+                                                                                      direction: Axis.horizontal,
+                                                                                      radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      inactiveRadioButtonColor: Color(0x8A000000),
+                                                                                      toggleable: false,
+                                                                                      horizontalAlignment: WrapAlignment.start,
+                                                                                      verticalAlignment: WrapCrossAlignment.start,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -1888,134 +1893,236 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
                                                                             children: [
-                                                                              if ((imagenTipoValue2) == 'Iconografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_suixzzan_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl4 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 140,
-                                                                                    height: 140,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_Iconografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl4) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl4,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
+                                                                              if (!(FFAppState().mostrarMicroImg2) ?? true)
+                                                                                Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFFEEEEEE),
+                                                                                    borderRadius: BorderRadius.circular(16),
                                                                                   ),
-                                                                                ),
-                                                                              if ((imagenTipoValue2) == 'Fotografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_5vwd75rt_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl5 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 325,
-                                                                                    height: 233.33,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_fotografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl5) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl5,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro2) == 'Iconografía')
+                                                                                              Container(
+                                                                                                width: 140,
+                                                                                                height: 140,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro2,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro2) == 'Fotografía')
+                                                                                              Container(
+                                                                                                width: 325,
+                                                                                                height: 233.33,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro2,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                          ],
                                                                                         ),
-                                                                                      ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                          child: InkWell(
+                                                                                            onTap: () async {
+                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_eoyryaw9_ON_TAP');
+                                                                                              logFirebaseEvent('Row_Update-Local-State');
+                                                                                              setState(() => FFAppState().mostrarMicroImg2 = true);
+                                                                                            },
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.min,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                                                                                  child: Icon(
+                                                                                                    FFIcons.kasset23,
+                                                                                                    color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                    size: 24,
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Borrar foto',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Proxima nova',
+                                                                                                            color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            useGoogleFonts: false,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                             ],
                                                                           ),
                                                                         ),
+                                                                        if (FFAppState().mostrarMicroImg2 ??
+                                                                            true)
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                8,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((imagenTipoValue2) == 'Iconografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_f8o0lrwa_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl4 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 140,
+                                                                                      height: 140,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_Iconografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl4) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl4,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                if ((imagenTipoValue2) == 'Fotografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_jlom235t_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl5 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 325,
+                                                                                      height: 233.33,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_fotografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl5) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl5,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
@@ -2049,7 +2156,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: claveMicro2Controller,
+                                                                                    controller: claveMicro2Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombreMicro2,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2129,7 +2238,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: infoMicro2Controller,
+                                                                                    controller: infoMicro2Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.infoMicro2,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2258,28 +2369,31 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     color: Colors.white,
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
-                                                                                  child: FlutterFlowRadioButton(
-                                                                                    options: [
-                                                                                      'Iconografía',
-                                                                                      'Fotografía'
-                                                                                    ].toList(),
-                                                                                    onChanged: (value) {
-                                                                                      setState(() => imagenTipoValue3 = value);
-                                                                                    },
-                                                                                    optionHeight: 32,
-                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Proxima nova',
-                                                                                          color: Colors.black,
-                                                                                          useGoogleFonts: false,
-                                                                                        ),
-                                                                                    textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                                                                    buttonPosition: RadioButtonPosition.left,
-                                                                                    direction: Axis.horizontal,
-                                                                                    radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    inactiveRadioButtonColor: Color(0x8A000000),
-                                                                                    toggleable: false,
-                                                                                    horizontalAlignment: WrapAlignment.start,
-                                                                                    verticalAlignment: WrapCrossAlignment.start,
+                                                                                  child: Visibility(
+                                                                                    visible: FFAppState().mostrarMicroImg3 ?? true,
+                                                                                    child: FlutterFlowRadioButton(
+                                                                                      options: [
+                                                                                        'Iconografía',
+                                                                                        'Fotografía'
+                                                                                      ].toList(),
+                                                                                      onChanged: (value) {
+                                                                                        setState(() => imagenTipoValue3 = value);
+                                                                                      },
+                                                                                      optionHeight: 32,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Proxima nova',
+                                                                                            color: Colors.black,
+                                                                                            useGoogleFonts: false,
+                                                                                          ),
+                                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                                      buttonPosition: RadioButtonPosition.left,
+                                                                                      direction: Axis.horizontal,
+                                                                                      radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      inactiveRadioButtonColor: Color(0x8A000000),
+                                                                                      toggleable: false,
+                                                                                      horizontalAlignment: WrapAlignment.start,
+                                                                                      verticalAlignment: WrapCrossAlignment.start,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -2296,134 +2410,236 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
                                                                             children: [
-                                                                              if ((imagenTipoValue3) == 'Iconografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_77n2nufx_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl6 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 140,
-                                                                                    height: 140,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_Iconografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl6) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl6,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
+                                                                              if (!(FFAppState().mostrarMicroImg3) ?? true)
+                                                                                Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFFEEEEEE),
+                                                                                    borderRadius: BorderRadius.circular(16),
                                                                                   ),
-                                                                                ),
-                                                                              if ((imagenTipoValue3) == 'Fotografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_8adx0db7_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl7 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 325,
-                                                                                    height: 233.33,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_fotografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl7) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl7,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro3) == 'Iconografía')
+                                                                                              Container(
+                                                                                                width: 140,
+                                                                                                height: 140,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro3,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro3) == 'Fotografía')
+                                                                                              Container(
+                                                                                                width: 325,
+                                                                                                height: 233.33,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro3,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                          ],
                                                                                         ),
-                                                                                      ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                          child: InkWell(
+                                                                                            onTap: () async {
+                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_i10u3n4u_ON_TAP');
+                                                                                              logFirebaseEvent('Row_Update-Local-State');
+                                                                                              setState(() => FFAppState().mostrarMicroImg3 = true);
+                                                                                            },
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.min,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                                                                                  child: Icon(
+                                                                                                    FFIcons.kasset23,
+                                                                                                    color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                    size: 24,
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Borrar foto',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Proxima nova',
+                                                                                                            color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            useGoogleFonts: false,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                             ],
                                                                           ),
                                                                         ),
+                                                                        if (FFAppState().mostrarMicroImg3 ??
+                                                                            true)
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                8,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((imagenTipoValue3) == 'Iconografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_tmg2fh72_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl6 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 140,
+                                                                                      height: 140,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_Iconografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl6) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl6,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                if ((imagenTipoValue3) == 'Fotografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_obywkf9t_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl7 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 325,
+                                                                                      height: 233.33,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_fotografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl7) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl7,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
@@ -2457,7 +2673,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: claveMicro3Controller,
+                                                                                    controller: claveMicro3Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombreMicro3,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2537,7 +2755,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: infoMicro3Controller,
+                                                                                    controller: infoMicro3Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.infoMicro3,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2666,34 +2886,175 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     color: Colors.white,
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
-                                                                                  child: FlutterFlowRadioButton(
-                                                                                    options: [
-                                                                                      'Iconografía',
-                                                                                      'Fotografía'
-                                                                                    ].toList(),
-                                                                                    onChanged: (value) {
-                                                                                      setState(() => imagenTipoValue4 = value);
-                                                                                    },
-                                                                                    optionHeight: 32,
-                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Proxima nova',
-                                                                                          color: Colors.black,
-                                                                                          useGoogleFonts: false,
-                                                                                        ),
-                                                                                    textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                                                                    buttonPosition: RadioButtonPosition.left,
-                                                                                    direction: Axis.horizontal,
-                                                                                    radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    inactiveRadioButtonColor: Color(0x8A000000),
-                                                                                    toggleable: false,
-                                                                                    horizontalAlignment: WrapAlignment.start,
-                                                                                    verticalAlignment: WrapCrossAlignment.start,
+                                                                                  child: Visibility(
+                                                                                    visible: FFAppState().mostrarMicroImg4 ?? true,
+                                                                                    child: FlutterFlowRadioButton(
+                                                                                      options: [
+                                                                                        'Iconografía',
+                                                                                        'Fotografía'
+                                                                                      ].toList(),
+                                                                                      onChanged: (value) {
+                                                                                        setState(() => imagenTipoValue4 = value);
+                                                                                      },
+                                                                                      optionHeight: 32,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Proxima nova',
+                                                                                            color: Colors.black,
+                                                                                            useGoogleFonts: false,
+                                                                                          ),
+                                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                                      buttonPosition: RadioButtonPosition.left,
+                                                                                      direction: Axis.horizontal,
+                                                                                      radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      inactiveRadioButtonColor: Color(0x8A000000),
+                                                                                      toggleable: false,
+                                                                                      horizontalAlignment: WrapAlignment.start,
+                                                                                      verticalAlignment: WrapCrossAlignment.start,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                             ],
                                                                           ),
                                                                         ),
+                                                                        if (FFAppState().mostrarMicroImg4 ??
+                                                                            true)
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                8,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((imagenTipoValue4) == 'Iconografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_d06tgcr3_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl8 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 140,
+                                                                                      height: 140,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_Iconografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl8) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl8,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                if ((imagenTipoValue4) == 'Fotografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_gziono0p_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl9 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 325,
+                                                                                      height: 233.33,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_fotografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl9) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl9,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
@@ -2704,128 +3065,92 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
                                                                             children: [
-                                                                              if ((imagenTipoValue4) == 'Iconografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_j7ornfjd_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl8 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 140,
-                                                                                    height: 140,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_Iconografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl8) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl8,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
+                                                                              if (!(FFAppState().mostrarMicroImg4) ?? true)
+                                                                                Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFFEEEEEE),
+                                                                                    borderRadius: BorderRadius.circular(16),
                                                                                   ),
-                                                                                ),
-                                                                              if ((imagenTipoValue4) == 'Fotografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_6z3ndmsv_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl9 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 325,
-                                                                                    height: 233.33,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_fotografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl9) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl9,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro4) == 'Iconografía')
+                                                                                              Container(
+                                                                                                width: 140,
+                                                                                                height: 140,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro4,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro4) == 'Fotografía')
+                                                                                              Container(
+                                                                                                width: 325,
+                                                                                                height: 233.33,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro4,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                          ],
                                                                                         ),
-                                                                                      ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                          child: InkWell(
+                                                                                            onTap: () async {
+                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_baz909ce_ON_TAP');
+                                                                                              logFirebaseEvent('Row_Update-Local-State');
+                                                                                              setState(() => FFAppState().mostrarMicroImg4 = true);
+                                                                                            },
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.min,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                                                                                  child: Icon(
+                                                                                                    FFIcons.kasset23,
+                                                                                                    color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                    size: 24,
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Borrar foto',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Proxima nova',
+                                                                                                            color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            useGoogleFonts: false,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -2865,7 +3190,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: claveMicro4Controller,
+                                                                                    controller: claveMicro4Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombreMicro4,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2945,7 +3272,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: infoMicro4Controller,
+                                                                                    controller: infoMicro4Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.infoMicro4,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -3074,34 +3403,175 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     color: Colors.white,
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
-                                                                                  child: FlutterFlowRadioButton(
-                                                                                    options: [
-                                                                                      'Iconografía',
-                                                                                      'Fotografía'
-                                                                                    ].toList(),
-                                                                                    onChanged: (value) {
-                                                                                      setState(() => imagenTipoValue5 = value);
-                                                                                    },
-                                                                                    optionHeight: 32,
-                                                                                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Proxima nova',
-                                                                                          color: Colors.black,
-                                                                                          useGoogleFonts: false,
-                                                                                        ),
-                                                                                    textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                                                                    buttonPosition: RadioButtonPosition.left,
-                                                                                    direction: Axis.horizontal,
-                                                                                    radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    inactiveRadioButtonColor: Color(0x8A000000),
-                                                                                    toggleable: false,
-                                                                                    horizontalAlignment: WrapAlignment.start,
-                                                                                    verticalAlignment: WrapCrossAlignment.start,
+                                                                                  child: Visibility(
+                                                                                    visible: FFAppState().mostrarMicroImg5 ?? true,
+                                                                                    child: FlutterFlowRadioButton(
+                                                                                      options: [
+                                                                                        'Iconografía',
+                                                                                        'Fotografía'
+                                                                                      ].toList(),
+                                                                                      onChanged: (value) {
+                                                                                        setState(() => imagenTipoValue5 = value);
+                                                                                      },
+                                                                                      optionHeight: 32,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Proxima nova',
+                                                                                            color: Colors.black,
+                                                                                            useGoogleFonts: false,
+                                                                                          ),
+                                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                                      buttonPosition: RadioButtonPosition.left,
+                                                                                      direction: Axis.horizontal,
+                                                                                      radioButtonColor: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      inactiveRadioButtonColor: Color(0x8A000000),
+                                                                                      toggleable: false,
+                                                                                      horizontalAlignment: WrapAlignment.start,
+                                                                                      verticalAlignment: WrapCrossAlignment.start,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                             ],
                                                                           ),
                                                                         ),
+                                                                        if (FFAppState().mostrarMicroImg5 ??
+                                                                            true)
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                8,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((imagenTipoValue5) == 'Iconografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_m9plys3e_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl10 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 140,
+                                                                                      height: 140,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_Iconografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl10) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl10,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                if ((imagenTipoValue5) == 'Fotografía')
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Container_xrlkrklo_ON_TAP');
+                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
+                                                                                      final selectedMedia = await selectMedia(
+                                                                                        imageQuality: 100,
+                                                                                        mediaSource: MediaSource.photoGallery,
+                                                                                        multiImage: false,
+                                                                                      );
+                                                                                      if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                                                                                        showUploadMessage(
+                                                                                          context,
+                                                                                          'Uploading file...',
+                                                                                          showLoading: true,
+                                                                                        );
+                                                                                        final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
+                                                                                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                                                                        if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
+                                                                                          setState(() => uploadedFileUrl11 = downloadUrls.first);
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Success!',
+                                                                                          );
+                                                                                        } else {
+                                                                                          showUploadMessage(
+                                                                                            context,
+                                                                                            'Failed to upload media',
+                                                                                          );
+                                                                                          return;
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 325,
+                                                                                      height: 233.33,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          fit: BoxFit.cover,
+                                                                                          image: Image.asset(
+                                                                                            'assets/images/Agregar_fotografia.png',
+                                                                                          ).image,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Visibility(
+                                                                                        visible: functions.previewSubida(uploadedFileUrl11) ?? true,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: valueOrDefault<String>(
+                                                                                              uploadedFileUrl11,
+                                                                                              'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
+                                                                                            ),
+                                                                                            width: 100,
+                                                                                            height: 100,
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
@@ -3112,128 +3582,92 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
                                                                             children: [
-                                                                              if ((imagenTipoValue5) == 'Iconografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_wbiooynf_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl10 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 140,
-                                                                                    height: 140,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_Iconografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl10) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl10,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar Iconografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
+                                                                              if (!(FFAppState().mostrarMicroImg5) ?? true)
+                                                                                Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFFEEEEEE),
+                                                                                    borderRadius: BorderRadius.circular(16),
                                                                                   ),
-                                                                                ),
-                                                                              if ((imagenTipoValue5) == 'Fotografía')
-                                                                                InkWell(
-                                                                                  onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_u9xfmfcn_ON_TAP');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
-                                                                                    final selectedMedia = await selectMedia(
-                                                                                      imageQuality: 100,
-                                                                                      mediaSource: MediaSource.photoGallery,
-                                                                                      multiImage: false,
-                                                                                    );
-                                                                                    if (selectedMedia != null && selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
-                                                                                      showUploadMessage(
-                                                                                        context,
-                                                                                        'Uploading file...',
-                                                                                        showLoading: true,
-                                                                                      );
-                                                                                      final downloadUrls = (await Future.wait(selectedMedia.map((m) async => await uploadData(m.storagePath, m.bytes)))).where((u) => u != null).toList();
-                                                                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                                                                      if (downloadUrls != null && downloadUrls.length == selectedMedia.length) {
-                                                                                        setState(() => uploadedFileUrl11 = downloadUrls.first);
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Success!',
-                                                                                        );
-                                                                                      } else {
-                                                                                        showUploadMessage(
-                                                                                          context,
-                                                                                          'Failed to upload media',
-                                                                                        );
-                                                                                        return;
-                                                                                      }
-                                                                                    }
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 325,
-                                                                                    height: 233.33,
-                                                                                    decoration: BoxDecoration(
-                                                                                      image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: Image.asset(
-                                                                                          'assets/images/Agregar_fotografia.png',
-                                                                                        ).image,
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Visibility(
-                                                                                      visible: functions.previewSubida(uploadedFileUrl11) ?? true,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(16),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            uploadedFileUrl11,
-                                                                                            'gs://mi-trasplante.appspot.com/users/haaINw1HpShxib9MTqCsm5kuYqB2/uploads/Agregar fotografía.png',
-                                                                                          ),
-                                                                                          width: 100,
-                                                                                          height: 100,
-                                                                                          fit: BoxFit.cover,
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro5) == 'Iconografía')
+                                                                                              Container(
+                                                                                                width: 140,
+                                                                                                height: 140,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro5,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            if ((editarContenidoContenidosRecord.tipoImgMicro5) == 'Fotografía')
+                                                                                              Container(
+                                                                                                width: 325,
+                                                                                                height: 233.33,
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: ClipRRect(
+                                                                                                  borderRadius: BorderRadius.circular(16),
+                                                                                                  child: CachedNetworkImage(
+                                                                                                    imageUrl: editarContenidoContenidosRecord.imgMicro5,
+                                                                                                    width: 100,
+                                                                                                    height: 100,
+                                                                                                    fit: BoxFit.cover,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                          ],
                                                                                         ),
-                                                                                      ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                                                                          child: InkWell(
+                                                                                            onTap: () async {
+                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_PAGE_Row_y708jys3_ON_TAP');
+                                                                                              logFirebaseEvent('Row_Update-Local-State');
+                                                                                              setState(() => FFAppState().mostrarMicroImg5 = true);
+                                                                                            },
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.min,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                                                                                  child: Icon(
+                                                                                                    FFIcons.kasset23,
+                                                                                                    color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                    size: 24,
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Borrar foto',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Proxima nova',
+                                                                                                            color: FlutterFlowTheme.of(context).negativeFeedback,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            useGoogleFonts: false,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -3273,7 +3707,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: claveMicro5Controller,
+                                                                                    controller: claveMicro5Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.nombreMicro5,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -3353,7 +3789,9 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                   ),
                                                                                   child: TextFormField(
-                                                                                    controller: infoMicro5Controller,
+                                                                                    controller: infoMicro5Controller ??= TextEditingController(
+                                                                                      text: editarContenidoContenidosRecord.infoMicro5,
+                                                                                    ),
                                                                                     obscureText: false,
                                                                                     decoration: InputDecoration(
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -3454,7 +3892,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                           FFButtonWidget(
                                             onPressed: () async {
                                               logFirebaseEvent(
-                                                  'NUEVO_CONTENIDO_PAGE_cancelar_ON_TAP');
+                                                  'EDITAR_CONTENIDO_PAGE_cancelar_ON_TAP');
                                               logFirebaseEvent(
                                                   'cancelar_Navigate-Back');
                                               Navigator.pop(context);
@@ -3491,243 +3929,62 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                           FFButtonWidget(
                                             onPressed: () async {
                                               logFirebaseEvent(
-                                                  'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
-                                              if (FFAppState()
-                                                  .otraCategoriaContenidos) {
-                                                logFirebaseEvent(
-                                                    'guardar-contenido_Backend-Call');
-
-                                                final categoriasUpdateData = {
-                                                  'listado':
-                                                      FieldValue.arrayUnion([
-                                                    nuevaCategoriaContenidosController
-                                                        .text
-                                                  ]),
-                                                };
-                                                await nuevoContenidoCategoriasRecord
-                                                    .reference
-                                                    .update(
-                                                        categoriasUpdateData);
-                                                logFirebaseEvent(
-                                                    'guardar-contenido_Backend-Call');
-
-                                                final contenidosCreateData = {
-                                                  ...createContenidosRecordData(
-                                                    nombre: nameController.text,
-                                                    previewImage:
-                                                        uploadedFileUrl1,
-                                                    categoriaPrincipal:
-                                                        nuevaCategoriaContenidosController
-                                                            .text,
-                                                    imgMicro1: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl2,
-                                                            uploadedFileUrl3),
-                                                    tipoImgMicro1:
-                                                        imagenTipoValue1,
-                                                    nombreMicro1:
-                                                        claveMicro1Controller
-                                                            .text,
-                                                    infoMicro1:
-                                                        infoMicro1Controller
-                                                            .text,
-                                                    imgMicro2: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl4,
-                                                            uploadedFileUrl5),
-                                                    tipoImgMicro2:
-                                                        imagenTipoValue2,
-                                                    nombreMicro2:
-                                                        claveMicro2Controller
-                                                            .text,
-                                                    infoMicro2:
-                                                        infoMicro2Controller
-                                                            .text,
-                                                    imgMicro3: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl6,
-                                                            uploadedFileUrl7),
-                                                    tipoImgMicro3:
-                                                        imagenTipoValue3,
-                                                    nombreMicro3:
-                                                        claveMicro3Controller
-                                                            .text,
-                                                    infoMicro3:
-                                                        infoMicro3Controller
-                                                            .text,
-                                                    imgMicro4: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl8,
-                                                            uploadedFileUrl9),
-                                                    tipoImgMicro4:
-                                                        imagenTipoValue4,
-                                                    nombreMicro4:
-                                                        claveMicro4Controller
-                                                            .text,
-                                                    infoMicro4:
-                                                        infoMicro4Controller
-                                                            .text,
-                                                    imgMicro5: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl10,
-                                                            uploadedFileUrl11),
-                                                    tipoImgMicro5:
-                                                        imagenTipoValue5,
-                                                    nombreMicro5:
-                                                        claveMicro5Controller
-                                                            .text,
-                                                    infoMicro5:
-                                                        infoMicro5Controller
-                                                            .text,
-                                                  ),
-                                                  'categorias_secundarias':
-                                                      categoriasSecundariasValues,
-                                                  'etapas_relevantes':
-                                                      etapasValues,
-                                                };
-                                                await ContenidosRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set(contenidosCreateData);
-                                                logFirebaseEvent(
-                                                    'guardar-contenido_Bottom-Sheet');
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
-                                                      child:
-                                                          ContenidoCreadoWidget(
-                                                        preview:
-                                                            uploadedFileUrl1,
-                                                        nombre:
-                                                            nameController.text,
-                                                        categoriaPrincipal:
-                                                            nuevaCategoriaContenidosController
-                                                                .text,
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                logFirebaseEvent(
-                                                    'guardar-contenido_Backend-Call');
-
-                                                final contenidosCreateData = {
-                                                  ...createContenidosRecordData(
-                                                    nombre: nameController.text,
-                                                    previewImage:
-                                                        uploadedFileUrl1,
-                                                    categoriaPrincipal:
-                                                        categoriasContenidosValue,
-                                                    imgMicro1: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl2,
-                                                            uploadedFileUrl3),
-                                                    tipoImgMicro1:
-                                                        imagenTipoValue1,
-                                                    nombreMicro1:
-                                                        claveMicro1Controller
-                                                            .text,
-                                                    infoMicro1:
-                                                        infoMicro1Controller
-                                                            .text,
-                                                    imgMicro2: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl4,
-                                                            uploadedFileUrl5),
-                                                    tipoImgMicro2:
-                                                        imagenTipoValue2,
-                                                    nombreMicro2:
-                                                        claveMicro2Controller
-                                                            .text,
-                                                    infoMicro2:
-                                                        infoMicro2Controller
-                                                            .text,
-                                                    imgMicro3: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl6,
-                                                            uploadedFileUrl7),
-                                                    tipoImgMicro3:
-                                                        imagenTipoValue3,
-                                                    nombreMicro3:
-                                                        claveMicro3Controller
-                                                            .text,
-                                                    infoMicro3:
-                                                        infoMicro3Controller
-                                                            .text,
-                                                    imgMicro4: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl8,
-                                                            uploadedFileUrl9),
-                                                    tipoImgMicro4:
-                                                        imagenTipoValue4,
-                                                    nombreMicro4:
-                                                        claveMicro4Controller
-                                                            .text,
-                                                    infoMicro4:
-                                                        infoMicro4Controller
-                                                            .text,
-                                                    imgMicro5: functions
-                                                        .seleccionImagenMicro(
-                                                            uploadedFileUrl10,
-                                                            uploadedFileUrl11),
-                                                    tipoImgMicro5:
-                                                        imagenTipoValue5,
-                                                    nombreMicro5:
-                                                        claveMicro5Controller
-                                                            .text,
-                                                    infoMicro5:
-                                                        infoMicro5Controller
-                                                            .text,
-                                                  ),
-                                                  'categorias_secundarias':
-                                                      categoriasSecundariasValues,
-                                                  'etapas_relevantes':
-                                                      etapasValues,
-                                                };
-                                                await ContenidosRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set(contenidosCreateData);
-                                                logFirebaseEvent(
-                                                    'guardar-contenido_Bottom-Sheet');
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
-                                                      child:
-                                                          ContenidoCreadoWidget(
-                                                        preview:
-                                                            uploadedFileUrl1,
-                                                        nombre:
-                                                            nameController.text,
-                                                        categoriaPrincipal:
-                                                            categoriasContenidosValue,
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              }
-
+                                                  'EDITAR_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
                                               logFirebaseEvent(
-                                                  'guardar-contenido_Update-Local-State');
-                                              setState(() => FFAppState()
-                                                      .otraCategoriaContenidos =
-                                                  false);
+                                                  'guardar-contenido_Backend-Call');
+
+                                              final contenidosUpdateData = {
+                                                ...createContenidosRecordData(
+                                                  nombre:
+                                                      nameController?.text ??
+                                                          '',
+                                                  categoriaPrincipal:
+                                                      categoriasContenidosValue,
+                                                  nombreMicro1:
+                                                      claveMicro1Controller
+                                                              ?.text ??
+                                                          '',
+                                                  previewImage:
+                                                      uploadedFileUrl1,
+                                                  infoMicro1:
+                                                      infoMicro1Controller
+                                                              ?.text ??
+                                                          '',
+                                                ),
+                                                'categorias_secundarias':
+                                                    categoriasSecundariasValues,
+                                                'etapas_relevantes':
+                                                    etapasValues,
+                                              };
+                                              await editarContenidoContenidosRecord
+                                                  .reference
+                                                  .update(contenidosUpdateData);
+                                              logFirebaseEvent(
+                                                  'guardar-contenido_Bottom-Sheet');
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child:
+                                                        ContenidoGuardadoWidget(
+                                                      preview: uploadedFileUrl1,
+                                                      nombre: nameController
+                                                              ?.text ??
+                                                          '',
+                                                      categoriaPrincipal:
+                                                          categoriasContenidosValue,
+                                                    ),
+                                                  );
+                                                },
+                                              );
                                             },
-                                            text: 'Crear contenido',
+                                            text: 'Guarda contenido',
                                             options: FFButtonOptions(
                                               width: 200,
                                               height: 50,

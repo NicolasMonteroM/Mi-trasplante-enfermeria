@@ -101,6 +101,46 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
+  static UsersRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) => UsersRecord(
+        (c) => c
+          ..email = snapshot.data['email']
+          ..displayName = snapshot.data['display_name']
+          ..photoUrl = snapshot.data['photo_url']
+          ..uid = snapshot.data['uid']
+          ..createdTime = safeGet(() => DateTime.fromMillisecondsSinceEpoch(
+              snapshot.data['created_time']))
+          ..phoneNumber = snapshot.data['phone_number']
+          ..birthDate = safeGet(() =>
+              DateTime.fromMillisecondsSinceEpoch(snapshot.data['birth_date']))
+          ..idNumber = snapshot.data['id_number']
+          ..name = snapshot.data['name']
+          ..lastName = snapshot.data['last_name']
+          ..documentType = snapshot.data['document_type']
+          ..height = snapshot.data['height']
+          ..weight = snapshot.data['weight']
+          ..gender = snapshot.data['gender']
+          ..stage = snapshot.data['stage']
+          ..age = snapshot.data['age']?.round()
+          ..categoriasRecomendadas = safeGet(
+              () => ListBuilder(snapshot.data['categorias_recomendadas']))
+          ..reference = UsersRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<UsersRecord>> search(
+          {String term,
+          FutureOr<LatLng> location,
+          int maxResults,
+          double searchRadiusMeters}) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'users',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
+
   UsersRecord._();
   factory UsersRecord([void Function(UsersRecordBuilder) updates]) =
       _$UsersRecord;

@@ -9,6 +9,11 @@ import 'schema/users_enfermeria_record.dart';
 import 'schema/categorias_record.dart';
 import 'schema/etapas_trasplante_record.dart';
 import 'schema/contenidos_record.dart';
+import 'schema/medicamentos_record.dart';
+import 'schema/medicamento_formas_record.dart';
+import 'schema/esquema_medicamento_record.dart';
+import 'schema/recordatorios_record.dart';
+import 'schema/citas_asignadas_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -21,6 +26,11 @@ export 'schema/users_enfermeria_record.dart';
 export 'schema/categorias_record.dart';
 export 'schema/etapas_trasplante_record.dart';
 export 'schema/contenidos_record.dart';
+export 'schema/medicamentos_record.dart';
+export 'schema/medicamento_formas_record.dart';
+export 'schema/esquema_medicamento_record.dart';
+export 'schema/recordatorios_record.dart';
+export 'schema/citas_asignadas_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -227,6 +237,218 @@ Future<FFFirestorePage<ContenidosRecord>> queryContenidosRecordPage({
     queryCollectionPage(
       ContenidosRecord.collection,
       ContenidosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query MedicamentosRecords (as a Stream and as a Future).
+Stream<List<MedicamentosRecord>> queryMedicamentosRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MedicamentosRecord>> queryMedicamentosRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<MedicamentosRecord>> queryMedicamentosRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      MedicamentosRecord.collection,
+      MedicamentosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query MedicamentoFormasRecords (as a Stream and as a Future).
+Stream<List<MedicamentoFormasRecord>> queryMedicamentoFormasRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MedicamentoFormasRecord.collection,
+      MedicamentoFormasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MedicamentoFormasRecord>> queryMedicamentoFormasRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MedicamentoFormasRecord.collection,
+      MedicamentoFormasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<MedicamentoFormasRecord>>
+    queryMedicamentoFormasRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+        queryCollectionPage(
+          MedicamentoFormasRecord.collection,
+          MedicamentoFormasRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
+
+/// Functions to query EsquemaMedicamentoRecords (as a Stream and as a Future).
+Stream<List<EsquemaMedicamentoRecord>> queryEsquemaMedicamentoRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      EsquemaMedicamentoRecord.collection,
+      EsquemaMedicamentoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<EsquemaMedicamentoRecord>> queryEsquemaMedicamentoRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      EsquemaMedicamentoRecord.collection,
+      EsquemaMedicamentoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<EsquemaMedicamentoRecord>>
+    queryEsquemaMedicamentoRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+        queryCollectionPage(
+          EsquemaMedicamentoRecord.collection,
+          EsquemaMedicamentoRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
+
+/// Functions to query RecordatoriosRecords (as a Stream and as a Future).
+Stream<List<RecordatoriosRecord>> queryRecordatoriosRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      RecordatoriosRecord.collection,
+      RecordatoriosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<RecordatoriosRecord>> queryRecordatoriosRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      RecordatoriosRecord.collection,
+      RecordatoriosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<RecordatoriosRecord>> queryRecordatoriosRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      RecordatoriosRecord.collection,
+      RecordatoriosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query CitasAsignadasRecords (as a Stream and as a Future).
+Stream<List<CitasAsignadasRecord>> queryCitasAsignadasRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CitasAsignadasRecord.collection,
+      CitasAsignadasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CitasAsignadasRecord>> queryCitasAsignadasRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CitasAsignadasRecord.collection,
+      CitasAsignadasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<CitasAsignadasRecord>> queryCitasAsignadasRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      CitasAsignadasRecord.collection,
+      CitasAsignadasRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

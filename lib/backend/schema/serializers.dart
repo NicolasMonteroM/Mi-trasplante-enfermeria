@@ -5,9 +5,15 @@ import 'users_enfermeria_record.dart';
 import 'categorias_record.dart';
 import 'etapas_trasplante_record.dart';
 import 'contenidos_record.dart';
+import 'medicamentos_record.dart';
+import 'medicamento_formas_record.dart';
+import 'esquema_medicamento_record.dart';
+import 'recordatorios_record.dart';
+import 'citas_asignadas_record.dart';
 
 import 'index.dart';
 
+export '../algolia/algolia_manager.dart';
 export 'index.dart';
 
 part 'serializers.g.dart';
@@ -20,6 +26,11 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   CategoriasRecord,
   EtapasTrasplanteRecord,
   ContenidosRecord,
+  MedicamentosRecord,
+  MedicamentoFormasRecord,
+  EsquemaMedicamentoRecord,
+  RecordatoriosRecord,
+  CitasAsignadasRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

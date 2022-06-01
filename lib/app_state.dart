@@ -21,6 +21,26 @@ class FFAppState {
   bool etapaCambiada = false;
 
   bool categoriasCambiadas = false;
+
+  bool otraFormaFarmaceutica = false;
+
+  bool otraCategoriaContenidos = false;
+
+  bool mostrarMicroImg1 = false;
+
+  bool mostrarMicroImg2 = false;
+
+  bool mostrarMicroImg3 = false;
+
+  bool mostrarMicroImg4 = false;
+
+  bool mostrarMicroImg5 = false;
+
+  bool searchContenidos = false;
+
+  bool searchPacientes = false;
+
+  bool searchMedicamentos = false;
 }
 
 LatLng _latLngFromString(String val) {
