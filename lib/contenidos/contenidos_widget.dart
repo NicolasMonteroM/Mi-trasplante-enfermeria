@@ -776,9 +776,12 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                               snapshot.data;
                                           if (wrapContenidosRecordList
                                               .isEmpty) {
-                                            return ListaVaciaWidget(
-                                              massage:
-                                                  'No hay contenidos en la categoria',
+                                            return Container(
+                                              height: 200,
+                                              child: ListaVaciaWidget(
+                                                massage:
+                                                    'No hay contenidos en la categoria',
+                                              ),
                                             );
                                           }
                                           return Wrap(
@@ -1003,8 +1006,11 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                               algoliaSearchResults?.toList() ??
                                                   [];
                                           if (algoliaContenidos.isEmpty) {
-                                            return ListaVaciaWidget(
-                                              massage: 'No hay resultados',
+                                            return Container(
+                                              height: 200,
+                                              child: ListaVaciaWidget(
+                                                massage: 'No hay resultados',
+                                              ),
                                             );
                                           }
                                           return Wrap(

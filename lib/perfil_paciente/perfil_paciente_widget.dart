@@ -1330,9 +1330,14 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                               .data;
                                                                       if (columnEsquemaMedicamentoRecordList
                                                                           .isEmpty) {
-                                                                        return ListaVaciaWidget(
-                                                                          massage:
-                                                                              'El usuario no tiene esquemas asignados',
+                                                                        return Container(
+                                                                          height:
+                                                                              200,
+                                                                          child:
+                                                                              ListaVaciaWidget(
+                                                                            massage:
+                                                                                'El usuario no tiene esquemas asignados',
+                                                                          ),
                                                                         );
                                                                       }
                                                                       return Column(
@@ -1686,7 +1691,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                           child:
                                                                               ListaVaciaWidget(
                                                                             massage:
-                                                                                'El usuario no tiene esquemas asignados',
+                                                                                'El usuario no tiene citas programadas',
                                                                           ),
                                                                         );
                                                                       }
@@ -1985,9 +1990,14 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                               .data;
                                                                       if (columnEsquemaIndicadoresRecordList
                                                                           .isEmpty) {
-                                                                        return ListaVaciaWidget(
-                                                                          massage:
-                                                                              'El usuario no tiene esquemas asignados',
+                                                                        return Container(
+                                                                          height:
+                                                                              200,
+                                                                          child:
+                                                                              ListaVaciaWidget(
+                                                                            massage:
+                                                                                'El usuario no tiene esquemas asignados',
+                                                                          ),
                                                                         );
                                                                       }
                                                                       return Column(
