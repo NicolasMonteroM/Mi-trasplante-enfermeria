@@ -418,7 +418,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'NUEVO_CONTENIDO_PAGE_Text_wz4dh2s2_ON_TAP');
+                                          'NUEVO_CONTENIDO_Text_wz4dh2s2_ON_TAP');
                                       logFirebaseEvent('Text_Auth');
                                       await signOut();
                                       await Navigator.pushAndRemoveUntil(
@@ -500,7 +500,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                   child: InkWell(
                                                     onTap: () async {
                                                       logFirebaseEvent(
-                                                          'NUEVO_CONTENIDO_PAGE_ContainerBack_ON_TAP');
+                                                          'NUEVO_CONTENIDO_ContainerBack_ON_TAP');
                                                       logFirebaseEvent(
                                                           'ContainerBack_Navigate-Back');
                                                       Navigator.pop(context);
@@ -748,7 +748,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_chcmwh4h_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_chcmwh4h_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -954,7 +954,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: InkWell(
                                                                                           onTap: () async {
-                                                                                            logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Icon_7tkzjn72_ON_TAP');
+                                                                                            logFirebaseEvent('NUEVO_CONTENIDO_Icon_7tkzjn72_ON_TAP');
                                                                                             logFirebaseEvent('Icon_Update-Local-State');
                                                                                             setState(() => FFAppState().otraCategoriaContenidos = false);
                                                                                             logFirebaseEvent('Icon_Clear-Text-Fields');
@@ -1486,7 +1486,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue1) == 'Iconografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_6wdfkmee_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_6wdfkmee_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -1547,7 +1547,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue1) == 'Fotografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_h1ktsr5q_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_h1ktsr5q_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -1894,7 +1894,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue2) == 'Iconografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_suixzzan_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_suixzzan_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -1955,7 +1955,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue2) == 'Fotografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_5vwd75rt_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_5vwd75rt_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -2302,7 +2302,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue3) == 'Iconografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_77n2nufx_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_77n2nufx_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -2363,7 +2363,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue3) == 'Fotografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_8adx0db7_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_8adx0db7_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -2710,7 +2710,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue4) == 'Iconografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_j7ornfjd_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_j7ornfjd_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -2771,7 +2771,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue4) == 'Fotografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_6z3ndmsv_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_6z3ndmsv_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -3118,7 +3118,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue5) == 'Iconografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_wbiooynf_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_wbiooynf_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -3179,7 +3179,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                                                               if ((imagenTipoValue5) == 'Fotografía')
                                                                                 InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_PAGE_Container_u9xfmfcn_ON_TAP');
+                                                                                    logFirebaseEvent('NUEVO_CONTENIDO_Container_u9xfmfcn_ON_TA');
                                                                                     logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
@@ -3491,7 +3491,7 @@ class _NuevoContenidoWidgetState extends State<NuevoContenidoWidget> {
                                           FFButtonWidget(
                                             onPressed: () async {
                                               logFirebaseEvent(
-                                                  'NUEVO_CONTENIDO_PAGE_guardar-contenido_ON_TAP');
+                                                  'NUEVO_CONTENIDO_guardar-contenido_ON_TAP');
                                               if (FFAppState()
                                                   .otraCategoriaContenidos) {
                                                 logFirebaseEvent(

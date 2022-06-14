@@ -189,7 +189,7 @@ class _ContenidoCreadoWidgetState extends State<ContenidoCreadoWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
-                                'CONTENIDO_CREADO_COMP_nuevo_medicamento_ON_TAP');
+                                'CONTENIDO_CREADO_nuevo_medicamento_ON_TA');
                             logFirebaseEvent('nuevo_medicamento_Navigate-To');
                             await Navigator.push(
                               context,
@@ -234,7 +234,7 @@ class _ContenidoCreadoWidgetState extends State<ContenidoCreadoWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
-                                'CONTENIDO_CREADO_COMP_nuevo_medicamento_ON_TAP');
+                                'CONTENIDO_CREADO_nuevo_medicamento_ON_TA');
                             logFirebaseEvent('nuevo_medicamento_Navigate-To');
                             await Navigator.pushAndRemoveUntil(
                               context,

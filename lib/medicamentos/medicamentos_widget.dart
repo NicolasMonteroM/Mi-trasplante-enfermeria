@@ -577,7 +577,7 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                     ),
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'MEDICAMENTOS_PAGE_asset31_ICON_ON_TAP');
+                                          'MEDICAMENTOS_PAGE_asset31_ICN_ON_TAP');
                                       logFirebaseEvent(
                                           'IconButton_Algolia-Search');
                                       setState(
@@ -1895,7 +1895,7 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
                                                           logFirebaseEvent(
-                                                              'MEDICAMENTOS_PAGE_nuevo_medicamento_ON_TAP');
+                                                              'MEDICAMENTOS_nuevo_medicamento_ON_TAP');
                                                           if (FFAppState()
                                                               .otraFormaFarmaceutica) {
                                                             logFirebaseEvent(

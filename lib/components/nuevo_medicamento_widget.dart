@@ -123,7 +123,7 @@ class _NuevoMedicamentoWidgetState extends State<NuevoMedicamentoWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
-                              'NUEVO_MEDICAMENTO_COMP_nuevo_medicamento_ON_TAP');
+                              'NUEVO_MEDICAMENTO_nuevo_medicamento_ON_T');
                           logFirebaseEvent('nuevo_medicamento_Bottom-Sheet');
                           Navigator.pop(context);
                         },

@@ -406,7 +406,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'PERFIL_PACIENTE_PAGE_Text_z78wm5ip_ON_TAP');
+                                          'PERFIL_PACIENTE_Text_z78wm5ip_ON_TAP');
                                       logFirebaseEvent('Text_Auth');
                                       await signOut();
                                       await Navigator.pushAndRemoveUntil(
@@ -465,7 +465,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                         child: InkWell(
                                           onTap: () async {
                                             logFirebaseEvent(
-                                                'PERFIL_PACIENTE_PAGE_ContainerBack_ON_TAP');
+                                                'PERFIL_PACIENTE_ContainerBack_ON_TAP');
                                             logFirebaseEvent(
                                                 'ContainerBack_Navigate-Back');
                                             Navigator.pop(context);
@@ -1142,7 +1142,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                               final wrapCategoriasRecord = wrapCategoriasRecordList.isNotEmpty ? wrapCategoriasRecordList.first : null;
                                                                               return InkWell(
                                                                                 onTap: () async {
-                                                                                  logFirebaseEvent('PERFIL_PACIENTE_PAGE_Wrap_gd3vj33y_ON_TAP');
+                                                                                  logFirebaseEvent('PERFIL_PACIENTE_Wrap_gd3vj33y_ON_TAP');
                                                                                   logFirebaseEvent('Wrap_Custom-Action');
                                                                                   categoriasCambiadas = await actions.checkListas(
                                                                                     categoriasSecundariasValues.toList(),
@@ -2269,7 +2269,7 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                       FFButtonWidget(
                                         onPressed: () async {
                                           logFirebaseEvent(
-                                              'PERFIL_PACIENTE_PAGE_guardar-contenido_ON_TAP');
+                                              'PERFIL_PACIENTE_guardar-contenido_ON_TAP');
                                           logFirebaseEvent(
                                               'guardar-contenido_Backend-Call');
 

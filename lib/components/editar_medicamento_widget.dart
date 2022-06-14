@@ -123,7 +123,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                   InkWell(
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'EDITAR_MEDICAMENTO_COMP_Row_jfxjk717_ON_TAP');
+                                          'EDITAR_MEDICAMENTO_Row_jfxjk717_ON_TAP');
                                       logFirebaseEvent('Row_Backend-Call');
                                       await widget.medicamentoRef.delete();
                                       logFirebaseEvent('Row_Bottom-Sheet');
@@ -477,7 +477,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                     child: InkWell(
                                       onTap: () async {
                                         logFirebaseEvent(
-                                            'EDITAR_MEDICAMENTO_COMP_Row_csky51yl_ON_TAP');
+                                            'EDITAR_MEDICAMENTO_Row_csky51yl_ON_TAP');
                                         logFirebaseEvent(
                                             'Row_Update-Local-State');
                                         setState(() => FFAppState()
@@ -528,7 +528,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                           child: InkWell(
                                             onTap: () async {
                                               logFirebaseEvent(
-                                                  'EDITAR_MEDICAMENTO_COMP_Icon_kygvl5az_ON_TAP');
+                                                  'EDITAR_MEDICAMENTO_Icon_kygvl5az_ON_TAP');
                                               logFirebaseEvent(
                                                   'Icon_Update-Local-State');
                                               setState(() => FFAppState()
@@ -662,7 +662,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             logFirebaseEvent(
-                                                'EDITAR_MEDICAMENTO_COMP_nuevo_medicamento_ON_TAP');
+                                                'EDITAR_MEDICAMENTO_nuevo_medicamento_ON_');
                                             logFirebaseEvent(
                                                 'nuevo_medicamento_Bottom-Sheet');
                                             Navigator.pop(context);
@@ -709,7 +709,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             logFirebaseEvent(
-                                                'EDITAR_MEDICAMENTO_COMP_nuevo_medicamento_ON_TAP');
+                                                'EDITAR_MEDICAMENTO_nuevo_medicamento_ON_');
                                             if (FFAppState()
                                                 .otraFormaFarmaceutica) {
                                               logFirebaseEvent(

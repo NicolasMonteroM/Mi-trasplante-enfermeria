@@ -572,7 +572,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                       ),
                                       onPressed: () async {
                                         logFirebaseEvent(
-                                            'CONTENIDOS_PAGE_asset31_ICON_ON_TAP');
+                                            'CONTENIDOS_PAGE_asset31_ICN_ON_TAP');
                                         logFirebaseEvent(
                                             'IconButton_Algolia-Search');
                                         setState(
@@ -807,7 +807,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                 child: InkWell(
                                                   onTap: () async {
                                                     logFirebaseEvent(
-                                                        'CONTENIDOS_PAGE_Container_txbco1qq_ON_TAP');
+                                                        'CONTENIDOS_Container_txbco1qq_ON_TAP');
                                                     logFirebaseEvent(
                                                         'Container_Navigate-To');
                                                     await Navigator.push(
@@ -1036,7 +1036,7 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                 child: InkWell(
                                                   onTap: () async {
                                                     logFirebaseEvent(
-                                                        'CONTENIDOS_PAGE_Container_zuo7bnvf_ON_TAP');
+                                                        'CONTENIDOS_Container_zuo7bnvf_ON_TAP');
                                                     logFirebaseEvent(
                                                         'Container_Navigate-To');
                                                     await Navigator.push(

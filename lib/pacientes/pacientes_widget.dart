@@ -565,7 +565,7 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                     ),
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'PACIENTES_PAGE_asset31_ICON_ON_TAP');
+                                          'PACIENTES_PAGE_asset31_ICN_ON_TAP');
                                       logFirebaseEvent(
                                           'IconButton_Algolia-Search');
                                       setState(
