@@ -37,8 +37,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
     principioactivoController = TextEditingController();
     formaFarmaceuticaController = TextEditingController();
     searchController = TextEditingController();
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Medicamentos'});
   }
 
   @override
@@ -150,9 +148,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'MEDICAMENTOS_PAGE_Row_t1ielseo_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -225,9 +220,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'MEDICAMENTOS_PAGE_Row_7blxkcol_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -361,9 +353,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent(
-                                      'MEDICAMENTOS_PAGE_Text_143shz6b_ON_TAP');
-                                  logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
                                     context,
@@ -535,15 +524,9 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                     0, 0, 16, 0),
                                             child: InkWell(
                                               onTap: () async {
-                                                logFirebaseEvent(
-                                                    'MEDICAMENTOS_PAGE_Icon_d6r2s66y_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Icon_Update-Local-State');
                                                 setState(() => FFAppState()
                                                         .searchMedicamentos =
                                                     false);
-                                                logFirebaseEvent(
-                                                    'Icon_Clear-Text-Fields');
                                                 setState(() {
                                                   searchController?.clear();
                                                 });
@@ -576,10 +559,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                       size: 20,
                                     ),
                                     onPressed: () async {
-                                      logFirebaseEvent(
-                                          'MEDICAMENTOS_PAGE_asset31_ICN_ON_TAP');
-                                      logFirebaseEvent(
-                                          'IconButton_Algolia-Search');
                                       setState(
                                           () => algoliaSearchResults = null);
                                       await MedicamentosRecord.search(
@@ -590,8 +569,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                               algoliaSearchResults = [])
                                           .whenComplete(() => setState(() {}));
 
-                                      logFirebaseEvent(
-                                          'IconButton_Update-Local-State');
                                       setState(() => FFAppState()
                                           .searchMedicamentos = true);
                                     },
@@ -911,8 +888,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                               InkWell(
                                                                             onTap:
                                                                                 () async {
-                                                                              logFirebaseEvent('MEDICAMENTOS_PAGE_Icon_oatvp80h_ON_TAP');
-                                                                              logFirebaseEvent('Icon_Bottom-Sheet');
                                                                               await showModalBottomSheet(
                                                                                 isScrollControlled: true,
                                                                                 backgroundColor: Colors.transparent,
@@ -1133,8 +1108,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                             InkWell(
                                                                           onTap:
                                                                               () async {
-                                                                            logFirebaseEvent('MEDICAMENTOS_PAGE_Icon_ryrck228_ON_TAP');
-                                                                            logFirebaseEvent('Icon_Bottom-Sheet');
                                                                             await showModalBottomSheet(
                                                                               isScrollControlled: true,
                                                                               backgroundColor: Colors.transparent,
@@ -1666,10 +1639,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                   0, 0, 8, 0),
                                                       child: InkWell(
                                                         onTap: () async {
-                                                          logFirebaseEvent(
-                                                              'MEDICAMENTOS_PAGE_Row_j78bswc1_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'Row_Update-Local-State');
                                                           setState(() =>
                                                               FFAppState()
                                                                       .otraFormaFarmaceutica =
@@ -1734,16 +1703,10 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                 BoxDecoration(),
                                                             child: InkWell(
                                                               onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'MEDICAMENTOS_PAGE_Icon_j8e45jus_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'Icon_Update-Local-State');
                                                                 setState(() =>
                                                                     FFAppState()
                                                                             .otraFormaFarmaceutica =
                                                                         false);
-                                                                logFirebaseEvent(
-                                                                    'Icon_Clear-Text-Fields');
                                                                 setState(() {
                                                                   formaFarmaceuticaController
                                                                       ?.clear();
@@ -1894,13 +1857,8 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                       ),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          logFirebaseEvent(
-                                                              'MEDICAMENTOS_nuevo_medicamento_ON_TAP');
                                                           if (FFAppState()
                                                               .otraFormaFarmaceutica) {
-                                                            logFirebaseEvent(
-                                                                'nuevo_medicamento_Backend-Call');
-
                                                             final medicamentoFormasUpdateData =
                                                                 {
                                                               'listado': FieldValue
@@ -1913,8 +1871,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                 .reference
                                                                 .update(
                                                                     medicamentoFormasUpdateData);
-                                                            logFirebaseEvent(
-                                                                'nuevo_medicamento_Backend-Call');
 
                                                             final medicamentosCreateData =
                                                                 createMedicamentosRecordData(
@@ -1933,8 +1889,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                 .doc()
                                                                 .set(
                                                                     medicamentosCreateData);
-                                                            logFirebaseEvent(
-                                                                'nuevo_medicamento_Bottom-Sheet');
                                                             await showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
@@ -1964,9 +1918,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                               },
                                                             );
                                                           } else {
-                                                            logFirebaseEvent(
-                                                                'nuevo_medicamento_Backend-Call');
-
                                                             final medicamentosCreateData =
                                                                 createMedicamentosRecordData(
                                                               concentracion:
@@ -1983,8 +1934,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                                 .doc()
                                                                 .set(
                                                                     medicamentosCreateData);
-                                                            logFirebaseEvent(
-                                                                'nuevo_medicamento_Bottom-Sheet');
                                                             await showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
@@ -2014,8 +1963,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                             );
                                                           }
 
-                                                          logFirebaseEvent(
-                                                              'nuevo_medicamento_Clear-Text-Fields');
                                                           setState(() {
                                                             principioactivoController
                                                                 ?.clear();
@@ -2024,8 +1971,6 @@ class _MedicamentosWidgetState extends State<MedicamentosWidget> {
                                                             formaFarmaceuticaController
                                                                 ?.clear();
                                                           });
-                                                          logFirebaseEvent(
-                                                              'nuevo_medicamento_Update-Local-State');
                                                           setState(() =>
                                                               FFAppState()
                                                                       .otraFormaFarmaceutica =

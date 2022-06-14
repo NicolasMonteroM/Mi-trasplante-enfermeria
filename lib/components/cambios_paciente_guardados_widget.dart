@@ -79,9 +79,6 @@ class _CambiosPacienteGuardadosWidgetState
                       ),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          logFirebaseEvent(
-                              'CAMBIOS_PACIENTE_GUARDADOS_nuevo_medicam');
-                          logFirebaseEvent('nuevo_medicamento_Bottom-Sheet');
                           Navigator.pop(context);
                         },
                         text: 'Entendido',

@@ -122,11 +122,7 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      logFirebaseEvent(
-                                          'EDITAR_MEDICAMENTO_Row_jfxjk717_ON_TAP');
-                                      logFirebaseEvent('Row_Backend-Call');
                                       await widget.medicamentoRef.delete();
-                                      logFirebaseEvent('Row_Bottom-Sheet');
                                       Navigator.pop(context);
                                     },
                                     child: Row(
@@ -476,10 +472,6 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                         0, 0, 8, 0),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'EDITAR_MEDICAMENTO_Row_csky51yl_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Row_Update-Local-State');
                                         setState(() => FFAppState()
                                             .otraFormaFarmaceutica = true);
                                       },
@@ -527,10 +519,6 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                           decoration: BoxDecoration(),
                                           child: InkWell(
                                             onTap: () async {
-                                              logFirebaseEvent(
-                                                  'EDITAR_MEDICAMENTO_Icon_kygvl5az_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Icon_Update-Local-State');
                                               setState(() => FFAppState()
                                                       .otraFormaFarmaceutica =
                                                   false);
@@ -661,10 +649,6 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                         ),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            logFirebaseEvent(
-                                                'EDITAR_MEDICAMENTO_nuevo_medicamento_ON_');
-                                            logFirebaseEvent(
-                                                'nuevo_medicamento_Bottom-Sheet');
                                             Navigator.pop(context);
                                           },
                                           text: 'Cancelar',
@@ -708,13 +692,8 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                         ),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            logFirebaseEvent(
-                                                'EDITAR_MEDICAMENTO_nuevo_medicamento_ON_');
                                             if (FFAppState()
                                                 .otraFormaFarmaceutica) {
-                                              logFirebaseEvent(
-                                                  'nuevo_medicamento_Backend-Call');
-
                                               final medicamentoFormasUpdateData =
                                                   {
                                                 'listado':
@@ -727,8 +706,6 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                                   .reference
                                                   .update(
                                                       medicamentoFormasUpdateData);
-                                              logFirebaseEvent(
-                                                  'nuevo_medicamento_Backend-Call');
 
                                               final medicamentosUpdateData =
                                                   createMedicamentosRecordData(
@@ -748,9 +725,6 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                                   .update(
                                                       medicamentosUpdateData);
                                             } else {
-                                              logFirebaseEvent(
-                                                  'nuevo_medicamento_Backend-Call');
-
                                               final medicamentosUpdateData =
                                                   createMedicamentosRecordData(
                                                 concentracion:
@@ -769,12 +743,8 @@ class _EditarMedicamentoWidgetState extends State<EditarMedicamentoWidget> {
                                                       medicamentosUpdateData);
                                             }
 
-                                            logFirebaseEvent(
-                                                'nuevo_medicamento_Update-Local-State');
                                             setState(() => FFAppState()
                                                 .otraFormaFarmaceutica = false);
-                                            logFirebaseEvent(
-                                                'nuevo_medicamento_Bottom-Sheet');
                                             Navigator.pop(context);
                                           },
                                           text: 'Guardar',

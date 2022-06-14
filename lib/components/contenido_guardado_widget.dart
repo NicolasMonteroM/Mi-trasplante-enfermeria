@@ -188,9 +188,6 @@ class _ContenidoGuardadoWidgetState extends State<ContenidoGuardadoWidget> {
                         ),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent(
-                                'CONTENIDO_GUARDADO_nuevo_medicamento_ON_');
-                            logFirebaseEvent('nuevo_medicamento_Navigate-To');
                             await Navigator.push(
                               context,
                               PageTransition(

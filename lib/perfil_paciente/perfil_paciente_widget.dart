@@ -36,13 +36,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Perfil_paciente'});
-  }
-
-  @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(widget.pacienteRef),
@@ -169,9 +162,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                             0, 12, 0, 12),
                                         child: InkWell(
                                           onTap: () async {
-                                            logFirebaseEvent(
-                                                'PERFIL_PACIENTE_PAGE_Row_e2av1q9t_ON_TAP');
-                                            logFirebaseEvent('Row_Navigate-To');
                                             await Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -243,9 +233,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                             0, 12, 0, 12),
                                         child: InkWell(
                                           onTap: () async {
-                                            logFirebaseEvent(
-                                                'PERFIL_PACIENTE_PAGE_Row_jtl66k5p_ON_TAP');
-                                            logFirebaseEvent('Row_Navigate-To');
                                             await Navigator.push(
                                               context,
                                               PageTransition(
@@ -325,9 +312,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                             0, 12, 0, 12),
                                         child: InkWell(
                                           onTap: () async {
-                                            logFirebaseEvent(
-                                                'PERFIL_PACIENTE_PAGE_Row_gah3cyh6_ON_TAP');
-                                            logFirebaseEvent('Row_Navigate-To');
                                             await Navigator.push(
                                               context,
                                               PageTransition(
@@ -405,9 +389,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                   decoration: BoxDecoration(),
                                   child: InkWell(
                                     onTap: () async {
-                                      logFirebaseEvent(
-                                          'PERFIL_PACIENTE_Text_z78wm5ip_ON_TAP');
-                                      logFirebaseEvent('Text_Auth');
                                       await signOut();
                                       await Navigator.pushAndRemoveUntil(
                                         context,
@@ -464,10 +445,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                             0, 0, 16, 0),
                                         child: InkWell(
                                           onTap: () async {
-                                            logFirebaseEvent(
-                                                'PERFIL_PACIENTE_ContainerBack_ON_TAP');
-                                            logFirebaseEvent(
-                                                'ContainerBack_Navigate-Back');
                                             Navigator.pop(context);
                                           },
                                           child: Container(
@@ -1142,13 +1119,10 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                                                               final wrapCategoriasRecord = wrapCategoriasRecordList.isNotEmpty ? wrapCategoriasRecordList.first : null;
                                                                               return InkWell(
                                                                                 onTap: () async {
-                                                                                  logFirebaseEvent('PERFIL_PACIENTE_Wrap_gd3vj33y_ON_TAP');
-                                                                                  logFirebaseEvent('Wrap_Custom-Action');
                                                                                   categoriasCambiadas = await actions.checkListas(
                                                                                     categoriasSecundariasValues.toList(),
                                                                                     perfilPacienteUsersRecord.categoriasRecomendadas.toList(),
                                                                                   );
-                                                                                  logFirebaseEvent('Wrap_Update-Local-State');
                                                                                   setState(() => FFAppState().categoriasCambiadas = functions.getCambiosCategorias(categoriasSecundariasValues.toList(), perfilPacienteUsersRecord.categoriasRecomendadas.toList()));
 
                                                                                   setState(() {});
@@ -2234,10 +2208,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                     children: [
                                       FFButtonWidget(
                                         onPressed: () async {
-                                          logFirebaseEvent(
-                                              'PERFIL_PACIENTE_PAGE_cancelar_ON_TAP');
-                                          logFirebaseEvent(
-                                              'cancelar_Navigate-Back');
                                           Navigator.pop(context);
                                         },
                                         text: 'Cancelar',
@@ -2268,11 +2238,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                       ),
                                       FFButtonWidget(
                                         onPressed: () async {
-                                          logFirebaseEvent(
-                                              'PERFIL_PACIENTE_guardar-contenido_ON_TAP');
-                                          logFirebaseEvent(
-                                              'guardar-contenido_Backend-Call');
-
                                           final usersUpdateData = {
                                             ...createUsersRecordData(
                                               stage: categoriasContenidosValue,
@@ -2283,8 +2248,6 @@ class _PerfilPacienteWidgetState extends State<PerfilPacienteWidget> {
                                           await perfilPacienteUsersRecord
                                               .reference
                                               .update(usersUpdateData);
-                                          logFirebaseEvent(
-                                              'guardar-contenido_Bottom-Sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,

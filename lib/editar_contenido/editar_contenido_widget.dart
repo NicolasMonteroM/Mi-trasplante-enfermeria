@@ -63,13 +63,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Editar_contenido'});
-  }
-
-  @override
   Widget build(BuildContext context) {
     return StreamBuilder<ContenidosRecord>(
       stream: ContenidosRecord.getDocument(widget.contenidoRef),
@@ -259,9 +252,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                             0, 12, 0, 12),
                                         child: InkWell(
                                           onTap: () async {
-                                            logFirebaseEvent(
-                                                'EDITAR_CONTENIDO_Row_47m7fb47_ON_TAP');
-                                            logFirebaseEvent('Row_Navigate-To');
                                             await Navigator.push(
                                               context,
                                               PageTransition(
@@ -398,9 +388,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                   decoration: BoxDecoration(),
                                   child: InkWell(
                                     onTap: () async {
-                                      logFirebaseEvent(
-                                          'EDITAR_CONTENIDO_Text_8idv5cq5_ON_TAP');
-                                      logFirebaseEvent('Text_Auth');
                                       await signOut();
                                       await Navigator.pushAndRemoveUntil(
                                         context,
@@ -490,10 +477,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                       .fromSTEB(0, 0, 16, 0),
                                                   child: InkWell(
                                                     onTap: () async {
-                                                      logFirebaseEvent(
-                                                          'EDITAR_CONTENIDO_ContainerBack_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'ContainerBack_Navigate-Back');
                                                       Navigator.pop(context);
                                                     },
                                                     child: Container(
@@ -741,8 +724,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_Container_zwjuns68_ON_T');
-                                                                                    logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                     final selectedMedia = await selectMedia(
                                                                                       imageQuality: 100,
                                                                                       mediaSource: MediaSource.photoGallery,
@@ -855,8 +836,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_Row_g9svnuvi_ON_TAP');
-                                                                                    logFirebaseEvent('Row_Update-Local-State');
                                                                                     setState(() => FFAppState().otraFormaFarmaceutica = true);
                                                                                   },
                                                                                   child: Row(
@@ -1425,8 +1404,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                                 child: InkWell(
                                                                                                   onTap: () async {
-                                                                                                    logFirebaseEvent('EDITAR_CONTENIDO_Row_l2lyjx3w_ON_TAP');
-                                                                                                    logFirebaseEvent('Row_Update-Local-State');
                                                                                                     setState(() => FFAppState().mostrarMicroImg1 = true);
                                                                                                   },
                                                                                                   child: Row(
@@ -1484,8 +1461,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue1) == 'Iconografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_orytqoel_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -1545,8 +1520,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue1) == 'Fotografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_yg6ai6ww_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -1945,8 +1918,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                           child: InkWell(
                                                                                             onTap: () async {
-                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_Row_eoyryaw9_ON_TAP');
-                                                                                              logFirebaseEvent('Row_Update-Local-State');
                                                                                               setState(() => FFAppState().mostrarMicroImg2 = true);
                                                                                             },
                                                                                             child: Row(
@@ -2001,8 +1972,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue2) == 'Iconografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_f8o0lrwa_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -2062,8 +2031,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue2) == 'Fotografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_jlom235t_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -2462,8 +2429,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                           child: InkWell(
                                                                                             onTap: () async {
-                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_Row_i10u3n4u_ON_TAP');
-                                                                                              logFirebaseEvent('Row_Update-Local-State');
                                                                                               setState(() => FFAppState().mostrarMicroImg3 = true);
                                                                                             },
                                                                                             child: Row(
@@ -2518,8 +2483,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue3) == 'Iconografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_tmg2fh72_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -2579,8 +2542,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue3) == 'Fotografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_obywkf9t_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -2933,8 +2894,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue4) == 'Iconografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_d06tgcr3_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -2994,8 +2953,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue4) == 'Fotografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_gziono0p_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -3117,8 +3074,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                           child: InkWell(
                                                                                             onTap: () async {
-                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_Row_baz909ce_ON_TAP');
-                                                                                              logFirebaseEvent('Row_Update-Local-State');
                                                                                               setState(() => FFAppState().mostrarMicroImg4 = true);
                                                                                             },
                                                                                             child: Row(
@@ -3450,8 +3405,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue5) == 'Iconografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_m9plys3e_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -3511,8 +3464,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                 if ((imagenTipoValue5) == 'Fotografía')
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      logFirebaseEvent('EDITAR_CONTENIDO_Container_xrlkrklo_ON_T');
-                                                                                      logFirebaseEvent('Container_Upload-Photo-Video');
                                                                                       final selectedMedia = await selectMedia(
                                                                                         imageQuality: 100,
                                                                                         mediaSource: MediaSource.photoGallery,
@@ -3634,8 +3585,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                                                                           child: InkWell(
                                                                                             onTap: () async {
-                                                                                              logFirebaseEvent('EDITAR_CONTENIDO_Row_y708jys3_ON_TAP');
-                                                                                              logFirebaseEvent('Row_Update-Local-State');
                                                                                               setState(() => FFAppState().mostrarMicroImg5 = true);
                                                                                             },
                                                                                             child: Row(
@@ -3891,10 +3840,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                         children: [
                                           FFButtonWidget(
                                             onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'EDITAR_CONTENIDO_PAGE_cancelar_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'cancelar_Navigate-Back');
                                               Navigator.pop(context);
                                             },
                                             text: 'Cancelar',
@@ -3928,11 +3873,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                           ),
                                           FFButtonWidget(
                                             onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'EDITAR_CONTENIDO_guardar-contenido_ON_TA');
-                                              logFirebaseEvent(
-                                                  'guardar-contenido_Backend-Call');
-
                                               final contenidosUpdateData = {
                                                 ...createContenidosRecordData(
                                                   nombre:
@@ -3959,8 +3899,6 @@ class _EditarContenidoWidgetState extends State<EditarContenidoWidget> {
                                               await editarContenidoContenidosRecord
                                                   .reference
                                                   .update(contenidosUpdateData);
-                                              logFirebaseEvent(
-                                                  'guardar-contenido_Bottom-Sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:

@@ -30,7 +30,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
   @override
   void initState() {
     super.initState();
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Contenidos'});
     searchController = TextEditingController();
   }
 
@@ -203,9 +202,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'CONTENIDOS_PAGE_Row_30towkvb_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -278,9 +274,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'CONTENIDOS_PAGE_Row_ca1qwslu_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -354,9 +347,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent(
-                                      'CONTENIDOS_PAGE_Text_omlz1ehh_ON_TAP');
-                                  logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
                                     context,
@@ -530,15 +520,9 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                   .fromSTEB(0, 0, 16, 0),
                                               child: InkWell(
                                                 onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'CONTENIDOS_PAGE_Icon_3j0h8f16_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Icon_Clear-Text-Fields');
                                                   setState(() {
                                                     searchController?.clear();
                                                   });
-                                                  logFirebaseEvent(
-                                                      'Icon_Update-Local-State');
                                                   setState(() => FFAppState()
                                                           .searchContenidos =
                                                       false);
@@ -571,10 +555,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                         size: 20,
                                       ),
                                       onPressed: () async {
-                                        logFirebaseEvent(
-                                            'CONTENIDOS_PAGE_asset31_ICN_ON_TAP');
-                                        logFirebaseEvent(
-                                            'IconButton_Algolia-Search');
                                         setState(
                                             () => algoliaSearchResults = null);
                                         await ContenidosRecord.search(
@@ -587,8 +567,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                             .whenComplete(
                                                 () => setState(() {}));
 
-                                        logFirebaseEvent(
-                                            'IconButton_Update-Local-State');
                                         setState(() => FFAppState()
                                             .searchContenidos = true);
                                       },
@@ -598,9 +576,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  logFirebaseEvent(
-                                      'CONTENIDOS_PAGE_Button-Login_ON_TAP');
-                                  logFirebaseEvent('Button-Login_Navigate-To');
                                   await Navigator.push(
                                     context,
                                     PageTransition(
@@ -806,10 +781,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                     .fromSTEB(0, 0, 0, 12),
                                                 child: InkWell(
                                                   onTap: () async {
-                                                    logFirebaseEvent(
-                                                        'CONTENIDOS_Container_txbco1qq_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Container_Navigate-To');
                                                     await Navigator.push(
                                                       context,
                                                       PageTransition(
@@ -1035,10 +1006,6 @@ class _ContenidosWidgetState extends State<ContenidosWidget> {
                                                     .fromSTEB(0, 0, 0, 12),
                                                 child: InkWell(
                                                   onTap: () async {
-                                                    logFirebaseEvent(
-                                                        'CONTENIDOS_Container_zuo7bnvf_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Container_Navigate-To');
                                                     await Navigator.push(
                                                       context,
                                                       PageTransition(

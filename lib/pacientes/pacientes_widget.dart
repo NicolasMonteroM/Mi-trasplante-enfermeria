@@ -27,7 +27,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
   @override
   void initState() {
     super.initState();
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Pacientes'});
     searchController = TextEditingController();
   }
 
@@ -140,9 +139,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'PACIENTES_PAGE_Row_jt28l7v0_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -275,9 +271,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                         0, 12, 0, 12),
                                     child: InkWell(
                                       onTap: () async {
-                                        logFirebaseEvent(
-                                            'PACIENTES_PAGE_Row_7bc7p0d4_ON_TAP');
-                                        logFirebaseEvent('Row_Navigate-To');
                                         await Navigator.push(
                                           context,
                                           PageTransition(
@@ -351,9 +344,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                               decoration: BoxDecoration(),
                               child: InkWell(
                                 onTap: () async {
-                                  logFirebaseEvent(
-                                      'PACIENTES_PAGE_Text_vc8wr4aa_ON_TAP');
-                                  logFirebaseEvent('Text_Auth');
                                   await signOut();
                                   await Navigator.pushAndRemoveUntil(
                                     context,
@@ -524,15 +514,9 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                                     0, 0, 16, 0),
                                             child: InkWell(
                                               onTap: () async {
-                                                logFirebaseEvent(
-                                                    'PACIENTES_PAGE_Icon_tc4vhc6a_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Icon_Clear-Text-Fields');
                                                 setState(() {
                                                   searchController?.clear();
                                                 });
-                                                logFirebaseEvent(
-                                                    'Icon_Update-Local-State');
                                                 setState(() => FFAppState()
                                                     .searchPacientes = false);
                                               },
@@ -564,10 +548,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                       size: 20,
                                     ),
                                     onPressed: () async {
-                                      logFirebaseEvent(
-                                          'PACIENTES_PAGE_asset31_ICN_ON_TAP');
-                                      logFirebaseEvent(
-                                          'IconButton_Algolia-Search');
                                       setState(
                                           () => algoliaSearchResults = null);
                                       await UsersRecord.search(
@@ -578,8 +558,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                               algoliaSearchResults = [])
                                           .whenComplete(() => setState(() {}));
 
-                                      logFirebaseEvent(
-                                          'IconButton_Update-Local-State');
                                       setState(() =>
                                           FFAppState().searchPacientes = true);
                                     },
@@ -877,10 +855,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                                     0, 0, 0, 8),
                                             child: InkWell(
                                               onTap: () async {
-                                                logFirebaseEvent(
-                                                    'PACIENTES_PAGE_Container_qf26xgad_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Container_Navigate-To');
                                                 await Navigator.push(
                                                   context,
                                                   PageTransition(
@@ -1146,10 +1120,6 @@ class _PacientesWidgetState extends State<PacientesWidget> {
                                                     0, 0, 0, 8),
                                             child: InkWell(
                                               onTap: () async {
-                                                logFirebaseEvent(
-                                                    'PACIENTES_PAGE_Container_0lafsc17_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Container_Navigate-To');
                                                 await Navigator.push(
                                                   context,
                                                   PageTransition(
